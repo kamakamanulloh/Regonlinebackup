@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "31464151958",
+    "firebase_url": "https://rsia-muslimat.firebaseio.com",
+    "project_id": "rsia-muslimat",
+    "storage_bucket": "rsia-muslimat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31464151958:android:ce9e1f352359f786d95bb7",
+        "android_client_info": {
+          "package_name": "com.itrsiam.rsiamuslimat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31464151958-vsetpll6ul17os5v7fkk98uhijtajk7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZaOZIVHjooxOfUUviYLNRRLN4esGoM3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31464151958-vsetpll6ul17os5v7fkk98uhijtajk7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31464151958:android:b1f0bccb8ef0fe36d95bb7",
+        "android_client_info": {
+          "package_name": "com.kamak.antrianrsiam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31464151958-e94jqfmlab7dnc0trejrvt3jt3burleq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kamak.antrianrsiam",
+            "certificate_hash": "26a01c75876c9d749cb25b68bf7c94fb1201963f"
+          }
+        },
+        {
+          "client_id": "31464151958-vsetpll6ul17os5v7fkk98uhijtajk7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZaOZIVHjooxOfUUviYLNRRLN4esGoM3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31464151958-vsetpll6ul17os5v7fkk98uhijtajk7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/et_style"-->
+<!--        android:layout_margin="@dimen/activity_horizontal_margin"-->
+<!--        android:padding="5dp"-->
+<!--        android:hint="Masukkan Nomor HP"-->
+<!--        android:lines="1"-->
+<!--        android:inputType="phone"-->
+<!--        android:id="@+id/et_number"/>-->
+
+
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/et_style"-->
+<!--        android:layout_margin="@dimen/activity_horizontal_margin"-->
+<!--        android:padding="5dp"-->
+<!--        android:hint="Masukkan Nama"-->
+<!--        android:lines="1"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:id="@+id/et_nama"/>-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/et_style"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:padding="5dp"
+        android:hint="Masukkan Pesan"
+        android:maxLines="3"
+        android:gravity="top"
+
+        android:inputType="textMultiLine"
+        android:lines="8"
+
+        android:minLines="6"
+        android:scrollbars="vertical"
+        android:id="@+id/et_pesan"/>
+
+</LinearLayout>

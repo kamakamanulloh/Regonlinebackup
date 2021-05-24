@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/akun"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/holo_green_dark"
+                android:text="Ubah"
+                android:id="@+id/txtubah"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:gravity="end" />
+
+            <TextView
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informasi Akun"
+
+                android:id="@+id/akun"
+                android:textStyle="bold"
+                android:textColor="@color/navy_blue.primary"
+                android:textSize="14sp"
+                />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/akun"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+                <RelativeLayout
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_margin="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/user"
+                        android:text="Username Login"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/tvusername"
+                        android:text="3517"
+                        android:layout_margin="2dp"
+
+                        android:layout_toRightOf="@id/user"
+                        android:gravity="end" />
+                    <View
+                        android:id="@+id/garis55"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="2dp"
+                        android:layout_below="@id/user"
+                        android:background="@color/gray_bd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/noid"
+                        android:layout_below="@id/garis55"
+                        android:text="Nama Depan"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/tvnm_depan"
+                        android:text="3517"
+                        android:layout_margin="2dp"
+                        android:layout_below="@id/garis55"
+                        android:layout_toRightOf="@id/noid"
+                        android:gravity="end" />
+                    <View
+                        android:id="@+id/garis5"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="2dp"
+                        android:layout_below="@id/noid"
+                        android:background="@color/gray_bd" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/email"
+                        android:text="Nama Belakang"
+                        android:layout_below="@id/garis5"
+                        android:layout_marginTop="2dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/tv_nm_belakang"
+                        android:layout_below="@id/garis5"
+                        android:text="user@gmail.com"
+                        android:layout_toRightOf="@id/email"
+                        android:gravity="end" />
+
+                    <View
+                        android:id="@+id/garis6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="2dp"
+                        android:layout_below="@id/email"
+                        android:background="@color/gray_bd" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/notelp"
+                        android:text="Nomor Telepon"
+                        android:layout_below="@id/garis6"
+                        android:layout_marginTop="2dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:id="@+id/tv_telp"
+                        android:layout_below="@id/garis6"
+                        android:text="0896"
+                        android:layout_toRightOf="@id/notelp"
+                        android:gravity="end" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card2"
+                android:background="@color/material_grey_500"
+                android:text="Ubah Kata Sandi"
+                android:textColor="@color/material_light_black"
+                android:id="@+id/btn_sandi"
+                />
+
+            <TextView
+
+                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_sandi"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_alignParentBottom="true"
+                android:text="Copyright IT RSIA Muslimat 2020 Versi Aplikasi 1.0"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_alignParentRight="true" />
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</RelativeLayout>

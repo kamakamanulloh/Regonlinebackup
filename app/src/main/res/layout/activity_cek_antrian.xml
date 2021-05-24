@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".cek_antrian.CekAntrianActivity"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Poli"
+            android:textColor="@color/colorPrimary"
+
+            android:layout_marginBottom="5dp"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listPoli"
+
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Dokter"
+            android:visibility="gone"
+            android:id="@+id/tvDokter"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="5dp"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listDokter"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Nomor yang Sedang dilayani"
+            android:textAllCaps="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/tvNomor"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+           />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="A00"
+            android:textAllCaps="true"
+            android:id="@+id/tv_nomor"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="80sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="Nomor yang Sedang dilayani"
+            android:textAllCaps="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/tvPoli"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            />
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:layout_marginTop="@dimen/activity_horizontal_margin"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:visibility="gone"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/tv_SisaAntri"-->
+<!--                android:hint="Sisa Antrian" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.core.widget.NestedScrollView>

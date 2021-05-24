@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="100dp"
+
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:src="@drawable/ic_doctor"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/profile_image"
+            android:fontFamily="@font/arimo_bold"
+            android:text="Nama Dokter"
+            android:id="@+id/nm_dokter"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+           />
+
+        <TextView
+            android:id="@+id/nm_poli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/nm_dokter"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@id/profile_image"
+            android:fontFamily="@font/volkhov"
+
+            android:text="Poli"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/jadwal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/nm_poli"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@id/profile_image"
+            android:fontFamily="@font/volkhov"
+            android:text="Jadwal"
+
+            android:textColor="@color/green"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".registrasi.RegistrasiActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:layout_centerInParent="true"
+
+
+
+        android:background="#fff"
+
+        app:cardCornerRadius="20dp"
+
+
+        app:cardElevation="5dp">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+
+                    android:text="Register"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/txt"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Daftarkan diri anda untuk mulai aplikasi"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/txt2"
+                    android:layout_below="@id/txt"/>
+                <EditText
+
+                    android:id="@+id/txtnamadepan"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_person_24"
+                    android:hint="Masukkan Nama Depan"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:inputType="textPersonName"
+
+
+                    android:background="@drawable/et_style"
+                    android:textSize="15sp" />
+
+                <EditText
+
+                    android:id="@+id/txtnamabelakang"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_person_24"
+                    android:hint="Masukkan Nama Belakang"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:inputType="textPersonName"
+
+
+                    android:background="@drawable/et_style"
+                    android:textSize="15sp" />
+
+                <EditText
+
+                    android:id="@+id/txtusername"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_person_24"
+                    android:hint="Masukkan Username"
+                    android:layout_marginLeft="20dp"
+                    android:layout_above="@id/edtpswd"
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:inputType="textPersonName"
+
+
+                    android:background="@drawable/et_style"
+                    android:textSize="15sp" />
+
+                <EditText
+
+                    android:id="@+id/txtregpswd"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:hint="Masukkan Kata Sandi"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:inputType="textPassword"
+
+
+                    android:background="@drawable/et_style"
+                    android:textSize="15sp" />
+
+                <EditText
+
+                    android:id="@+id/txtnohp"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:drawableLeft="@drawable/ic_baseline_phone_24"
+                    android:hint="Masukkan Nomor HP"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_marginRight="20dp"
+                    android:padding="15dp"
+                    android:inputType="phone"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+
+                    android:background="@drawable/et_style"
+                    android:textSize="15sp" />
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/btnregister"
+                    android:text="Register"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="200dp"
+                    android:background="@drawable/button_background_green"
+                    android:textColor="#08670C"
+
+                    />
+
+
+
+
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</RelativeLayout>

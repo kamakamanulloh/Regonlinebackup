@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+tools:context=".pasien.umum.PasienUmumFragment"
+android:layout_marginBottom="40dp"
+
+android:orientation="vertical">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+
+    app:titleTextColor="@color/whiteTextColor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary" />
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Masukkan Nomor Rekam Medis (RM)"
+            android:layout_marginBottom="5dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtrm"
+            android:inputType="number"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:weightSum="2">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:text="Pilih Tanggal Lahir"
+                android:id="@+id/btntgllahir"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textColor="@color/whiteTextColor"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+                android:id="@+id/tvtl"
+                android:textColor="@color/black"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:text="Cari"
+            android:id="@+id/btncarirm"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:textColor="@color/whiteTextColor"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        tools:listitem="@layout/item_jadwal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:id="@+id/rv_jadwal"/>
+
+
+    </LinearLayout>

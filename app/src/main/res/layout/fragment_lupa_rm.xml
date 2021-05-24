@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".lupa_rm.LupaRm">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="Lupa Nomor Rekam Medik"
+        app:titleTextColor="@color/whiteTextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+    <TextView
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="5dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Silahkan Pilih Jenis ID"
+        android:textColor="@color/black"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:entries="@array/jenis_id"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+        android:id="@+id/spn_jenisId"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masukkan Nomor ID"
+        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_id"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+        android:inputType="number"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_background_green"
+        android:text="Proses"
+        android:id="@+id/btn_proses"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_hasil_id"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+        android:inputType="number"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_notif"
+        android:textColor="@color/black"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+
+
+        android:layout_marginBottom="5dp"/>
+</LinearLayout>

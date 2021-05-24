@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="40dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".petunjuk.PetunjukFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="Petunjuk Penggunaan"
+
+        app:titleTextColor="@color/whiteTextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="1. Buka Aplikasi maka akan muncul
+tampilan sebagai berikut lalu pilih registrasi."
+
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ss1"/>
+
+            <TextView
+                android:text="2. Pilih jenis registrasi anda."
+
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ss2"/>
+
+            <TextView
+                android:text="3. Masukkan No RM dan tanggal lahir lalu klik cari.
+                Apabila data pasien telah muncul silahkan pilih tanggal kunjungan dan poli serta dokter."
+
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ss3"/>
+
+            <TextView
+                android:text="4. Isi kuisioner dengan jujur dan benar. Apabila isian pada kuisioner tidak sesuai dengan kenyataan maka pihak RSIA Muslimat Jombang berhak menolak pasien tersebut."
+
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ss4"/>
+
+            <TextView
+                android:text="5. Jika pendaftaran berhasil maka akan tampil detail tiket untuk booking kuota. Harap datang lebih awal untuk melakukan
+ registrasi ualng supaya mendapatkan nomor antrian poli. Untuk cek tiket ada di menu cek registrasi"
+
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ss5"/>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- TODO: Update blank fragment layout -->
+
+</LinearLayout>

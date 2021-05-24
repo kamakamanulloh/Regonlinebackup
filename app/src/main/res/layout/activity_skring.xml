@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    tools:context=".pasien.SkringActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Keluhan"
+        android:textSize="18sp"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/keluhan"/>
+
+    <LinearLayout
+        android:layout_below="@id/keluhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="5dp"
+        android:weightSum="4"
+        android:id="@+id/line1">
+        <CheckBox
+            android:id="@+id/batuk"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Batuk"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+           />
+        <CheckBox
+            android:id="@+id/sesak"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Sesak"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+           />
+
+        <CheckBox
+            android:id="@+id/demam"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+
+
+
+            android:text="Demam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+             />
+        <CheckBox
+            android:id="@+id/nyeritelan"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+
+
+            android:text="Nyeri Telan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+             />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtkeluhan"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/line1"
+        android:lines="4"
+        android:hint="Lain - lain"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+
+        android:maxLines="4"
+        android:minLines="3"
+        android:scrollbars="vertical"
+
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tujuan Periksa"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textSize="18sp"
+
+        android:layout_below="@+id/txtkeluhan"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/tujuan"/>
+
+    <LinearLayout
+        android:layout_below="@id/tujuan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="5dp"
+        android:weightSum="2"
+        android:id="@+id/line2">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+           >
+            <CheckBox
+                android:id="@+id/periksasaja"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+
+
+
+                android:text="Periksa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                />
+            <CheckBox
+                android:id="@+id/kontrolhamil"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+
+
+
+                android:text="Kontrol hamil"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                 />
+
+            <CheckBox
+                android:id="@+id/kontrolpascarawat"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+
+
+                android:text="Kontrol Pasca Rawat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <CheckBox
+                android:id="@+id/periksasakit"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+
+
+                android:text="Periksa Sakit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+              />
+
+            <CheckBox
+                android:id="@+id/imunisasi"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+
+                android:text="Imunisasi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+               />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/txttujuanperiksa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line2"
+
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:hint="Lain - lain"
+
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:maxLines="4"
+        android:minLines="3"
+
+
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txttujuanperiksa"
+        android:text="NB *Jika informasi tidak sesuai, Rumah Sakit berhak membatalkan registrasi anda"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_background_green"
+        android:text="Simpan"
+        android:id="@+id/btnsimpan"
+        />
+
+</RelativeLayout>

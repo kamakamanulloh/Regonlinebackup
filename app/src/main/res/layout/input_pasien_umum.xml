@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nomor Rekam Medis (RM)"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtrmhasil"
+        android:editable="false"
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama Pasien"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtnama"
+        android:editable="false"
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alamat Pasien"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtalamat"
+        android:editable="false"
+        android:inputType="none"
+        android:lines="4"
+        android:maxLines="4"
+        android:minLines="3"
+        android:scrollbars="vertical"
+
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tanggal Lahir Pasien"
+        android:editable="false"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txttgllahir"
+        android:editable="false"
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telepon / No Hp"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txthp"
+        android:inputType="phone"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pendaftaran bisa dilakukan H-3 s/d H-1 (pukul 18.00) sebelum kunjungan"
+        android:layout_marginBottom="5dp"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btntgl"
+        android:background="@color/colorPrimary"
+        android:text="Pilih Tanggal"
+        android:textColor="@color/whiteTextColor"
+        android:layout_marginBottom="5dp"
+
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:id="@+id/tvtgl"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Poli"
+        android:layout_marginBottom="5dp"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listpoli"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dokter"
+        android:layout_marginBottom="5dp"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listdokter"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+
+            android:id="@+id/tv_kuota"
+            android:text="Kuota : 20"
+            android:textColor="@color/zxing_custom_viewfinder_laser"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:text="Sisa Kuota :  "
+
+            android:id="@+id/jml"
+            android:textColor="@color/zxing_custom_viewfinder_laser"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selanjutnya"
+        android:id="@+id/btnnext"
+        android:textColor="@color/whiteTextColor"
+        android:background="@color/colorPrimary"/>
+
+
+</LinearLayout>
