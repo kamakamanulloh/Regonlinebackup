@@ -6,6 +6,8 @@ import com.itrsiam.rsiamuslimat.cek_antrian.CekAntrianResponse
 import com.itrsiam.rsiamuslimat.info.InfoResponse
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalResponse
 import com.itrsiam.rsiamuslimat.jumlah.JumlahResponse
+import com.itrsiam.rsiamuslimat.kartu.EkartuResponse
+import com.itrsiam.rsiamuslimat.kartu.KartuResponse
 import com.itrsiam.rsiamuslimat.list_tiket.TiketResponse
 import com.itrsiam.rsiamuslimat.login.LoginResponse
 import com.itrsiam.rsiamuslimat.pasien.NoAntrianResponse
@@ -271,7 +273,30 @@ object NetWorkConfig {
             @Field("idDokter")idDokter:String?
 
         ):Call<CekAntrianResponse>
+        @FormUrlEncoded
+        @POST("add_kartu.php")
+        fun addKartu(
+            @Field("pasien_rm")pasien_rm: String?,
+            @Field("tanggal_lahir")tanggal_lahir: String?,
+            @Field("id_login")id_login: String?
+        ):Call<KartuResponse>
 
+        @FormUrlEncoded
+        @POST("rm_kartu.php")
+        fun rm_kartu(
+
+            @Field("id_login")usr_id : String?
+        ):
+                retrofit2.Call<EkartuResponse>
+
+        @FormUrlEncoded
+        @POST("hapus_kartu.php")
+        fun hapus_kartu(
+
+            @Field("pasien_rm")pasien_rm : String?,
+            @Field("id_login")id_login : String?
+        ):
+                retrofit2.Call<EkartuResponse>
 
     }
 

@@ -200,6 +200,7 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
                 view.tvnotify.text="Harap Checklist Persetujuan Sebelum Melanjutkan"
             }
         }
+        dialog?.show()
     }
 
     private fun screeningActivty() {

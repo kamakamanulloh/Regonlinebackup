@@ -7,6 +7,11 @@
         android:title="@string/title_home"/>
 
     <item
+        android:id="@+id/navigation_kartu"
+        android:icon="@drawable/ic_baseline_credit_card_24"
+        android:title="@string/title_kartu"/>
+
+    <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Profil"/>

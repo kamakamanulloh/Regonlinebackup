@@ -413,7 +413,7 @@ class BpjsFragment : Fragment(), CekRMView
         jenis: String?
     ) {
 
-        txtnama.setText(nama)
+        txtnamapeserta.setText(nama)
         txtstatuspeserta.setText(status)
         txtfaskespeserta.setText(asal)
         txtjenispeserta.setText(jenis)

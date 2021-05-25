@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_kartu"
+        android:name="com.itrsiam.rsiamuslimat.kartu.KartuFragment"
+        android:label="@string/title_kartu"
+        tools:layout="@layout/fragment_kartu" />
+
+    <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.itrsiam.rsiamuslimat.ui.profil.DashboardFragment"
         android:label="@string/title_dashboard"

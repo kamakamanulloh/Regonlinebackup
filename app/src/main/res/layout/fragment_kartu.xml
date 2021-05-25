@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="45dp"
+    tools:context=".kartu.KartuFragment">
+
+
+    <include
+
+
+        android:id="@+id/card"
+        layout="@layout/ekartu"/>
+
+    <Spinner
+        android:id="@+id/spinner_rm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
+        android:layout_marginTop="60dp"/>
+
+
+
+
+
+
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:weightSum="2">
+        <Button
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/add_fab"
+            android:layout_weight="1"
+
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@drawable/button_background_blue"
+            android:text="@string/tambahkan_kartu"
+            android:drawableStart="@drawable/ic_baseline_add_24"
+            android:textColor="@color/white"
+            android:padding="5dp"
+
+            />
+
+
+        <Button
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/btn_hapus"
+            android:layout_weight="1"
+
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@drawable/button_background_red"
+            android:text="Hapus Kartu"
+            android:drawableStart="@drawable/ic_baseline_restore_from_trash_24"
+            android:textColor="@color/white"
+
+            />
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

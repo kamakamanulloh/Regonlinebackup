@@ -17,8 +17,8 @@ class CekKepesertaanPresenter(val cekKepesertaanView: CekKepesertaanView) {
                     if (response.body()?.metaData!!.code=="200"){
 
                         cekKepesertaanView.onSuccessCek(respons!!.metaData?.message,
-                        respons?.response?.peserta?.nama, respons?.response?.peserta?.statusPeserta?.toString(),
-                            respons?.response?.peserta?.provUmum?.nmProvider  ,respons?.response?.peserta?.jenisPeserta?.toString()
+                        respons?.response?.peserta?.nama, respons?.response?.peserta?.statusPeserta?.keterangan?.toString(),
+                            respons?.response?.peserta?.provUmum?.nmProvider  ,respons?.response?.peserta?.jenisPeserta?.keterangan
                         )
 
                     }

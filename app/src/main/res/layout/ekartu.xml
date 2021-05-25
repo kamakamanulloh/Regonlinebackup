@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:layout_centerInParent="true"
+    cardCornerRadius="20dp"
+    android:rotation="90"
+    app:cardElevation="20dp"
+
+    android:layout_width="500dp"
+    android:layout_height="250dp">
+
+
+    <FrameLayout
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:rotation="360"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ekartu"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="00000011"
+            android:id="@+id/tv_rm"
+            android:textColor="@color/black"
+            android:typeface="sans"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="Pasien Tester"
+            android:id="@+id/tv_nama"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:typeface="sans"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="10 April 1996"
+            android:id="@+id/tv_tl"
+            android:textColor="@color/black"
+            android:typeface="sans"
+            />
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bar_code"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="140dp"/>
+    </FrameLayout>
+
+
+</androidx.cardview.widget.CardView>
