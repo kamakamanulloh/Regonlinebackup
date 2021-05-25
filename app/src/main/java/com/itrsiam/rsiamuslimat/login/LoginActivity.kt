@@ -16,10 +16,12 @@ import com.itrsiam.rsiamuslimat.api.Utils.nohp
 import com.itrsiam.rsiamuslimat.api.Utils.session
 import com.itrsiam.rsiamuslimat.api.Utils.user_id
 import com.itrsiam.rsiamuslimat.api.Utils.user_name
+import com.itrsiam.rsiamuslimat.registrasi.RegistrasiActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 import kotlinx.android.synthetic.main.activity_main.btnlogin
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
 
 
@@ -43,6 +45,9 @@ class LoginActivity : AppCompatActivity(),LoginView {
 
 
         progressDialog = ProgressDialog(this)
+        tv_regisrasi.onClick {
+            startActivity<RegistrasiActivity>()
+        }
         btnlogin.setOnClickListener(View.OnClickListener {
             val pswd = edtpswd.text.toString()
             val username = edtusername.text.toString()

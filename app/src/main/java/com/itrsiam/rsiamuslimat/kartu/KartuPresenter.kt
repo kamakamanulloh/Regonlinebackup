@@ -44,7 +44,7 @@ class KartuPresenter(val kartuView: KartuView) {
                     if (response.isSuccessful) {
                         val status = response.body()?.value
                         if (status == 202) {
-                            kartuView.onSuccessAdd(response.body()!!.result?.toString())
+                            kartuView.onSuccessGet(response.body()!!.result)
                         } else {
                             kartuView.onFailedAdd("Cek Koneksi Internet")
                         }
@@ -61,22 +61,22 @@ class KartuPresenter(val kartuView: KartuView) {
     fun hapus_kartu(pasienrm: String, id_login: String) {
         NetWorkConfig.getServicee()
             .hapus_kartu(pasienrm, id_login)
-            .enqueue(object : Callback<EkartuResponse> {
+            .enqueue(object : Callback<KartuResponse> {
                 override fun onResponse(
-                    call: Call<EkartuResponse>,
-                    response: Response<EkartuResponse>
+                    call: Call<KartuResponse>,
+                    response: Response<KartuResponse>
                 ) {
                     if (response.isSuccessful) {
                         val status = response.body()?.value
                         if (status == 202) {
-                            kartuView.onSuccessGet(response.body()!!.result)
+                            kartuView.onSuccessDel(response.body()!!.message.toString())
                         } else {
                             kartuView.onFailedAdd("Cek Koneksi Internet")
                         }
                     }
                 }
 
-                override fun onFailure(call: Call<EkartuResponse>, t: Throwable) {
+                override fun onFailure(call: Call<KartuResponse>, t: Throwable) {
                     kartuView.onFailureAdd("Gagal")
                 }
 

@@ -296,7 +296,7 @@ object NetWorkConfig {
             @Field("pasien_rm")pasien_rm : String?,
             @Field("id_login")id_login : String?
         ):
-                retrofit2.Call<EkartuResponse>
+                retrofit2.Call<KartuResponse>
 
     }
 
