@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.itrsiam.rsiamuslimat.DatePickerFragment
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
+import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
 import com.itrsiam.rsiamuslimat.poli.PoliAdapter
 import kotlinx.android.synthetic.main.add_rm.view.*
 import kotlinx.android.synthetic.main.ekartu.*
@@ -88,6 +89,7 @@ class KartuFragment : Fragment(),KartuView {
             builder.show()
 
         }
+
         add_fab.onClick {
             dialog = AlertDialog.Builder(requireContext())
             inflater = layoutInflater
@@ -122,6 +124,18 @@ class KartuFragment : Fragment(),KartuView {
                     progressDialog.show()
                     kartuPresenter.addkartu(dialogView.et_norm.text.toString(),tanggal_lahir.toString(),Utils.user_id.toString())
                 }
+
+
+            }
+            dialogView.tv_luparm.onClick {
+
+                val lupaRm = LupaRm()
+                fragmentManager?.beginTransaction()
+                    ?.replace(R.id.nav_host_fragment, lupaRm)
+                    ?.addToBackStack(null)
+                    ?.commit()
+
+
 
 
             }

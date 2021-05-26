@@ -1,6 +1,8 @@
 package com.itrsiam.rsiamuslimat.registrasi
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +10,8 @@ import android.view.View
 import butterknife.ButterKnife
 import com.itrsiam.rsiamuslimat.MainActivity
 import com.itrsiam.rsiamuslimat.R
+import com.itrsiam.rsiamuslimat.api.Utils
+import com.itrsiam.rsiamuslimat.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_registrasi.*
 import org.jetbrains.anko.alert
 
@@ -62,12 +66,29 @@ class RegistrasiActivity : AppCompatActivity(),RegisterView {
 
         progressDialog.dismiss()
 
-        alert {
-            title="Information Register"
-            message="Registrasi Berhasil Silahkan Login"
-        }.show()
-        startActivity(Intent(this,MainActivity::class.java))
-        finish()
+//        alert {
+//            title="Information Register"
+//            message="Registrasi Berhasil Silahkan Login"
+//        }.show()
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("Registrasi Akun Berhasil Apakah Anda Ingin Login ?")
+            .setPositiveButton(R.string.ya,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                    startActivity(Intent(this,LoginActivity::class.java))
+                    finish()
+
+                })
+            .setNegativeButton(R.string.tidak,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // User cancelled the dialog
+
+                    dialog.dismiss()
+                })
+        // Create the AlertDialog object and return it
+        builder.create()
+        builder.show()
+
     }
 
     override fun onFailedRegister(msg: String?) {

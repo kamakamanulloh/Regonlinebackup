@@ -28,6 +28,7 @@
     <string name="masukkan_norm">Masukkan No Rekam Medik</string>
     <string name="lupa_rm">Lupa Rekam Medik</string>
     <string name="title_kartu">Kartu Pasien</string>
+    <string name="tidak">Tidak</string>
 
     <string-array name="jenis_id">
         <item>------</item>
