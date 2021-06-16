@@ -14,7 +14,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import butterknife.ButterKnife
+
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 import com.itrsiam.rsiamuslimat.R
@@ -64,7 +64,6 @@ class HomeFragment : Fragment() ,SaranView,NoAntrianView{
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        ButterKnife.bind(this, root)
 
 
 

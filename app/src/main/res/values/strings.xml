@@ -22,19 +22,20 @@
     <string name="riwayat_antrian_anda">Riwayat Antrian Anda</string>
     <string name="dialog">Apakah Anda Yakin ?</string>
     <string name="ya">Iya</string>
-    <string name="batal">Bata;</string>
+    <string name="batal">Batal</string>
     <string name="tampilkan_barcode">Tampilkan Barcode</string>
     <string name="tambahkan_kartu">Tambahkan Kartu</string>
     <string name="masukkan_norm">Masukkan No Rekam Medik</string>
     <string name="lupa_rm">Lupa Rekam Medik</string>
     <string name="title_kartu">Kartu Pasien</string>
     <string name="tidak">Tidak</string>
+    <string name="dialogreg">Pendaftaran Berhasil Apakah Anda Ingin Melihat E-Ticket ?</string>
 
     <string-array name="jenis_id">
         <item>------</item>
         <item>KTP/SIM</item>
         <item>No BPJS</item>
-        <item>No HP</item>
+
     </string-array>
 
     <string-array name="bpjs">

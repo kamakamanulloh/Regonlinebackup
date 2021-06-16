@@ -138,8 +138,9 @@ object NetWorkConfig {
         @FormUrlEncoded
         @POST("lupa_rm.php")
         fun lupa_rm(
-            @Field("isian")isian: String?,
-            @Field("jenis_id")jenis_id: String?
+            @Field("isian") isian: String?,
+            @Field("jenis_id") jenis_id: String?,
+            @Field("tanggal") tanggal_lahir: String?
 
         ):
                 retrofit2.Call<PasienResponse>
@@ -226,7 +227,8 @@ object NetWorkConfig {
             @Field("tujuan_lain")tujuan_lain:String?,
             @Field("cust_usr_id")cust_usr_id:String?,
             @Field("reg_buffer_no_rujukan")reg_buffer_no_rujukan:String?,
-            @Field("id_jadwal")id_jadwal:String?
+            @Field("id_jadwal")id_jadwal:String?,
+            @Field("no_hp")no_hp:String?
         ):
                 retrofit2.Call<PendaftaranResponse>
 

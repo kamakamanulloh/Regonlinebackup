@@ -1,13 +1,18 @@
 package com.itrsiam.rsiamuslimat.pasien
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+
+import com.itrsiam.rsiamuslimat.MainActivity
 import com.itrsiam.rsiamuslimat.R
 import kotlinx.android.synthetic.main.activity_skring.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 
 class SkringActivity : AppCompatActivity(),PendaftaranView {
@@ -19,7 +24,7 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
     var tanggal: String? =null
     var pasienid: String? =null
     var dokterid: String? =null
-    var no_hp: String? =null
+
     var sbatuk:String?=""
     var ssesak:String?=""
     var sdemam:String?=""
@@ -98,7 +103,8 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
                     txttujuanperiksa.text.toString().trim(),
                     intent.getStringExtra("pasien_id"),
                     intent.getStringExtra("no_rujukan"),
-                    intent.getStringExtra("id_jadwal")
+                    intent.getStringExtra("id_jadwal"),
+                    intent.getStringExtra("no_hp")
 
 //
                 )
@@ -126,21 +132,40 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
     override fun onSuccessPendaftaran(msg: String?,buffer_id:String?,noAntrian:String?) {
 
         progressDialog.dismiss()
-       alert {
-           title="Info"
-           message=msg.toString()
-       }.show()
-        val tiketintent= Intent(this, TicketViewActivity::class.java)
-        tiketintent.putExtra("buffer_id",buffer_id)
-        tiketintent.putExtra("no_antrian",noAntrian)
-        tiketintent.putExtra("nm_poli",intent.getStringExtra("nm_poli"))
-        tiketintent.putExtra("nm_dokter",intent.getStringExtra("nm_dokter"))
-        tiketintent.putExtra("jam",intent.getStringExtra("jam"))
-        tiketintent.putExtra("tanggal",intent.getStringExtra("tanggal"))
-        tiketintent.putExtra("jenis_px",intent.getStringExtra("jenis_px"))
-        tiketintent.putExtra("nm_px",intent.getStringExtra("nm_px"))
-        tiketintent.putExtra("rm_px",intent.getStringExtra("rm_px"))
-        startActivity(tiketintent)
+//       alert {
+//           title="Info"
+//           message=msg.toString()
+//       }.show()
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(R.string.dialogreg)
+            .setPositiveButton(R.string.ya,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                            val tiketintent= Intent(this, TicketViewActivity::class.java)
+                            tiketintent.putExtra("buffer_id",buffer_id)
+                            tiketintent.putExtra("no_antrian",noAntrian)
+                            tiketintent.putExtra("nm_poli",intent.getStringExtra("nm_poli"))
+                            tiketintent.putExtra("nm_dokter",intent.getStringExtra("nm_dokter"))
+                            tiketintent.putExtra("jam",intent.getStringExtra("jam"))
+                            tiketintent.putExtra("tanggal",intent.getStringExtra("tanggal"))
+                            tiketintent.putExtra("jenis_px",intent.getStringExtra("jenis_px"))
+                            tiketintent.putExtra("nm_px",intent.getStringExtra("nm_px"))
+                            tiketintent.putExtra("rm_px",intent.getStringExtra("rm_px"))
+                            startActivity(tiketintent)
+
+
+                })
+            .setNegativeButton(R.string.tidak,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // User cancelled the dialog
+
+                    startActivity(Intent(this, MainActivity::class.java))
+
+                    dialog.dismiss()
+                })
+        // Create the AlertDialog object and return it
+        builder.create()
+        builder.show()
 
 
     }

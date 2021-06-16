@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import butterknife.ButterKnife
+
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
@@ -88,7 +88,7 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.pasien_umum_fragment, container, false)
-        ButterKnife.bind(this, view)
+
 
 
         return view

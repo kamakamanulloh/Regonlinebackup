@@ -7,9 +7,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LupaRmPresenter(val lupaRmView: LupaRmView) {
-    fun pulihkan_rm(isian : String,jenis_id : String){
+    fun pulihkan_rm(isian: String, jenis_id: String, tanggal_lahir: String?){
         NetWorkConfig.getServicee()
-            .lupa_rm(isian,jenis_id)
+            .lupa_rm(isian,jenis_id,tanggal_lahir)
             .enqueue(object : Callback<PasienResponse> {
                 override fun onFailure(call: Call<PasienResponse>, t: Throwable) {
                     lupaRmView.onFailure("Failure")

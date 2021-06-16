@@ -8,7 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import butterknife.ButterKnife
+
 import com.itrsiam.rsiamuslimat.HomeActivity
 import com.itrsiam.rsiamuslimat.MainActivity
 import com.itrsiam.rsiamuslimat.R
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity(),LoginView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        ButterKnife.bind(this)
+
         presenter = LoginPresenter(this)
 
 
@@ -134,7 +134,7 @@ class LoginActivity : AppCompatActivity(),LoginView {
 
         alert {
             title="Information Login"
-            message="Login Gagal"
+            message=msg.toString()
         }.show()
     }
 

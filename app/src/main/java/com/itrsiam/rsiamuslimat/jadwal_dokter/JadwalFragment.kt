@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import butterknife.ButterKnife
+
 import com.itrsiam.rsiamuslimat.DatePickerFragment
 
 import com.itrsiam.rsiamuslimat.R
@@ -39,7 +39,6 @@ class JadwalFragment : Fragment(),ListPoliView,JadwalView {
     ): View? {
         // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_jadwal, container, false)
-        ButterKnife.bind(this, view)
 
 
         return view

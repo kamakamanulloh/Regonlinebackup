@@ -1,20 +1,25 @@
 package com.itrsiam.rsiamuslimat.lupa_rm
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.itrsiam.rsiamuslimat.DatePickerFragment
 import com.itrsiam.rsiamuslimat.R
 import kotlinx.android.synthetic.main.fragment_lupa_rm.*
+import kotlinx.android.synthetic.main.pasien_umum_fragment.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
+var tanggal_lahir: String? =null
+lateinit var datePicker: DatePickerFragment
 /**
  * A simple [Fragment] subclass.
  * Use the [LupaRm.newInstance] factory method to
@@ -65,7 +70,24 @@ class LupaRm : Fragment(),LupaRmView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         lupaRmPresenter= LupaRmPresenter(this)
+        datePicker = DatePickerFragment(requireContext(), true)
+        btn_tlahir.onClick {
 
+            val cal = Calendar.getInstance()
+            val d = cal.get(Calendar.DAY_OF_MONTH)
+            val m = cal.get(Calendar.MONTH)
+            val y = cal.get(Calendar.YEAR)
+            datePicker.showDialog(d, m, y, object : DatePickerFragment.Callback {
+
+                override fun onDateSelected(dayofMonth: Int, month: Int, year: Int) {
+                    val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
+                    val mon = month + 1
+                    val monthStr = if (mon < 10) "0${mon}" else "${mon}"
+                   tv_tl.text= ("$dayStr-$mon-$year")
+                    tanggal_lahir = "$year-$monthStr-$dayStr"
+                }
+            })
+        }
         btn_proses.onClick {
             if (spn_jenisId.selectedItem == "------" || txt_id.toString().isEmpty()){
                 alert {
@@ -74,14 +96,30 @@ class LupaRm : Fragment(),LupaRmView {
             }
             else{
 
-                lupaRmPresenter.pulihkan_rm(txt_id.text.toString(),spn_jenisId.selectedItem.toString())
+                lupaRmPresenter.pulihkan_rm(txt_id.text.toString(),spn_jenisId.selectedItem.toString(),
+                    tanggal_lahir)
             }
 
         }
 
     }
 
-
+    private fun onDate() {
+        val cal = Calendar.getInstance()
+        val d = cal.get(Calendar.DAY_OF_MONTH)
+        val m = cal.get(Calendar.MONTH)
+        val y = cal.get(Calendar.YEAR)
+        datePicker.showDialog(d, m, y, object : DatePickerFragment.Callback {
+            @SuppressLint("SetTextI18n")
+            override fun onDateSelected(dayofMonth: Int, month: Int, year: Int) {
+                val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
+                val mon = month + 1
+                val monthStr = if (mon < 10) "0${mon}" else "${mon}"
+                tvtl.text = ("$dayStr-$mon-$year")
+                tanggal_lahir = "$year-$monthStr-$dayStr"
+            }
+        })
+    }
     override fun onSuccessLogin(
         msg: String?,
         pasien_id: String?,

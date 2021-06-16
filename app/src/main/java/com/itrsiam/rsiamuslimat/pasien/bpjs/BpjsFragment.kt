@@ -5,6 +5,7 @@ package com.itrsiam.rsiamuslimat.pasien.bpjs
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -70,7 +71,7 @@ class BpjsFragment : Fragment(), CekRMView
     var rm_px: String? =null
     var jumlah: Int? =null
     var kuota: String? =null
-
+    private lateinit var progressDialog : ProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -94,6 +95,8 @@ class BpjsFragment : Fragment(), CekRMView
         datePicker = DatePickerFragment(requireContext(), true)
         jadwalPresenter= JadwalPresenter(this)
         cekKepesertaanPresenter= CekKepesertaanPresenter(this)
+
+        progressDialog = ProgressDialog(requireContext())
         btncarirmbpjs.setOnClickListener(View.OnClickListener {
             val norm = txtrm.text.toString()
             if (norm.isEmpty() || tvtlbpjs.text.toString().isEmpty()){
@@ -102,7 +105,8 @@ class BpjsFragment : Fragment(), CekRMView
             }
             else{
 
-
+                progressDialog.setMessage("Application is loading, please wait")
+                progressDialog.show()
 
 
                 presenter.cekrm(norm,tanggal.toString())
@@ -114,6 +118,8 @@ class BpjsFragment : Fragment(), CekRMView
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = sdf.format(Date())
         btn_kepesertaan.onClick {
+            progressDialog.setMessage("Application is loading, please wait")
+            progressDialog.show()
             cekKepesertaanPresenter.cekPeserta(nobpjs.text.toString(),currentDate.toString())
         }
         btntgllahirbpjs.setOnClickListener(View.OnClickListener {
@@ -235,7 +241,7 @@ class BpjsFragment : Fragment(), CekRMView
         cust_usr_no_identitas:String?,
         cust_usr_no_jaminan: String?
     ) {
-
+        progressDialog.dismiss()
       inputbpjs.isVisible=true
         txtrmhasil.setText(pasien_rm)
         txtnama.setText(pasien_nama)
@@ -252,7 +258,7 @@ class BpjsFragment : Fragment(), CekRMView
 
 
     override fun onFailedLogin(msg: String?) {
-
+        progressDialog.dismiss()
         context?.alert{
             title = "Peringatan"
             message="No RM atau Tanggal Lahir Tidak Terdaftar"
@@ -413,6 +419,8 @@ class BpjsFragment : Fragment(), CekRMView
         jenis: String?
     ) {
 
+        progressDialog.dismiss()
+
         txtnamapeserta.setText(nama)
         txtstatuspeserta.setText(status)
         txtfaskespeserta.setText(asal)
@@ -422,6 +430,7 @@ class BpjsFragment : Fragment(), CekRMView
     }
 
     override fun onFailedCek(msg: String?) {
+        progressDialog.dismiss()
         alert {
             message=msg.toString()
         }.show()

@@ -80,7 +80,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
     var asuransiId: String? =null
     var asuransiNama: String? =null
     var kuota: String? =null
-
+    private lateinit var progressDialog : ProgressDialog
     lateinit var datePicker: DatePickerFragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -100,10 +100,13 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
         asuransiPresenter=AsuransiPresenter(this)
         asuransiPresenter.getAsuransi()
         listpolipresenter= ListPoliPresenter(this)
+        progressDialog= ProgressDialog(requireContext())
 
         jadwalPresenter= JadwalPresenter(this)
         datePicker = DatePickerFragment(requireContext(), true)
         btncarirmasuransi.setOnClickListener(View.OnClickListener {
+            progressDialog.setMessage("Application is loading, please wait")
+            progressDialog.show()
 
             val norm = txtrm.text.toString()
             presenter.cekrm(norm,tanggal.toString())
@@ -230,6 +233,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
         cust_usr_no_identitas:String?,
         cust_usr_no_jaminan: String?
     ) {
+        progressDialog.dismiss()
         inputasuransi.isVisible=true
         txtrmhasil.setText(pasien_rm)
         txtnama.setText(pasien_nama)
@@ -243,7 +247,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
     }
 
     override fun onFailedLogin(msg: String?) {
-
+        progressDialog.dismiss()
         context?.alert{
             title = "Peringatan"
             message="No RM atau Tanggal Lahir Tidak Terdaftar"

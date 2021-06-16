@@ -7,7 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import butterknife.ButterKnife
+
 import com.itrsiam.rsiamuslimat.MainActivity
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
@@ -23,7 +23,6 @@ class RegistrasiActivity : AppCompatActivity(),RegisterView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrasi)
-        ButterKnife.bind(this)
 
         progressDialog = ProgressDialog(this)
 
