@@ -139,7 +139,7 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(R.string.dialogreg)
             .setPositiveButton(R.string.ya,
-                DialogInterface.OnClickListener { dialog, id ->
+                DialogInterface.OnClickListener { _, _ ->
                     // FIRE ZE MISSILES!
                             val tiketintent= Intent(this, TicketViewActivity::class.java)
                             tiketintent.putExtra("buffer_id",buffer_id)
@@ -156,7 +156,7 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
 
                 })
             .setNegativeButton(R.string.tidak,
-                DialogInterface.OnClickListener { dialog, id ->
+                DialogInterface.OnClickListener { dialog, _ ->
                     // User cancelled the dialog
 
                     startActivity(Intent(this, MainActivity::class.java))
