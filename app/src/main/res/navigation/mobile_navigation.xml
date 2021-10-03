@@ -7,9 +7,16 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.itrsiam.rsiamuslimat.ui.home.HomeFragment"
+        android:name="com.itrsiam.rsiamuslimat.ui.homenew.HomeNewFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_new" />
+
+    <fragment
+        android:id="@+id/navigation_riwayat"
+        android:name="com.itrsiam.rsiamuslimat.list_tiket.TiketFragment"
+        android:label="@string/title_riwayat"
+        tools:layout="@layout/tiket_fragment" />
+
 
     <fragment
         android:id="@+id/navigation_kartu"

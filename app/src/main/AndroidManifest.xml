@@ -20,18 +20,27 @@
         android:usesCleartextTraffic="true"
         tools:ignore="MissingPrefix">
         <activity
+            android:name=".pasien_baru.PasienBaruActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity2"
+            android:exported="true"
+            android:label="@string/title_activity_home2"
+            android:resizeableActivity="true"
+            android:theme="@style/AppThemee.NoActionBar"
+            tools:targetApi="24" />
+        <activity
             android:name=".cek_antrian.CekAntrianActivity"
-            android:theme="@style/AppTheme"
-            android:label="Nomor Antrian" />
+            android:label="Nomor Antrian"
+            android:theme="@style/AppTheme" />
         <activity android:name=".ui.profil.EditPaswordActivity" />
         <activity android:name=".ui.profil.EditProfilActivity" />
-        <activity android:name=".pasien.TicketViewActivity"
-            />
+        <activity android:name=".pasien.TicketViewActivity" />
         <activity
             android:name=".pasien.SkringActivity"
             android:label="Form Skrining"
-            android:theme="@style/AppTheme"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".HomeActivity"
             android:label="RSIA Muslimat Jombang" />

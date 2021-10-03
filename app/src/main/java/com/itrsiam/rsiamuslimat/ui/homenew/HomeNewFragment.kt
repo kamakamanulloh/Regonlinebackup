@@ -28,11 +28,13 @@ import com.itrsiam.rsiamuslimat.pasien.TicketViewActivity
 import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiFragment
 import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
 import com.itrsiam.rsiamuslimat.pasien.umum.PasienUmumFragment
+import com.itrsiam.rsiamuslimat.pasien_baru.PasienBaruActivity
 import com.itrsiam.rsiamuslimat.petunjuk.PetunjukFragment
 import com.itrsiam.rsiamuslimat.saran.SaranPresenter
 import com.itrsiam.rsiamuslimat.saran.SaranView
 import com.itrsiam.rsiamuslimat.ui.home.HomeViewModel
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home_new.*
 import kotlinx.android.synthetic.main.item_saran.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -50,20 +52,12 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeNewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeNewFragment : Fragment()  , NoAntrianView {
+class HomeNewFragment : Fragment()  {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var homeViewModel: HomeViewModel
-    var dialog: AlertDialog.Builder? = null
-    var inflater: LayoutInflater? = null
-    var dialogView: View? = null
-    var currentDate: String? =null
-    private var calendar: Calendar? = null
-    private lateinit var noAntrianPresenter: NoAntrianPresenter
 
-    private lateinit var saranPresenter: SaranPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -77,7 +71,62 @@ class HomeNewFragment : Fragment()  , NoAntrianView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_new, container, false)
+        val root= inflater.inflate(R.layout.fragment_home_new, container, false)
+
+        return root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        tvHeader.text="Selamat Datang "+Utils.user_name
+        btn_pxbaru.onClick {
+            val pasienBaruActivity= Intent(context, PasienBaruActivity::class.java)
+            startActivity(pasienBaruActivity)
+        }
+        btn_pxlama.onClick {
+           jenisLayanan()
+
+        }
+        btn_antrian.onClick {
+            startActivity(Intent(requireContext(),CekAntrianActivity::class.java))
+        }
+
+    }
+
+    private fun jenisLayanan() {
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+        val dialog = context?.let { it1 -> BottomSheetDialog(it1) }
+        dialog?.setContentView(view)
+        view.umum.setOnClickListener {
+            var pickpowerfrag = PasienUmumFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, pickpowerfrag)
+                ?.addToBackStack(null)
+                ?.commit()
+            dialog?.dismiss()
+
+        }
+        view.bpjs.setOnClickListener {
+            var bpjs = BpjsFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, bpjs)
+                ?.addToBackStack(null)
+                ?.commit()
+            dialog?.dismiss()
+
+        }
+        view.asuransi.setOnClickListener {
+
+            var asuransi = AsuransiFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, asuransi)
+                ?.addToBackStack(null)
+                ?.commit()
+            dialog?.dismiss()
+        }
+
+
+        dialog?.show()
     }
 
     companion object {
@@ -102,239 +151,8 @@ class HomeNewFragment : Fragment()  , NoAntrianView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.actionBar?.hide()
-
-        informasi()
-
-        calendar = Calendar.getInstance();
-        val sdf = SimpleDateFormat("yyyy/MM/dd")
-        currentDate = sdf.format(Date())
-        noAntrianPresenter= NoAntrianPresenter(this)
-        noAntrianPresenter.getNoAntrian(Utils.user_id,currentDate)
 
 
-
-//
-//        val username = intent.getString("id")
-//        tvgreeting.setText("Selamat Datang "+Utils.user_name)
-
-        btnpetunjuk.onClick {
-            var petunjukFragment = PetunjukFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, petunjukFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        }
-
-        btnketentuan.onClick {
-            var ketentuanFragment = KetentuanFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, ketentuanFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        }
-
-//        btn_saran.onClick {
-//            Saran()
-//        }
-
-        et_cari.onClick {
-            var cariDokterFragment = CariDokterFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, cariDokterFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        }
-
-        btn_antrian.onClick {
-            startActivity(Intent(requireContext(), CekAntrianActivity::class.java))
-        }
-
-
-        infolayanan.setOnClickListener(View.OnClickListener {
-            var jadwalFragment = JadwalFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, jadwalFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        })
-
-//        webrs.onClick {
-//            val intent = Intent(Intent.ACTION_VIEW)
-//            intent.data = Uri.parse("https://rsiamuslimat.co.id/")
-//            startActivity(intent)
-//        }
-
-        btn_batal.onClick {
-            var batalRegFragment = BatalRegFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, batalRegFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-
-        }
-
-
-        bukti_reg.setOnClickListener(View.OnClickListener {
-            var tiketFragment = TiketFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, tiketFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        })
-
-        btnumum.setOnClickListener(View.OnClickListener {
-            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-            val dialog = context?.let { it1 -> BottomSheetDialog(it1) }
-            dialog?.setContentView(view)
-            view.umum.setOnClickListener {
-                var pickpowerfrag = PasienUmumFragment()
-                fragmentManager?.beginTransaction()
-                    ?.replace(R.id.nav_host_fragment, pickpowerfrag)
-                    ?.addToBackStack(null)
-                    ?.commit()
-                dialog?.dismiss()
-
-            }
-            view.bpjs.setOnClickListener {
-                var bpjs = BpjsFragment()
-                fragmentManager?.beginTransaction()
-                    ?.replace(R.id.nav_host_fragment, bpjs)
-                    ?.addToBackStack(null)
-                    ?.commit()
-                dialog?.dismiss()
-
-            }
-            view.asuransi.setOnClickListener {
-
-                var asuransi = AsuransiFragment()
-                fragmentManager?.beginTransaction()
-                    ?.replace(R.id.nav_host_fragment, asuransi)
-                    ?.addToBackStack(null)
-                    ?.commit()
-                dialog?.dismiss()
-            }
-
-
-            dialog?.show()
-
-
-        })
-    }
-
-
-    fun checkFirstRun() {
-        val isFirstRun: Boolean =
-            requireContext().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE).getBoolean(
-                "isFirstRun",
-                true
-            )
-        if (isFirstRun) {
-            informasi()
-            requireContext().getSharedPreferences("PREFERENCE", Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean("isFirstRun", false)
-                .apply()
-        }
-    }
-
-
-    private fun informasi() {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle("Informasi")
-        builder.setMessage("Sebelum melakukan registrasi pastikan anda sudah mengetahui informasi terbaru dari kami")
-            .setPositiveButton("Ya",
-                DialogInterface.OnClickListener { dialog, id ->
-                    // FIRE ZE MISSILES!
-                    var infoFragment = InfoFragment()
-                    fragmentManager?.beginTransaction()
-                        ?.replace(R.id.nav_host_fragment, infoFragment)
-                        ?.addToBackStack(null)
-                        ?.commit()
-
-                })
-            .setNegativeButton("Tidak",
-                DialogInterface.OnClickListener { dialog, id ->
-                    // User cancelled the dialog
-                    dialog.dismiss()
-                })
-        builder.show()
-        dialog?.show()
-
-
-    }
-
-
-
-
-    private fun Saran() {
-        dialog = AlertDialog.Builder(requireContext())
-        inflater = layoutInflater
-        val  dialogView = inflater!!.inflate(R.layout.item_saran, null)
-        dialog!!.setView(dialogView)
-        dialog!!.setCancelable(true)
-
-        dialog!!.setTitle("Form Customer Service ")
-
-
-        dialog!!.setPositiveButton(
-            "SUBMIT"
-        ) { dialog, _ ->
-
-
-            saranPresenter.insSaran(Utils.user_id, dialogView.et_pesan.text.toString())
-        }
-        dialog!!.setNegativeButton(
-            "CANCEL"
-        ) { dialog, which -> dialog.dismiss() }
-        dialog!!.show()
-    }
-
-
-
-    @SuppressLint("SetTextI18n")
-    override fun onSucces(
-        namaPx: String?,
-        regBufferNoAntrian: String?,
-        pasienNama: String?,
-        poliNama: String?,
-        loginCustPhoneNumber: String?,
-        jenisNama: String?,
-        regBufferWaktu: String?,
-        perusahaanNama: String?,
-        regBufferId: String?,
-        regBufferTanggal: String?,
-        usrName: String?,
-        noRm: String?,
-        regBufferNobpjs: String?
-    ) {
-
-        btn_qrcode.isVisible=true
-        tvNoAntrian.text=regBufferNoAntrian
-        tvTitleNo.text= " No Antrian Anda Tanggal $regBufferTanggal"
-        btn_qrcode.onClick {
-            val tiketintent= Intent(context, TicketViewActivity::class.java)
-            tiketintent.putExtra("buffer_id",regBufferId)
-            tiketintent.putExtra("no_antrian",regBufferNoAntrian)
-            tiketintent.putExtra("nm_poli",poliNama)
-            tiketintent.putExtra("nm_dokter",usrName)
-            tiketintent.putExtra("jam",regBufferWaktu)
-            tiketintent.putExtra("tanggal",regBufferTanggal)
-            tiketintent.putExtra("jenis_px",jenisNama)
-            tiketintent.putExtra("nm_px",namaPx)
-            tiketintent.putExtra("rm_px",noRm)
-            tiketintent.putExtra("nm_perusahaan",perusahaanNama)
-            startActivity(tiketintent)
-        }
-
-
-    }
-
-    override fun onFailed(msg: String?) {
-        tvTitleNo.text="Belum Ada Kunjungan"
-    }
-
-    override fun onFailure(msg: String?) {
 
     }
 }

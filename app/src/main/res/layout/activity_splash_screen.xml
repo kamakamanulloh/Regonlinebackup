@@ -19,6 +19,22 @@
         android:layout_alignParentBottom="true"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/img"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/convergence"
+        android:text="Assalamu’alaikum \n Warahmatullaahi \n Wabarakaatuh"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="@color/whiteTextColor"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.8"
+        android:shadowDy="1.5"
+        android:shadowRadius="2.0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
 
     <ImageView
 
@@ -27,6 +43,7 @@
         android:src="@drawable/bannerandroid200"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:id="@+id/img"
        android:layout_centerInParent="true"
         />
 
