@@ -30,6 +30,7 @@ import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
 import com.itrsiam.rsiamuslimat.pasien.umum.PasienUmumFragment
 import com.itrsiam.rsiamuslimat.pasien_baru.PasienBaruActivity
 import com.itrsiam.rsiamuslimat.petunjuk.PetunjukFragment
+import com.itrsiam.rsiamuslimat.radiologi.RadilogiFragment
 import com.itrsiam.rsiamuslimat.saran.SaranPresenter
 import com.itrsiam.rsiamuslimat.saran.SaranView
 import com.itrsiam.rsiamuslimat.ui.home.HomeViewModel
@@ -87,8 +88,15 @@ class HomeNewFragment : Fragment()  {
            jenisLayanan()
 
         }
-        btn_antrian.onClick {
+        btn_cekantrian.onClick {
             startActivity(Intent(requireContext(),CekAntrianActivity::class.java))
+        }
+        btn_radiologi.onClick {
+            var radiologiFragment=RadilogiFragment()
+                fragmentManager?.beginTransaction()
+                    ?.replace(R.id.nav_host_fragment,radiologiFragment)
+                    ?.addToBackStack(null)
+                    ?.commit()
         }
 
     }

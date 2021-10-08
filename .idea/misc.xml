@@ -38,15 +38,18 @@
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/activity_pasien_baru.xml" value="0.3591485507246377" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/activity_splash_screen.xml" value="0.3591485507246377" />
+        <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/add_rm.xml" value="0.17831813576494426" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/content_home2.xml" value="0.3500905797101449" />
+        <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/ekartu.xml" value="0.17831813576494426" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_home.xml" value="0.3500905797101449" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_home_new.xml" value="0.25" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_kartu.xml" value="0.33" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_petunjuk.xml" value="0.5" />
-        <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_radilogi.xml" value="0.35260416666666666" />
+        <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_radilogi.xml" value="0.25" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/fragment_tiket_view.xml" value="0.3591485507246377" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/input_pasien_bpjs.xml" value="0.17831813576494426" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/input_pasien_umum.xml" value="0.3591485507246377" />
+        <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/item_radiologi.xml" value="0.36666666666666664" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/item_radiologiiiii.xml" value="0.2" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/item_scan.xml" value="0.3591485507246377" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/layout/item_tiket.xml" value="0.3591485507246377" />

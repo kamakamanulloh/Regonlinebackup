@@ -17,6 +17,7 @@ import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiResponse
 import com.itrsiam.rsiamuslimat.pasien.bpjs.CekKepesertaanResponse
 import com.itrsiam.rsiamuslimat.pasien.bpjs.TipejknResponse
 import com.itrsiam.rsiamuslimat.poli.PoliResponse
+import com.itrsiam.rsiamuslimat.radiologi.RadilogiResponse
 
 import com.itrsiam.rsiamuslimat.registrasi.RegisterResults
 import com.itrsiam.rsiamuslimat.rekam_medis.RMResponse
@@ -299,6 +300,13 @@ object NetWorkConfig {
             @Field("id_login")id_login : String?
         ):
                 retrofit2.Call<KartuResponse>
+
+        @FormUrlEncoded
+        @POST("listRadiologi.php")
+        fun listRad(
+            @Field("no_rm")no_rm:String?
+        ):
+                Call<RadilogiResponse>
 
     }
 

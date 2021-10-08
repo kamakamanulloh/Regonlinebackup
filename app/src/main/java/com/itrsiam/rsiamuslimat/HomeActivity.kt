@@ -42,8 +42,8 @@ class HomeActivity : AppCompatActivity() {
 
         bundle.putString("username",username)
         bundle.putString("id",id)
-        val fragInfo = HomeFragment()
-        fragInfo.setArguments(bundle)
+//        val fragInfo = HomeFragment()
+//        fragInfo.setArguments(bundle)
 //            alert {
 //                title= (username as String?).toString()+id
 //            }.show()
