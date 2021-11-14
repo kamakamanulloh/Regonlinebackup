@@ -17,9 +17,12 @@ import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
 import com.itrsiam.rsiamuslimat.cari_dokter.CariDokterFragment
 import com.itrsiam.rsiamuslimat.cek_antrian.CekAntrianActivity
+import com.itrsiam.rsiamuslimat.diagnosa.DiagnosaFragment
 import com.itrsiam.rsiamuslimat.info.InfoFragment
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalFragment
 import com.itrsiam.rsiamuslimat.ketentuan.KetentuanFragment
+import com.itrsiam.rsiamuslimat.laboratorium.LabFragment
+
 import com.itrsiam.rsiamuslimat.list_tiket.BatalRegFragment
 import com.itrsiam.rsiamuslimat.list_tiket.TiketFragment
 import com.itrsiam.rsiamuslimat.pasien.NoAntrianPresenter
@@ -29,14 +32,20 @@ import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiFragment
 import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
 import com.itrsiam.rsiamuslimat.pasien.umum.PasienUmumFragment
 import com.itrsiam.rsiamuslimat.pasien_baru.PasienBaruActivity
+import com.itrsiam.rsiamuslimat.pengingat_kontrol.PengingatKontrolFragment
 import com.itrsiam.rsiamuslimat.petunjuk.PetunjukFragment
 import com.itrsiam.rsiamuslimat.radiologi.RadilogiFragment
+import com.itrsiam.rsiamuslimat.riwayat_periksa.RiwayatPeriksaFragment
 import com.itrsiam.rsiamuslimat.saran.SaranPresenter
 import com.itrsiam.rsiamuslimat.saran.SaranView
 import com.itrsiam.rsiamuslimat.ui.home.HomeViewModel
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+
+
 import kotlinx.android.synthetic.main.fragment_home_new.*
+import kotlinx.android.synthetic.main.fragment_home_new.btn_qrcode
+import kotlinx.android.synthetic.main.fragment_home_new.view.*
 import kotlinx.android.synthetic.main.item_saran.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
@@ -53,7 +62,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeNewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeNewFragment : Fragment()  {
+class HomeNewFragment : Fragment(),NoAntrianView  {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -92,12 +101,51 @@ class HomeNewFragment : Fragment()  {
             startActivity(Intent(requireContext(),CekAntrianActivity::class.java))
         }
         btn_radiologi.onClick {
-            var radiologiFragment=RadilogiFragment()
+            val radiologiFragment=RadilogiFragment()
                 fragmentManager?.beginTransaction()
                     ?.replace(R.id.nav_host_fragment,radiologiFragment)
                     ?.addToBackStack(null)
                     ?.commit()
         }
+        btn_lab.onClick {
+            val labFragment = LabFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, labFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+
+        }
+        btn_jadwal.onClick {
+            val jadwalFragment = JadwalFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, jadwalFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+        btn_diagnosa.setOnClickListener {
+            val diagnosaFragment = DiagnosaFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, diagnosaFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+
+        }
+
+        btn_kontrol.onClick {
+            val pengingatKontrolFragment = PengingatKontrolFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, pengingatKontrolFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+        btn_periksa.onClick {
+            val riwayatPeriksaFragment = RiwayatPeriksaFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, riwayatPeriksaFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+
 
     }
 
@@ -134,6 +182,7 @@ class HomeNewFragment : Fragment()  {
         }
 
 
+
         dialog?.show()
     }
 
@@ -161,6 +210,51 @@ class HomeNewFragment : Fragment()  {
         super.onViewCreated(view, savedInstanceState)
 
 
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onSucces(
+        namaPx: String?,
+        regBufferNoAntrian: String?,
+        pasienNama: String?,
+        poliNama: String?,
+        loginCustPhoneNumber: String?,
+        jenisNama: String?,
+        regBufferWaktu: String?,
+        perusahaanNama: String?,
+        regBufferId: String?,
+        regBufferTanggal: String?,
+        usrName: String?,
+        noRm: String?,
+        regBufferNobpjs: String?
+    ) {
+        btn_qrcode.isVisible=true
+        tvnoantrian.text=regBufferNoAntrian
+        tv_kunjungan.text= " No Antrian Anda Tanggal $regBufferTanggal"
+        tv_dokter.text="Poli $poliNama Dokter $usrName"
+        btn_qrcode.onClick {
+            val tiketintent= Intent(context, TicketViewActivity::class.java)
+            tiketintent.putExtra("buffer_id",regBufferId)
+            tiketintent.putExtra("no_antrian",regBufferNoAntrian)
+            tiketintent.putExtra("nm_poli",poliNama)
+            tiketintent.putExtra("nm_dokter",usrName)
+            tiketintent.putExtra("jam",regBufferWaktu)
+            tiketintent.putExtra("tanggal",regBufferTanggal)
+            tiketintent.putExtra("jenis_px",jenisNama)
+            tiketintent.putExtra("nm_px",namaPx)
+            tiketintent.putExtra("rm_px",noRm)
+            tiketintent.putExtra("nm_perusahaan",perusahaanNama)
+            startActivity(tiketintent)
+        }
+
+    }
+
+    override fun onFailed(msg: String?) {
+        tvkartu.text="Belum Ada Kunjungan"
+    }
+
+    override fun onFailure(msg: String?) {
 
     }
 }

@@ -1,17 +1,14 @@
-package com.itrsiam.rsiamuslimat.radiologi
+package com.itrsiam.rsiamuslimat.pengingat_kontrol
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.ProgressDialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.core.content.ContextCompat
 import com.itrsiam.rsiamuslimat.DatePickerFragment
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
@@ -21,12 +18,7 @@ import com.itrsiam.rsiamuslimat.kartu.KartuPresenter
 import com.itrsiam.rsiamuslimat.kartu.KartuView
 import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
 import kotlinx.android.synthetic.main.add_rm.view.*
-import kotlinx.android.synthetic.main.ekartu.*
-import kotlinx.android.synthetic.main.fragment_jadwal.*
-import kotlinx.android.synthetic.main.fragment_kartu.*
-import kotlinx.android.synthetic.main.fragment_radilogi.*
-import kotlinx.android.synthetic.main.fragment_radilogi.btn_cari
-import kotlinx.android.synthetic.main.fragment_radilogi.spinner_rm
+import kotlinx.android.synthetic.main.fragment_pengingat_kontrol.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
 import java.util.*
@@ -38,10 +30,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [RadilogiFragment.newInstance] factory method to
+ * Use the [PengingatKontrolFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class RadilogiFragment : Fragment(),KartuView,RadiologiView {
+class PengingatKontrolFragment : Fragment(),PengingatKontrolView, KartuView {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -54,7 +46,8 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
     var tanggal_lahir: String? =null
     var id_cust_usr: String? =null
     private lateinit var ekartuAdapter: EkartuAdapter
-    private lateinit var radiologiPresenter: RadiologiPresenter
+    private lateinit var pengingatKontrolPresenter: PengingatKontrolPresenter
+    lateinit var pengingatKontrolAdapter: PengingatKontrolAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,13 +62,12 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_radilogi, container, false)
+        val view= inflater.inflate(R.layout.fragment_pengingat_kontrol, container, false)
+        pengingatKontrolPresenter=PengingatKontrolPresenter(this)
         datePicker = DatePickerFragment(requireContext(), true)
         progressDialog = ProgressDialog(requireContext())
-
-        kartuPresenter= KartuPresenter(this)
+         kartuPresenter= KartuPresenter(this)
         kartuPresenter.ekartu(Utils.user_id.toString())
-        radiologiPresenter= RadiologiPresenter(this)
 
         return view
     }
@@ -83,16 +75,16 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn_rm.onClick {
-            formRm()
+            formRM()
         }
         btn_cari.onClick {
             progressDialog.show()
-            radiologiPresenter.listRad(id_cust_usr)
+            pengingatKontrolPresenter.list_pengingatKontrol(id_cust_usr)
         }
-
     }
 
-    private fun formRm() {
+    private fun formRM() {
+
         dialog=AlertDialog.Builder(requireContext())
         inflater=layoutInflater
         val dialogView=inflater?.inflate(R.layout.add_rm,null)
@@ -141,9 +133,6 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
         }
         dialog!!.show()
 
-
-
-
     }
 
     companion object {
@@ -153,12 +142,12 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment RadilogiFragment.
+         * @return A new instance of fragment PengingatKontrolFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            RadilogiFragment().apply {
+            PengingatKontrolFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -167,7 +156,9 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
     }
 
     override fun onSuccessAdd(msg: String?) {
-
+        alert {
+            message=msg.toString()
+        }.show()
     }
 
     override fun onSuccessDel(msg: String?) {
@@ -214,23 +205,16 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
 
     }
 
-    override fun onSuccessRadiologi(data: List<ResultItem?>?) {
+    override fun onSuccessKontrol(data: List<ResultItem?>?) {
         progressDialog.dismiss()
-        rv.adapter=RadiologiAdapter(data as List<ResultItem>,object :RadiologiAdapter.onClickItem{
-            override fun clicked(item: ResultItem?) {
-                val uri: Uri = Uri.parse("http://www.rsiamuslimat.com/muslimat_his/production/resume_radiologi/hasil_resume_lihat_pdf.php?id_resume="+item?.resumeId) // missing 'http://' will cause crashed
-
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-
-        })
+        rv.adapter=PengingatKontrolAdapter(data as List<ResultItem>)
 
     }
 
-    override fun onFailedRadiologi(msg: String?) {
+    override fun onFailedKontrol(msg: String?) {
         alert {
             message=msg.toString()
         }.show()
+
     }
 }

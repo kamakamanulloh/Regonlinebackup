@@ -1,4 +1,4 @@
-package com.itrsiam.rsiamuslimat.radiologi
+package com.itrsiam.rsiamuslimat.laboratorium
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.core.content.ContextCompat
 import com.itrsiam.rsiamuslimat.DatePickerFragment
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
@@ -21,12 +20,7 @@ import com.itrsiam.rsiamuslimat.kartu.KartuPresenter
 import com.itrsiam.rsiamuslimat.kartu.KartuView
 import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
 import kotlinx.android.synthetic.main.add_rm.view.*
-import kotlinx.android.synthetic.main.ekartu.*
-import kotlinx.android.synthetic.main.fragment_jadwal.*
-import kotlinx.android.synthetic.main.fragment_kartu.*
 import kotlinx.android.synthetic.main.fragment_radilogi.*
-import kotlinx.android.synthetic.main.fragment_radilogi.btn_cari
-import kotlinx.android.synthetic.main.fragment_radilogi.spinner_rm
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
 import java.util.*
@@ -38,10 +32,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [RadilogiFragment.newInstance] factory method to
+ * Use the [LabFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class RadilogiFragment : Fragment(),KartuView,RadiologiView {
+class LabFragment : Fragment(), KartuView,LabView {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -54,7 +48,8 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
     var tanggal_lahir: String? =null
     var id_cust_usr: String? =null
     private lateinit var ekartuAdapter: EkartuAdapter
-    private lateinit var radiologiPresenter: RadiologiPresenter
+    private lateinit var labAdapter: LabAdapter
+    lateinit var labPresenter: LabPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,15 +64,15 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_radilogi, container, false)
+        val v= inflater.inflate(R.layout.fragment_lab, container, false)
         datePicker = DatePickerFragment(requireContext(), true)
         progressDialog = ProgressDialog(requireContext())
 
         kartuPresenter= KartuPresenter(this)
         kartuPresenter.ekartu(Utils.user_id.toString())
-        radiologiPresenter= RadiologiPresenter(this)
+        labPresenter= LabPresenter(this)
 
-        return view
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -86,12 +81,32 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
             formRm()
         }
         btn_cari.onClick {
+            progressDialog.setMessage("Application is loading, please wait")
             progressDialog.show()
-            radiologiPresenter.listRad(id_cust_usr)
+            labPresenter.listLab(id_cust_usr)
         }
 
     }
 
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment LabFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            LabFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }
     private fun formRm() {
         dialog=AlertDialog.Builder(requireContext())
         inflater=layoutInflater
@@ -145,27 +160,6 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
 
 
     }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RadilogiFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RadilogiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
     override fun onSuccessAdd(msg: String?) {
 
     }
@@ -204,33 +198,38 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
             }
 
         }
-
     }
 
     override fun onFailureAdd(msg: String?) {
         alert {
             message=msg.toString()
         }.show()
-
-    }
-
-    override fun onSuccessRadiologi(data: List<ResultItem?>?) {
         progressDialog.dismiss()
-        rv.adapter=RadiologiAdapter(data as List<ResultItem>,object :RadiologiAdapter.onClickItem{
-            override fun clicked(item: ResultItem?) {
-                val uri: Uri = Uri.parse("http://www.rsiamuslimat.com/muslimat_his/production/resume_radiologi/hasil_resume_lihat_pdf.php?id_resume="+item?.resumeId) // missing 'http://' will cause crashed
-
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-
-        })
-
     }
 
-    override fun onFailedRadiologi(msg: String?) {
+    override fun onSuccessLab(data: List<ResultItem?>?) {
+        progressDialog.dismiss()
+        rv.adapter=
+            LabAdapter(data as List<ResultItem>,object :
+                LabAdapter.onClickItem{
+                override fun clicked(item: ResultItem?) {
+                    val uri: Uri = Uri.parse(
+                        "http://www.rsiamuslimat.com/muslimat_his/production/input_hasil_lab_irj/" +
+                                "input_hasil_lab_pdf.php?id_reg=" + item?.regId + "&pembayaran_id=" + item?.idPembayaran + "&pemeriksaan_id=" + item?.pemeriksaanId
+                    )
+                    // missing 'http://' will cause crashed
+
+                    val intent = Intent(Intent.ACTION_VIEW, uri)
+                    startActivity(intent)
+                }
+
+            })
+    }
+
+    override fun onFailedLab(msg: String?) {
         alert {
             message=msg.toString()
         }.show()
+        progressDialog.dismiss()
     }
 }

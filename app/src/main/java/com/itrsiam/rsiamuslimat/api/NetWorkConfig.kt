@@ -3,11 +3,14 @@ package com.itrsiam.rsiamuslimat.api
 import com.itrsiam.rsiamuslimat.cari_dokter.DetailDokterResponse
 import com.itrsiam.rsiamuslimat.cari_dokter.DokterResponse
 import com.itrsiam.rsiamuslimat.cek_antrian.CekAntrianResponse
+import com.itrsiam.rsiamuslimat.diagnosa.DiagnosaResponse
 import com.itrsiam.rsiamuslimat.info.InfoResponse
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalResponse
 import com.itrsiam.rsiamuslimat.jumlah.JumlahResponse
 import com.itrsiam.rsiamuslimat.kartu.EkartuResponse
 import com.itrsiam.rsiamuslimat.kartu.KartuResponse
+import com.itrsiam.rsiamuslimat.laboratorium.LabResponse
+
 import com.itrsiam.rsiamuslimat.list_tiket.TiketResponse
 import com.itrsiam.rsiamuslimat.login.LoginResponse
 import com.itrsiam.rsiamuslimat.pasien.NoAntrianResponse
@@ -16,11 +19,13 @@ import com.itrsiam.rsiamuslimat.pasien.PendaftaranResponse
 import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiResponse
 import com.itrsiam.rsiamuslimat.pasien.bpjs.CekKepesertaanResponse
 import com.itrsiam.rsiamuslimat.pasien.bpjs.TipejknResponse
+import com.itrsiam.rsiamuslimat.pengingat_kontrol.PengingatKontrolResponse
 import com.itrsiam.rsiamuslimat.poli.PoliResponse
 import com.itrsiam.rsiamuslimat.radiologi.RadilogiResponse
 
 import com.itrsiam.rsiamuslimat.registrasi.RegisterResults
 import com.itrsiam.rsiamuslimat.rekam_medis.RMResponse
+import com.itrsiam.rsiamuslimat.riwayat_periksa.RiwayatPeriksaResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -50,7 +55,7 @@ object NetWorkConfig {
 
     fun getRetrofitt(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://103.53.78.78/api_regonline/")
+            .baseUrl("http://rsiamuslimat.com/api_regonline/")
             .client(getInterceptor())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -307,6 +312,36 @@ object NetWorkConfig {
             @Field("no_rm")no_rm:String?
         ):
                 Call<RadilogiResponse>
+
+        @FormUrlEncoded
+        @POST("listLab.php")
+        fun listLab(
+            @Field("no_rm")no_rm:String?
+        ):
+                Call<LabResponse>
+        @FormUrlEncoded
+        @POST("list_diagnosa.php")
+        fun list_diagnosa(
+            @Field("no_rm")no_rm:String?
+        ):
+                Call<DiagnosaResponse>
+
+        @FormUrlEncoded
+        @POST("list_kontrol.php")
+        fun list_kontrol(
+            @Field("no_rm")no_rm:String?
+        ):
+                Call<PengingatKontrolResponse>
+
+        @FormUrlEncoded
+        @POST("list_periksa.php")
+        fun list_periksa(
+            @Field("no_rm")no_rm:String?
+        ):
+                Call<RiwayatPeriksaResponse>
+
+
+
 
     }
 

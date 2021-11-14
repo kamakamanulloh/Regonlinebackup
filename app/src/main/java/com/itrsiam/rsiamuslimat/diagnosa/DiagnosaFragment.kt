@@ -1,17 +1,14 @@
-package com.itrsiam.rsiamuslimat.radiologi
+package com.itrsiam.rsiamuslimat.diagnosa
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.ProgressDialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.core.content.ContextCompat
 import com.itrsiam.rsiamuslimat.DatePickerFragment
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
@@ -21,12 +18,8 @@ import com.itrsiam.rsiamuslimat.kartu.KartuPresenter
 import com.itrsiam.rsiamuslimat.kartu.KartuView
 import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
 import kotlinx.android.synthetic.main.add_rm.view.*
-import kotlinx.android.synthetic.main.ekartu.*
-import kotlinx.android.synthetic.main.fragment_jadwal.*
-import kotlinx.android.synthetic.main.fragment_kartu.*
-import kotlinx.android.synthetic.main.fragment_radilogi.*
-import kotlinx.android.synthetic.main.fragment_radilogi.btn_cari
-import kotlinx.android.synthetic.main.fragment_radilogi.spinner_rm
+import kotlinx.android.synthetic.main.fragment_diagnosa.*
+
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
 import java.util.*
@@ -38,24 +31,23 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [RadilogiFragment.newInstance] factory method to
+ * Use the [DiagnosaFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class RadilogiFragment : Fragment(),KartuView,RadiologiView {
+class DiagnosaFragment : Fragment(),DiagnosaView, KartuView {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var dialog: AlertDialog.Builder? = null
-    var inflater: LayoutInflater? = null
-
     lateinit var kartuPresenter: KartuPresenter
     private lateinit var progressDialog : ProgressDialog
+    lateinit var diagnosPresenter: DiagnosPresenter
+    lateinit var diagnosaAdapter: DiagnosaAdapter
+    var id_cust_usr: String? =null
+    var dialog: AlertDialog.Builder? = null
+    var inflater: LayoutInflater? = null
     lateinit var datePicker: DatePickerFragment
     var tanggal_lahir: String? =null
-    var id_cust_usr: String? =null
     private lateinit var ekartuAdapter: EkartuAdapter
-    private lateinit var radiologiPresenter: RadiologiPresenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -69,13 +61,12 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_radilogi, container, false)
-        datePicker = DatePickerFragment(requireContext(), true)
+        val view= inflater.inflate(R.layout.fragment_diagnosa, container, false)
         progressDialog = ProgressDialog(requireContext())
-
+        datePicker = DatePickerFragment(requireContext(), true)
         kartuPresenter= KartuPresenter(this)
         kartuPresenter.ekartu(Utils.user_id.toString())
-        radiologiPresenter= RadiologiPresenter(this)
+        diagnosPresenter= DiagnosPresenter(this)
 
         return view
     }
@@ -86,12 +77,11 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
             formRm()
         }
         btn_cari.onClick {
+            progressDialog.setMessage("Application is loading, please wait")
             progressDialog.show()
-            radiologiPresenter.listRad(id_cust_usr)
+            diagnosPresenter.list_diagnosa(id_cust_usr)
         }
-
     }
-
     private fun formRm() {
         dialog=AlertDialog.Builder(requireContext())
         inflater=layoutInflater
@@ -145,7 +135,6 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
 
 
     }
-
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -153,17 +142,30 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment RadilogiFragment.
+         * @return A new instance of fragment DiagnosaFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            RadilogiFragment().apply {
+            DiagnosaFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onSuccessDiagnosa(data: List<ResultItem?>?) {
+        progressDialog.dismiss()
+        rv.adapter=DiagnosaAdapter(data as List<ResultItem>)
+
+    }
+
+    override fun onFailedDiagnosa(msg: String?) {
+        alert {
+            message=msg.toString()
+        }.show()
+        progressDialog.dismiss()
     }
 
     override fun onSuccessAdd(msg: String?) {
@@ -204,33 +206,12 @@ class RadilogiFragment : Fragment(),KartuView,RadiologiView {
             }
 
         }
-
     }
 
     override fun onFailureAdd(msg: String?) {
         alert {
             message=msg.toString()
         }.show()
-
-    }
-
-    override fun onSuccessRadiologi(data: List<ResultItem?>?) {
         progressDialog.dismiss()
-        rv.adapter=RadiologiAdapter(data as List<ResultItem>,object :RadiologiAdapter.onClickItem{
-            override fun clicked(item: ResultItem?) {
-                val uri: Uri = Uri.parse("http://www.rsiamuslimat.com/muslimat_his/production/resume_radiologi/hasil_resume_lihat_pdf.php?id_resume="+item?.resumeId) // missing 'http://' will cause crashed
-
-                val intent = Intent(Intent.ACTION_VIEW, uri)
-                startActivity(intent)
-            }
-
-        })
-
-    }
-
-    override fun onFailedRadiologi(msg: String?) {
-        alert {
-            message=msg.toString()
-        }.show()
     }
 }
