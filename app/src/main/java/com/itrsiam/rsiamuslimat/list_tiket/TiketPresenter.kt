@@ -36,6 +36,39 @@ class TiketPresenter (val tiketView: TiketView) {
             })
     }
 
+    fun getKartu(id_login: String){
+        NetWorkConfig.getServicee()
+            .get_kartu(id_login)
+            .enqueue(object :Callback<TiketResponse>{
+                override fun onResponse(
+                    call: Call<TiketResponse>,
+                    response: Response<TiketResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val status= response.body()?.value
+                        if (status==1){
+                            val results= response.body()!!.result
+                            tiketView.onGetTiket(results)
+                        }
+                        else{
+                            tiketView.onFailedGetTiket("Error $status")
+                        }
+                    }
+
+
+
+                }
+
+                override fun onFailure(call: Call<TiketResponse>, t: Throwable) {
+                    tiketView.onFailed("Error")
+                }
+
+            })
+    }
+
+
+
+
 
 
     fun getBatalTiket(id_login:String){

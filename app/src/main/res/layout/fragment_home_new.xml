@@ -39,32 +39,32 @@
                     android:layout_below="@id/tvHeader"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_marginEnd="5dp"
-                    android:text="RSIA Muslimat"
+                    android:text="RSIA Muslimat Jombang"
                     android:textColor="@color/black"
                     android:textSize="22sp"
 
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/btn_notif"
-                    android:layout_toLeftOf="@id/btn_menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:foregroundGravity="right"
-                    android:src="@drawable/ic_baseline_notifications_none_24"/>
+<!--                <ImageView-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:id="@+id/btn_notif"-->
+<!--                    android:layout_toLeftOf="@id/btn_menu"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
+<!--                    android:foregroundGravity="right"-->
+<!--                    android:src="@drawable/ic_baseline_notifications_none_24"/>-->
 
 
-                <ImageView
-                    android:layout_centerVertical="true"
-                    android:id="@+id/btn_menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:foregroundGravity="right"
-                    android:layout_alignParentEnd="true"
-                    android:src="@drawable/ic_baseline_account_circle_24"/>
+<!--                <ImageView-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:id="@+id/btn_menu"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
+<!--                    android:foregroundGravity="right"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:src="@drawable/ic_baseline_account_circle_24"/>-->
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -78,11 +78,40 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
+
+              <TextView
+                  android:id="@+id/text"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                  android:layout_marginTop="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="5dp"
+                  android:fontFamily="@font/arimo_bold"
+                  android:text="Kartu Registrasi Anda"
+                  android:textColor="@color/black"
+                  android:textSize="20sp" />
+
+
+              <TextView
+                  android:id="@+id/textgeser"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentEnd="true"
+                  android:layout_marginTop="@dimen/activity_horizontal_margin"
+                  android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="5dp"
+                  android:layout_toRightOf="@+id/text"
+                  android:fontFamily="@font/arimo_bold"
+                  android:text="Geser >>> "
+                  android:textAlignment="textEnd"
+                  android:textColor="@color/navy_blue.primary"
+                  android:textSize="12sp"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+
               <androidx.cardview.widget.CardView
-                  android:layout_marginTop="@dimen/activity_vertical_margin"
-                  android:layout_marginStart="@dimen/activity_vertical_margin"
-                  android:layout_marginEnd="@dimen/activity_vertical_margin"
-                  android:layout_marginBottom="@dimen/activity_vertical_margin"
+                  android:visibility="gone"
+
                   app:layout_constraintTop_toTopOf="parent"
                   android:id="@+id/card1"
 
@@ -106,7 +135,7 @@
                           android:layout_height="wrap_content"
                           android:layout_marginStart="@dimen/activity_horizontal_margin"
                           android:fontFamily="@font/volkhov"
-                          android:text="Kartu Berobat"
+                          android:text="E-Kartu Registrasi"
                           android:textColor="@color/black"
                           android:textSize="20sp" />
 
@@ -154,7 +183,7 @@
                           android:textColor="@color/black"/>
 
                       <Button
-                          android:visibility="gone"
+
                           android:id="@+id/btn_qrcode"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
@@ -170,8 +199,25 @@
 
               </androidx.cardview.widget.CardView>
 
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/rv_card"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/text"
+                  android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginRight="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                  android:orientation="horizontal"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  tools:listitem="@layout/item_kartu" />
+
+
+
+
               <TextView
-                  android:layout_below="@id/card1"
+                  android:layout_below="@id/rv_card"
                   android:id="@+id/txt"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
@@ -234,15 +280,58 @@
 
                   </androidx.cardview.widget.CardView>
 
+<!--                  <androidx.cardview.widget.CardView-->
+<!--                      android:id="@+id/btn_pxbaru"-->
+<!--                      android:layout_width="match_parent"-->
+<!--                      android:layout_height="wrap_content"-->
+<!--                      android:layout_marginLeft="5dp"-->
+<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+<!--                      android:layout_weight="1"-->
+<!--                      android:layout_marginEnd="5dp"-->
+
+<!--                      android:background="#fff"-->
+
+<!--                      app:cardCornerRadius="10dp"-->
+
+
+<!--                      app:cardElevation="5dp">-->
+<!--                      <LinearLayout-->
+<!--                          android:layout_width="match_parent"-->
+<!--                          android:layout_height="wrap_content"-->
+<!--                          android:layout_marginTop="5dp"-->
+<!--                          android:layout_marginBottom="5dp"-->
+<!--                          android:orientation="vertical">-->
+
+<!--                          <ImageView-->
+
+<!--                              android:layout_gravity="center"-->
+<!--                              android:layout_width="60dp"-->
+<!--                              android:layout_height="60dp"-->
+<!--                              android:src="@drawable/ic_pasien_baru" />-->
+
+<!--                          <TextView-->
+<!--                              android:layout_width="match_parent"-->
+<!--                              android:layout_height="wrap_content"-->
+<!--                              android:textAlignment="center"-->
+<!--                              android:padding="5dp"-->
+
+<!--                              android:text="Pasien Baru"-->
+<!--                              android:textColor="@color/black"-->
+<!--                              android:textSize="14sp" />-->
+
+<!--                      </LinearLayout>-->
+
+
+<!--                  </androidx.cardview.widget.CardView>-->
                   <androidx.cardview.widget.CardView
-                      android:id="@+id/btn_pxbaru"
+
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="5dp"
                       android:layout_marginBottom="@dimen/activity_horizontal_margin"
                       android:layout_weight="1"
                       android:layout_marginEnd="5dp"
-
+                      android:id="@+id/btn_jadwal"
                       android:background="#fff"
 
                       app:cardCornerRadius="10dp"
@@ -257,11 +346,10 @@
                           android:orientation="vertical">
 
                           <ImageView
-
                               android:layout_gravity="center"
                               android:layout_width="60dp"
                               android:layout_height="60dp"
-                              android:src="@drawable/ic_pasien_baru" />
+                              android:src="@drawable/ic_doctor" />
 
                           <TextView
                               android:layout_width="match_parent"
@@ -269,7 +357,7 @@
                               android:textAlignment="center"
                               android:padding="5dp"
 
-                              android:text="Pasien Baru"
+                              android:text="Jadwal Dokter"
                               android:textColor="@color/black"
                               android:textSize="14sp" />
 
@@ -324,151 +412,110 @@
 
 
               </LinearLayout>
+<!--              <LinearLayout-->
+<!--                  android:layout_below="@id/line1"-->
+<!--                  android:id="@+id/line2"-->
+<!--                  android:layout_width="match_parent"-->
+<!--                  android:layout_height="wrap_content"-->
+<!--                  android:orientation="horizontal"-->
+<!--                  android:weightSum="3"-->
+<!--                  android:padding="5dp">-->
+
+<!--                  <androidx.cardview.widget.CardView-->
+<!--                      android:id="@+id/btn_radiologi"-->
+<!--                      android:layout_width="match_parent"-->
+<!--                      android:layout_height="100dp"-->
+<!--                      android:layout_marginLeft="5dp"-->
+<!--                      android:layout_marginEnd="5dp"-->
+<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+<!--                      android:layout_weight="1"-->
+
+<!--                      android:background="#fff"-->
+
+<!--                      app:cardCornerRadius="10dp"-->
+
+
+<!--                      app:cardElevation="5dp">-->
+<!--                      <LinearLayout-->
+
+<!--                          android:layout_width="match_parent"-->
+<!--                          android:layout_height="match_parent"-->
+<!--                          android:layout_marginTop="5dp"-->
+<!--                          android:layout_marginBottom="5dp"-->
+<!--                          android:orientation="vertical">-->
+
+<!--                          <ImageView-->
+
+<!--                              android:layout_gravity="center"-->
+<!--                              android:layout_width="60dp"-->
+<!--                              android:layout_height="60dp"-->
+<!--                              android:src="@drawable/ic_hasil_radiologi" />-->
+
+<!--                          <TextView-->
+<!--                              android:layout_width="match_parent"-->
+<!--                              android:layout_height="wrap_content"-->
+<!--                              android:textAlignment="center"-->
+<!--                              android:padding="5dp"-->
+
+<!--                              android:text="Hasil Radiologi"-->
+<!--                              android:textColor="@color/black"-->
+<!--                              android:textSize="14sp" />-->
+
+
+<!--                      </LinearLayout>-->
+
+<!--                  </androidx.cardview.widget.CardView>-->
+
+<!--   -->
+
+<!--                  <androidx.cardview.widget.CardView-->
+<!--                      android:id="@+id/btn_lab"-->
+<!--                      android:layout_width="match_parent"-->
+<!--                      android:layout_height="wrap_content"-->
+<!--                      android:layout_marginLeft="5dp"-->
+<!--                      android:layout_marginEnd="5dp"-->
+<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+<!--                      android:layout_weight="1"-->
+
+<!--                      android:background="#fff"-->
+
+<!--                      app:cardCornerRadius="10dp"-->
+
+
+<!--                      app:cardElevation="5dp">-->
+<!--                      <LinearLayout-->
+<!--                          android:layout_width="match_parent"-->
+<!--                          android:layout_height="wrap_content"-->
+<!--                          android:layout_marginTop="5dp"-->
+<!--                          android:layout_marginBottom="5dp"-->
+<!--                          android:orientation="vertical">-->
+
+<!--                          <ImageView-->
+<!--                              android:layout_gravity="center"-->
+<!--                              android:layout_width="60dp"-->
+<!--                              android:layout_height="60dp"-->
+<!--                              android:src="@drawable/ic_hasil_lab" />-->
+
+<!--                          <TextView-->
+<!--                              android:layout_width="match_parent"-->
+<!--                              android:layout_height="wrap_content"-->
+<!--                              android:textAlignment="center"-->
+<!--                              android:padding="5dp"-->
+
+<!--                              android:text="Hasil Lab"-->
+<!--                              android:textColor="@color/black"-->
+<!--                              android:textSize="14sp" />-->
+
+
+<!--                      </LinearLayout>-->
+
+<!--                  </androidx.cardview.widget.CardView>-->
+
+
+
+<!--              </LinearLayout>-->
               <LinearLayout
                   android:layout_below="@id/line1"
-                  android:id="@+id/line2"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:weightSum="3"
-                  android:padding="5dp">
-
-                  <androidx.cardview.widget.CardView
-                      android:id="@+id/btn_radiologi"
-                      android:layout_width="match_parent"
-                      android:layout_height="100dp"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginEnd="5dp"
-                      android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                      android:layout_weight="1"
-
-                      android:background="#fff"
-
-                      app:cardCornerRadius="10dp"
-
-
-                      app:cardElevation="5dp">
-                      <LinearLayout
-
-                          android:layout_width="match_parent"
-                          android:layout_height="match_parent"
-                          android:layout_marginTop="5dp"
-                          android:layout_marginBottom="5dp"
-                          android:orientation="vertical">
-
-                          <ImageView
-
-                              android:layout_gravity="center"
-                              android:layout_width="60dp"
-                              android:layout_height="60dp"
-                              android:src="@drawable/ic_hasil_radiologi" />
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textAlignment="center"
-                              android:padding="5dp"
-
-                              android:text="Hasil Radiologi"
-                              android:textColor="@color/black"
-                              android:textSize="14sp" />
-
-
-                      </LinearLayout>
-
-                  </androidx.cardview.widget.CardView>
-
-                  <androidx.cardview.widget.CardView
-
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                      android:layout_weight="1"
-                      android:layout_marginEnd="5dp"
-                      android:id="@+id/btn_jadwal"
-                      android:background="#fff"
-
-                      app:cardCornerRadius="10dp"
-
-
-                      app:cardElevation="5dp">
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
-                          android:layout_marginBottom="5dp"
-                          android:orientation="vertical">
-
-                          <ImageView
-                              android:layout_gravity="center"
-                              android:layout_width="60dp"
-                              android:layout_height="60dp"
-                              android:src="@drawable/ic_doctor" />
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textAlignment="center"
-                              android:padding="5dp"
-
-                              android:text="Jadwal Dokter"
-                              android:textColor="@color/black"
-                              android:textSize="14sp" />
-
-                      </LinearLayout>
-
-
-                  </androidx.cardview.widget.CardView>
-
-                  <androidx.cardview.widget.CardView
-                      android:id="@+id/btn_lab"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginEnd="5dp"
-                      android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                      android:layout_weight="1"
-
-                      android:background="#fff"
-
-                      app:cardCornerRadius="10dp"
-
-
-                      app:cardElevation="5dp">
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
-                          android:layout_marginBottom="5dp"
-                          android:orientation="vertical">
-
-                          <ImageView
-                              android:layout_gravity="center"
-                              android:layout_width="60dp"
-                              android:layout_height="60dp"
-                              android:src="@drawable/ic_hasil_lab" />
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textAlignment="center"
-                              android:padding="5dp"
-
-                              android:text="Hasil Lab"
-                              android:textColor="@color/black"
-                              android:textSize="14sp" />
-
-
-                      </LinearLayout>
-
-                  </androidx.cardview.widget.CardView>
-
-
-
-              </LinearLayout>
-              <LinearLayout
-                  android:layout_below="@id/line2"
                   android:id="@+id/line3"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
@@ -476,92 +523,105 @@
                   android:weightSum="3"
                   android:padding="5dp">
 
-                  <androidx.cardview.widget.CardView
-                      android:id="@+id/btn_diagnosa"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginEnd="5dp"
-                      android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                      android:layout_weight="1"
+<!--                  <androidx.cardview.widget.CardView-->
+<!--                      android:id="@+id/btn_diagnosa"-->
+<!--                      android:layout_width="match_parent"-->
+<!--                      android:layout_height="wrap_content"-->
+<!--                      android:layout_marginLeft="5dp"-->
+<!--                      android:layout_marginEnd="5dp"-->
+<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+<!--                      android:layout_weight="1"-->
 
-                      android:background="#fff"
+<!--                      android:background="#fff"-->
 
-                      app:cardCornerRadius="10dp"
-
-
-                      app:cardElevation="5dp">
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
-                          android:layout_marginBottom="5dp"
-                          android:orientation="vertical">
-
-                          <ImageView
-                              android:layout_gravity="center"
-                              android:layout_width="60dp"
-                              android:layout_height="60dp"
-                              android:src="@drawable/ic_riwayat_diagnosa" />
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textAlignment="center"
-                              android:padding="5dp"
-
-                              android:text="Riwayat Diagnosa"
-                              android:textColor="@color/black"
-                              android:textSize="14sp" />
+<!--                      app:cardCornerRadius="10dp"-->
 
 
-                      </LinearLayout>
+<!--                      app:cardElevation="5dp">-->
+<!--                      <LinearLayout-->
+<!--                          android:layout_width="match_parent"-->
+<!--                          android:layout_height="wrap_content"-->
+<!--                          android:layout_marginTop="5dp"-->
+<!--                          android:layout_marginBottom="5dp"-->
+<!--                          android:orientation="vertical">-->
 
-                  </androidx.cardview.widget.CardView>
+<!--                          <ImageView-->
+<!--                              android:layout_gravity="center"-->
+<!--                              android:layout_width="60dp"-->
+<!--                              android:layout_height="60dp"-->
+<!--                              android:src="@drawable/ic_riwayat_diagnosa" />-->
 
-                  <androidx.cardview.widget.CardView
-                      android:id="@+id/btn_periksa"
+<!--                          <TextView-->
+<!--                              android:layout_width="match_parent"-->
+<!--                              android:layout_height="wrap_content"-->
+<!--                              android:textAlignment="center"-->
+<!--                              android:padding="5dp"-->
 
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                      android:layout_weight="1"
-                      android:layout_marginEnd="5dp"
-
-                      android:background="#fff"
-
-                      app:cardCornerRadius="10dp"
-
-
-                      app:cardElevation="5dp">
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
-                          android:layout_marginBottom="5dp"
-                          android:orientation="vertical">
-
-                          <ImageView
-                              android:layout_gravity="center"
-                              android:layout_width="60dp"
-                              android:layout_height="60dp"
-                              android:src="@drawable/faq" />
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textAlignment="center"
-                              android:padding="5dp"
-
-                              android:text="Riwayat Pemeriksaan"
-                              android:textColor="@color/black"
-                              android:textSize="14sp" />
-
-                      </LinearLayout>
+<!--                              android:text="Riwayat Diagnosa"-->
+<!--                              android:textColor="@color/black"-->
+<!--                              android:textSize="14sp" />-->
 
 
-                  </androidx.cardview.widget.CardView>
+<!--                      </LinearLayout>-->
+
+<!--                  </androidx.cardview.widget.CardView>-->
+
+<!--                  <androidx.cardview.widget.CardView-->
+<!--                      android:id="@+id/btn_periksa"-->
+
+<!--                      android:layout_width="match_parent"-->
+<!--                      android:layout_height="wrap_content"-->
+<!--                      android:layout_marginLeft="5dp"-->
+<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+<!--                      android:layout_weight="1"-->
+<!--                      android:layout_marginEnd="5dp"-->
+
+<!--                      android:background="#fff"-->
+
+<!--                      app:cardCornerRadius="10dp"-->
+
+
+<!--                      app:cardElevation="5dp">-->
+<!--                      <LinearLayout-->
+<!--                          android:layout_width="match_parent"-->
+<!--                          android:layout_height="wrap_content"-->
+<!--                          android:layout_marginTop="5dp"-->
+<!--                          android:layout_marginBottom="5dp"-->
+<!--                          android:orientation="vertical">-->
+
+<!--                          <ImageView-->
+<!--                              android:layout_gravity="center"-->
+<!--                              android:layout_width="60dp"-->
+<!--                              android:layout_height="60dp"-->
+<!--                              android:src="@drawable/faq" />-->
+
+<!--                          <TextView-->
+<!--                              android:layout_width="match_parent"-->
+<!--                              android:layout_height="wrap_content"-->
+<!--                              android:textAlignment="center"-->
+<!--                              android:padding="5dp"-->
+
+<!--                              android:text="Riwayat Pemeriksaan"-->
+<!--                              android:textColor="@color/black"-->
+<!--                              android:textSize="14sp" />-->
+
+<!--                      </LinearLayout>-->
+
+
+<!--                  </androidx.cardview.widget.CardView>-->
+
+
+
+
+              </LinearLayout>
+              <LinearLayout
+                  android:layout_below="@id/line3"
+                  android:id="@id/line4"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:weightSum="3"
+                  android:padding="5dp">
 
                   <androidx.cardview.widget.CardView
                       android:id="@+id/btn_kontrol"
@@ -608,18 +668,8 @@
 
 
 
-              </LinearLayout>
-              <LinearLayout
-                  android:layout_below="@id/line3"
-                  android:id="@id/line4"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:weightSum="3"
-                  android:padding="5dp">
-
                   <androidx.cardview.widget.CardView
-
+                      android:id="@+id/btn_petunjuk"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="5dp"
@@ -652,60 +702,62 @@
                               android:textAlignment="center"
                               android:padding="5dp"
 
-                              android:text="Petunjuk"
+                              android:text="Petunjuk &amp; Ketentuan"
                               android:textColor="@color/black"
                               android:textSize="14sp" />
 
 
                       </LinearLayout>
 
-                  </androidx.cardview.widget.CardView>
-
-                  <androidx.cardview.widget.CardView
-
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_marginLeft="5dp"
-                      android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                      android:layout_weight="1"
-                      android:layout_marginEnd="5dp"
-
-                      android:background="#fff"
-
-                      app:cardCornerRadius="10dp"
-
-
-                      app:cardElevation="5dp">
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="5dp"
-                          android:layout_marginBottom="5dp"
-                          android:orientation="vertical">
-
-                          <ImageView
-                              android:layout_gravity="center"
-                              android:layout_width="60dp"
-                              android:layout_height="60dp"
-                              android:src="@drawable/faq" />
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textAlignment="center"
-                              android:padding="5dp"
-
-                              android:text="Ketentuan"
-                              android:textColor="@color/black"
-                              android:textSize="14sp" />
-
-                      </LinearLayout>
 
 
                   </androidx.cardview.widget.CardView>
 
-                  <androidx.cardview.widget.CardView
+<!--                  <androidx.cardview.widget.CardView-->
 
+<!--                      android:layout_width="match_parent"-->
+<!--                      android:layout_height="wrap_content"-->
+<!--                      android:layout_marginLeft="5dp"-->
+<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+<!--                      android:layout_weight="1"-->
+<!--                      android:layout_marginEnd="5dp"-->
+
+<!--                      android:background="#fff"-->
+
+<!--                      app:cardCornerRadius="10dp"-->
+
+
+<!--                      app:cardElevation="5dp">-->
+<!--                      <LinearLayout-->
+<!--                          android:layout_width="match_parent"-->
+<!--                          android:layout_height="wrap_content"-->
+<!--                          android:layout_marginTop="5dp"-->
+<!--                          android:layout_marginBottom="5dp"-->
+<!--                          android:orientation="vertical">-->
+
+<!--                          <ImageView-->
+<!--                              android:layout_gravity="center"-->
+<!--                              android:layout_width="60dp"-->
+<!--                              android:layout_height="60dp"-->
+<!--                              android:src="@drawable/faq" />-->
+
+<!--                          <TextView-->
+<!--                              android:layout_width="match_parent"-->
+<!--                              android:layout_height="wrap_content"-->
+<!--                              android:textAlignment="center"-->
+<!--                              android:padding="5dp"-->
+
+<!--                              android:text="Ketentuan"-->
+<!--                              android:textColor="@color/black"-->
+<!--                              android:textSize="14sp" />-->
+
+<!--                      </LinearLayout>-->
+
+
+<!--                  </androidx.cardview.widget.CardView>-->
+
+                  <androidx.cardview.widget.CardView
+                      android:id="@+id/btn_webrs"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:layout_marginLeft="5dp"
@@ -738,7 +790,7 @@
                               android:textAlignment="center"
                               android:padding="5dp"
 
-                              android:text="Rumah Sakit"
+                              android:text="Website Rumah Sakit"
                               android:textColor="@color/black"
                               android:textSize="14sp" />
 
@@ -751,7 +803,74 @@
 
               </LinearLayout>
 
+
+              <TextView
+                  android:id="@+id/textInfo"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/line4"
+                  android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                  android:layout_marginTop="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="5dp"
+                  android:fontFamily="@font/arimo_bold"
+                  android:text="Informasi Terbaru"
+                  android:textColor="@color/black"
+                  android:textSize="20sp" />
+              <TextView
+                  android:layout_below="@id/line4"
+                  android:id="@+id/textgeser2"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentEnd="true"
+                  android:layout_marginTop="@dimen/activity_horizontal_margin"
+                  android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="5dp"
+                  android:layout_toRightOf="@+id/textInfo"
+                  android:fontFamily="@font/arimo_bold"
+                  android:text="Geser >>> "
+                  android:textAlignment="textEnd"
+                  android:textColor="@color/navy_blue.primary"
+                  android:textSize="12sp"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/rv_info_new"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@id/textInfo"
+                  android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginRight="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                  android:orientation="vertical"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  tools:listitem="@layout/item_info" />
+
+
+
+              <TextView
+
+                  android:layout_below="@id/rv_info_new"
+                  android:id="@+id/text_lihat_semua"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentEnd="true"
+
+                  android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                  android:layout_marginBottom="5dp"
+                  android:layout_toRightOf="@+id/textInfo"
+                  android:fontFamily="@font/arimo_bold"
+                  android:text="Lihat Semua Info"
+                  android:textAlignment="textEnd"
+                  android:textColor="@color/navy_blue.primary"
+                  android:textSize="18sp"
+                  app:layout_constraintTop_toTopOf="parent"
+                  />
           </RelativeLayout>
+
+
+
+
 
         </androidx.core.widget.NestedScrollView>
 

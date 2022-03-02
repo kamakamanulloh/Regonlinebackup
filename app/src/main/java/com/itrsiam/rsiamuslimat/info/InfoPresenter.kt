@@ -32,4 +32,28 @@ class InfoPresenter(val infoView: InfoView) {
 
             })
     }
+    fun getInfoTerbaru(){
+        NetWorkConfig.getServicee()
+            .get_info_baru()
+            .enqueue(object : Callback<InfoResponse>{
+                override fun onResponse(
+                    call: Call<InfoResponse>,
+                    response: Response<InfoResponse>
+                ) {
+                    if (response.isSuccessful){
+                        val value=response.body()?.value
+                        if (value==202){
+                            val data=response.body()?.result
+                            infoView.onSuccessInfo((data))
+                        }
+
+                    }
+                }
+
+                override fun onFailure(call: Call<InfoResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+    }
 }

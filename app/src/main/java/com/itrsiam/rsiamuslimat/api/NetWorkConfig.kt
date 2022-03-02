@@ -177,11 +177,18 @@ object NetWorkConfig {
         ):
                 retrofit2.Call<PoliResponse>
 
-        @GET("list_info.php")
+        @GET("list_info.php?tipe=semua")
         fun get_info(
 
         ):
                 retrofit2.Call<InfoResponse>
+
+        @GET("list_info.php?tipe=baru")
+        fun get_info_baru(
+
+        ):
+                retrofit2.Call<InfoResponse>
+
 
         @GET("list_all_dokter.php")
         fun get_dokter(
@@ -259,6 +266,11 @@ object NetWorkConfig {
 
         @GET("history.php?id_login=")
         fun get_Tiket(
+            @Query("id_login")id_login: String?
+        ):retrofit2.Call<TiketResponse>
+
+        @GET("kartu_list.php?id_login=")
+        fun get_kartu(
             @Query("id_login")id_login: String?
         ):retrofit2.Call<TiketResponse>
 

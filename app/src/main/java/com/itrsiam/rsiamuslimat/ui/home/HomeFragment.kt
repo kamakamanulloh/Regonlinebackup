@@ -322,7 +322,7 @@ class HomeFragment : Fragment() ,SaranView,NoAntrianView{
 
     }
 
-    override fun onFailed(msg: String?) {
+    override fun onFailedGet(msg: String?) {
        tvTitleNo.text="Belum Ada Kunjungan"
     }
 

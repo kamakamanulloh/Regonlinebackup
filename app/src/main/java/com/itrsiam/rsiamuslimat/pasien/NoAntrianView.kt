@@ -21,7 +21,7 @@ interface NoAntrianView {
 
     )
 
-    fun onFailed (msg : String?)
+    fun onFailedGet (msg : String?)
 
 
 

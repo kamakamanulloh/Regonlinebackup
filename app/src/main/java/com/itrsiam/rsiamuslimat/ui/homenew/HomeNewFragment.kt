@@ -1,56 +1,38 @@
 package com.itrsiam.rsiamuslimat.ui.homenew
 
+
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
-import com.itrsiam.rsiamuslimat.cari_dokter.CariDokterFragment
 import com.itrsiam.rsiamuslimat.cek_antrian.CekAntrianActivity
-import com.itrsiam.rsiamuslimat.diagnosa.DiagnosaFragment
-import com.itrsiam.rsiamuslimat.info.InfoFragment
+import com.itrsiam.rsiamuslimat.info.*
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalFragment
-import com.itrsiam.rsiamuslimat.ketentuan.KetentuanFragment
-import com.itrsiam.rsiamuslimat.laboratorium.LabFragment
-
-import com.itrsiam.rsiamuslimat.list_tiket.BatalRegFragment
-import com.itrsiam.rsiamuslimat.list_tiket.TiketFragment
-import com.itrsiam.rsiamuslimat.pasien.NoAntrianPresenter
+import com.itrsiam.rsiamuslimat.list_tiket.*
 import com.itrsiam.rsiamuslimat.pasien.NoAntrianView
 import com.itrsiam.rsiamuslimat.pasien.TicketViewActivity
 import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiFragment
 import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
 import com.itrsiam.rsiamuslimat.pasien.umum.PasienUmumFragment
-import com.itrsiam.rsiamuslimat.pasien_baru.PasienBaruActivity
 import com.itrsiam.rsiamuslimat.pengingat_kontrol.PengingatKontrolFragment
 import com.itrsiam.rsiamuslimat.petunjuk.PetunjukFragment
-import com.itrsiam.rsiamuslimat.radiologi.RadilogiFragment
-import com.itrsiam.rsiamuslimat.riwayat_periksa.RiwayatPeriksaFragment
-import com.itrsiam.rsiamuslimat.saran.SaranPresenter
-import com.itrsiam.rsiamuslimat.saran.SaranView
-import com.itrsiam.rsiamuslimat.ui.home.HomeViewModel
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
-
-
 import kotlinx.android.synthetic.main.fragment_home_new.*
-import kotlinx.android.synthetic.main.fragment_home_new.btn_qrcode
-import kotlinx.android.synthetic.main.fragment_home_new.view.*
-import kotlinx.android.synthetic.main.item_saran.view.*
+import kotlinx.android.synthetic.main.fragment_info.*
+import kotlinx.android.synthetic.main.tiket_fragment.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
-import java.text.SimpleDateFormat
-import java.util.*
+import org.jetbrains.anko.support.v4.startActivity
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,12 +44,13 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeNewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeNewFragment : Fragment(),NoAntrianView  {
+class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-
+    private lateinit var presenter: TiketPresenter
+    private lateinit var infoPresenter: InfoPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -82,54 +65,18 @@ class HomeNewFragment : Fragment(),NoAntrianView  {
     ): View? {
         // Inflate the layout for this fragment
         val root= inflater.inflate(R.layout.fragment_home_new, container, false)
-
+        presenter= TiketPresenter(this)
+        infoPresenter= InfoPresenter(this)
+        presenter.getKartu(Utils.user_id!!)
+        infoPresenter.getInfoTerbaru()
         return root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         tvHeader.text="Selamat Datang "+Utils.user_name
-        btn_pxbaru.onClick {
-            val pasienBaruActivity= Intent(context, PasienBaruActivity::class.java)
-            startActivity(pasienBaruActivity)
-        }
-        btn_pxlama.onClick {
-           jenisLayanan()
 
-        }
-        btn_cekantrian.onClick {
-            startActivity(Intent(requireContext(),CekAntrianActivity::class.java))
-        }
-        btn_radiologi.onClick {
-            val radiologiFragment=RadilogiFragment()
-                fragmentManager?.beginTransaction()
-                    ?.replace(R.id.nav_host_fragment,radiologiFragment)
-                    ?.addToBackStack(null)
-                    ?.commit()
-        }
-        btn_lab.onClick {
-            val labFragment = LabFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, labFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-
-        }
-        btn_jadwal.onClick {
-            val jadwalFragment = JadwalFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, jadwalFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-        }
-        btn_diagnosa.setOnClickListener {
-            val diagnosaFragment = DiagnosaFragment()
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, diagnosaFragment)
-                ?.addToBackStack(null)
-                ?.commit()
-
-        }
 
         btn_kontrol.onClick {
             val pengingatKontrolFragment = PengingatKontrolFragment()
@@ -138,15 +85,41 @@ class HomeNewFragment : Fragment(),NoAntrianView  {
                 ?.addToBackStack(null)
                 ?.commit()
         }
-        btn_periksa.onClick {
-            val riwayatPeriksaFragment = RiwayatPeriksaFragment()
+        btn_pxlama.onClick {
+            jenisLayanan()
+
+        }
+        btn_cekantrian.onClick {
+            startActivity(Intent(requireContext(), CekAntrianActivity::class.java))
+        }
+        btn_jadwal.onClick {
+            val jadwalFragment = JadwalFragment()
             fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, riwayatPeriksaFragment)
+                ?.replace(R.id.nav_host_fragment, jadwalFragment)
                 ?.addToBackStack(null)
                 ?.commit()
         }
 
+        btn_petunjuk.onClick {
+            var petunjukFragment = PetunjukFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, petunjukFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
+        btn_webrs.onClick {
 
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("http://www.rsiamuslimat.com/")
+            startActivity(intent)
+        }
+        text_lihat_semua.onClick {
+            var infoFragment = InfoFragment()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.nav_host_fragment, infoFragment)
+                ?.addToBackStack(null)
+                ?.commit()
+        }
     }
 
     private fun jenisLayanan() {
@@ -229,32 +202,71 @@ class HomeNewFragment : Fragment(),NoAntrianView  {
         noRm: String?,
         regBufferNobpjs: String?
     ) {
-        btn_qrcode.isVisible=true
-        tvnoantrian.text=regBufferNoAntrian
-        tv_kunjungan.text= " No Antrian Anda Tanggal $regBufferTanggal"
-        tv_dokter.text="Poli $poliNama Dokter $usrName"
-        btn_qrcode.onClick {
-            val tiketintent= Intent(context, TicketViewActivity::class.java)
-            tiketintent.putExtra("buffer_id",regBufferId)
-            tiketintent.putExtra("no_antrian",regBufferNoAntrian)
-            tiketintent.putExtra("nm_poli",poliNama)
-            tiketintent.putExtra("nm_dokter",usrName)
-            tiketintent.putExtra("jam",regBufferWaktu)
-            tiketintent.putExtra("tanggal",regBufferTanggal)
-            tiketintent.putExtra("jenis_px",jenisNama)
-            tiketintent.putExtra("nm_px",namaPx)
-            tiketintent.putExtra("rm_px",noRm)
-            tiketintent.putExtra("nm_perusahaan",perusahaanNama)
-            startActivity(tiketintent)
-        }
+//        btn_qrcode.isVisible=true
+//
+//        btn_qrcode.onClick {
+//            val tiketintent= Intent(context, TicketViewActivity::class.java)
+//            tiketintent.putExtra("buffer_id",regBufferId)
+//            tiketintent.putExtra("no_antrian",regBufferNoAntrian)
+//            tiketintent.putExtra("nm_poli",poliNama)
+//            tiketintent.putExtra("nm_dokter",usrName)
+//            tiketintent.putExtra("jam",regBufferWaktu)
+//            tiketintent.putExtra("tanggal",regBufferTanggal)
+//            tiketintent.putExtra("jenis_px",jenisNama)
+//            tiketintent.putExtra("nm_px",namaPx)
+//            tiketintent.putExtra("rm_px",noRm)
+//            tiketintent.putExtra("nm_perusahaan",perusahaanNama)
+//            startActivity(tiketintent)
+//        }
 
     }
 
-    override fun onFailed(msg: String?) {
-        tvkartu.text="Belum Ada Kunjungan"
+
+    override fun onFailedGet(msg: String?) {
+        text.text="Belum Ada Kunjungan"
+        textgeser.visibility=View.GONE
     }
 
     override fun onFailure(msg: String?) {
 
+    }
+
+    override fun onGetTiket(data: List<TiketResults?>?) {
+
+
+
+        rv_card.adapter= KartuRegAdapter(data as List<TiketResults>,object : KartuRegAdapter.onClickItem{
+            override fun clicked(item: TiketResults?) {
+                startActivity<TicketViewActivity>("dataItem" to item)
+
+
+            }
+        })
+    }
+
+    override fun onFailedGetTiket(msg: String) {
+
+        text.text="Belum Ada Kunjungan"
+
+        textgeser.visibility=View.GONE
+
+    }
+
+    override fun onGet(msg: String) {
+
+    }
+
+    override fun onFailed(msg: String) {
+
+    }
+
+    override fun onSuccessInfo(data: List<ResultItemInfo?>?) {
+        rv_info_new.adapter= InfoAdapter(data as List<ResultItemInfo>)
+    }
+
+    override fun onFailedInfo(msg: String) {
+        alert {
+            message=msg
+        }.show()
     }
 }

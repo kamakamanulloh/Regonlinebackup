@@ -22,7 +22,7 @@ class NoAntrianPresenter(val noAntrianView: NoAntrianView) {
                           response.body()?.noRm, response.body()?.regBufferNobpjs);
                   }
                     else{
-                      noAntrianView.onFailed("Tidak ditemukan")
+                      noAntrianView.onFailedGet("Tidak ditemukan")
                   }
                 }
 
