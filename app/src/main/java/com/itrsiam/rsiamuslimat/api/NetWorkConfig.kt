@@ -55,7 +55,7 @@ object NetWorkConfig {
 
     fun getRetrofitt(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://rsiamuslimat.com/api_regonline/")
+            .baseUrl("https://simrs.rsiamuslimat.com/api_regonline/")
             .client(getInterceptor())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -274,7 +274,7 @@ object NetWorkConfig {
             @Query("id_login")id_login: String?
         ):retrofit2.Call<TiketResponse>
 
-        @GET("bpjs.php")
+        @GET("cek_peserta_bpjs.php")
         fun get_Kepesertaan(
             @Query("param")param:String?,
             @Query("tgl")tgl:String?

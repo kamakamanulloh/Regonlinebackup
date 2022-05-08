@@ -64,88 +64,109 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Masukkan Nomor Rekam Medis (RM)"
-                android:layout_marginBottom="5dp"/>
-            <EditText
+                android:text="*Silahkan Pilih Pasien Untuk Registrasi (Geser untuk mencari)"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_card_pasien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtrm"
-                android:inputType="number"
+                android:layout_below="@id/text"
+
+                android:layout_marginTop="5dp"
+
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_pasien" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/tv_pasien"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Klik di sini"
+                    android:background="@color/blue_700"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/whiteTextColor"
+                    android:padding="5dp"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Apabila data pasien tidak muncul di atas"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:textColor="@android:color/holo_blue_dark"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DATA PASIEN"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:textColor="@color/darkTextColor"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nomor Rekam Medis (RM)"
                 android:layout_marginBottom="5dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lupa RM ?"
-                android:id="@+id/luparm"
-                android:textColor="@color/red"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:textAlignment="textEnd"/>
-            <LinearLayout
+                android:id="@+id/tv_no_rm"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:weightSum="2">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/colorPrimary"
-                    android:text="Pilih Tanggal Lahir"
-                    android:id="@+id/btntgllahirbpjs"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/whiteTextColor"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textAlignment="textStart"
-
-
-                    android:id="@+id/tvtlbpjs"
-
-                    tools:ignore="RtlCompat" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:text="Tanggal Lahir Pasien"
+                android:layout_marginBottom="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:weightSum="2">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/colorPrimary"
-                    android:text="Cari"
-                    android:id="@+id/btncarirmbpjs"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/whiteTextColor"/>
+                android:id="@+id/tvtl"
+                android:inputType="text"
+                android:editable="false"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="5dp"/>
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@color/colorPrimary"
-                    android:text="Scan Kartu"
-                    android:textColor="@color/whiteTextColor"/>
 
-            </LinearLayout>
 
-          <include
+            <include
               android:id="@+id/inputbpjs"
               layout="@layout/input_pasien_bpjs"
-              android:visibility="gone"/>
+                android:visibility="gone"
+            />
 
             <include
                 android:id="@+id/inputlanjutbpjs"
                 layout="@layout/lanjutanformbpjs"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                />
         </LinearLayout>
 
 

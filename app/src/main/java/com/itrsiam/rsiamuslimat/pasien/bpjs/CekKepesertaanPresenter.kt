@@ -14,16 +14,16 @@ class CekKepesertaanPresenter(val cekKepesertaanView: CekKepesertaanView) {
                     call: Call<CekKepesertaanResponse>,
                     response: Response<CekKepesertaanResponse>
                 ) {  val respons=response.body()
-                    if (response.body()?.metaData!!.code=="200"){
+                    if (response.body()?.code=="200"){
 
-                        cekKepesertaanView.onSuccessCek(respons!!.metaData?.message,
+                        cekKepesertaanView.onSuccessCek(respons!!.message,
                         respons?.response?.peserta?.nama, respons?.response?.peserta?.statusPeserta?.keterangan?.toString(),
                             respons?.response?.peserta?.provUmum?.nmProvider  ,respons?.response?.peserta?.jenisPeserta?.keterangan
                         )
 
                     }
                     else{
-                        cekKepesertaanView.onFailedCek(respons!!.metaData?.message)
+                        cekKepesertaanView.onFailedCek(respons!!.message)
                     }
 
                 }

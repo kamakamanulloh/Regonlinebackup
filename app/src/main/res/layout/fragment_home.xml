@@ -132,7 +132,7 @@
 
                             android:text="Cek \n Antrian"
                             android:padding="5dp"
-                            android:drawableEnd="@drawable/ic_line"
+
                             android:layout_marginRight="@dimen/activity_horizontal_margin"
                             android:layout_marginLeft="@dimen/activity_horizontal_margin"
                             android:background="@drawable/button_transparant2"

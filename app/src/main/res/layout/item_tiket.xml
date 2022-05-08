@@ -173,22 +173,40 @@
             android:text="Silahkan Datang Lebih Awal Untuk Registrasi Ulang Untuk Mendapat Nomor Antrian"
             tools:ignore="HardcodedText" />
 
-
-
-
-        <Button
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/nb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nb"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/btn_detail"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:background="@color/colorPrimary"
+                android:text="Tampilkan E-Tiket"
+                android:textColor="@color/white"
+
+                />
+            <Button
+                android:layout_marginStart="5dp"
+                android:id="@+id/btn_batal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/red"
+                android:text="Batal Registrasi"
+                android:textColor="@color/white"
+
+                />
+
+        </LinearLayout>
 
 
-            android:text="@string/tampilkan_detail_dan_barcode"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"
-
-            />
 
 
 

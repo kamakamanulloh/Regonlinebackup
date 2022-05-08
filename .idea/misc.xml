@@ -59,25 +59,125 @@
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/menu/menu_bar.xml" value="0.36666666666666664" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/menu/navigation_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/android_ios/Regonlinebackup/app/src/main/res/menu/overflow.xml" value="0.36666666666666664" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/avatar_1.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/avatar_10.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/avatar_11.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/avatar_12.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/avatar_13.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/avatar_9.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/bggradasi.xml" value="0.35462962962962963" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/bt_circle.xml" value="0.35462962962962963" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/button_background_blue.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/button_background_green.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/button_selector.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/button_transparant.xml" value="0.362962962962963" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/button_transparant2.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/edittextstyle.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/et_style.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_1803242.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_account_circle_black_24dp.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_antrian.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_asuransi.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_bar_code.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.34814814814814815" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_campaign_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_credit_card_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_help_outline_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_notifications_none_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_baseline_restore_from_trash_24.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_calendar.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_camera_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_doctor.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_dokter.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_faq.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_gallery_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_hasil_lab.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_hasil_radiologi.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_hospital.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_imunisasi.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_informasi.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_line.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_medical_record1.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_nomor_registrasi.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_pasien_baru.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_pasien_lama.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_pengingat_kontrol.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_petunjuk.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_playstore.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_qr_code.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_rating.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_registrasi.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_riwayat_diagnosa.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_riwayat_pemeriksaan.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_settings_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_slideshow_black_24dp.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_x_button.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/ic_zoom.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/side_nav_bar.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/text_view_selector.xml" value="0.21875" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/drawable/transparent_gradient.xml" value="0.362962962962963" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/font/baloo.xml" value="0.35462962962962963" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_cek_antrian.xml" value="0.3523550724637681" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_edit_profil.xml" value="0.3625" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_home.xml" value="0.28306159420289856" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_login.xml" value="0.20260416666666667" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_main.xml" value="0.29438405797101447" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_registrasi.xml" value="0.20260416666666667" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_splash_screen.xml" value="0.31476449275362317" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/activity_ticket_view.xml" value="0.3625" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/asuransi_fragment.xml" value="0.3625" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/bpjs_fragment.xml" value="0.33" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/bpjs_fragment_old.xml" value="0.3088768115942029" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/ekartu.xml" value="0.19166666666666668" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_bantuan.xml" value="0.19895833333333332" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_dashboard.xml" value="0.3625" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_diagnosa.xml" value="0.2694746376811594" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_home.xml" value="0.28306159420289856" />
-        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_home_new.xml" value="0.25" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_home_new.xml" value="0.22" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_jadwal.xml" value="0.3523550724637681" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_kartu.xml" value="0.29438405797101447" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_ketentuan.xml" value="0.3625" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_lab.xml" value="0.20520833333333333" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_laboratorium.xml" value="0.2957427536231884" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_panduan.xml" value="0.3625" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_pengingat_kontrol.xml" value="0.2694746376811594" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_petunjuk.xml" value="0.18765935747067822" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_profil.xml" value="0.3625" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_radilogi.xml" value="0.20520833333333333" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_riwayat_periksa.xml" value="0.22" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/fragment_tiket_view.xml" value="0.1762917933130699" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/input_pasien_asuransi.xml" value="0.3625" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/input_pasien_bpjs.xml" value="0.3625" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/input_pasien_bpjs_new.xml" value="0.2966485507246377" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/input_pasien_umum.xml" value="0.3625" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_detail_dokter.xml" value="0.2694746376811594" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_diagnosa.xml" value="0.2694746376811594" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_info.xml" value="0.3066123188405797" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_jadwal.xml" value="0.2694746376811594" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_kartu.xml" value="0.3183876811594203" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_kontrol.xml" value="0.2694746376811594" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_pasien.xml" value="0.29438405797101447" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_radiologi.xml" value="0.20520833333333333" />
         <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/item_tiket.xml" value="0.29438405797101447" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/lanjutanformbpjs.xml" value="0.3625" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/pasien_umum_fragment.xml" value="0.29438405797101447" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/layout/tiket_fragment.xml" value="0.29438405797101447" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/menu/menu_bar.xml" value="0.3055555555555556" />
+        <entry key="..\:/android_ios/Regonlinebackup_/app/src/main/res/menu/overflow.xml" value="0.3625" />
       </map>
     </option>
   </component>

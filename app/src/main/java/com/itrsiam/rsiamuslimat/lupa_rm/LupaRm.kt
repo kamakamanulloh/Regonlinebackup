@@ -1,6 +1,7 @@
 package com.itrsiam.rsiamuslimat.lupa_rm
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,6 +21,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 var tanggal_lahir: String? =null
 lateinit var datePicker: DatePickerFragment
+private lateinit var progressDialog : ProgressDialog
 /**
  * A simple [Fragment] subclass.
  * Use the [LupaRm.newInstance] factory method to
@@ -44,7 +46,9 @@ class LupaRm : Fragment(),LupaRmView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lupa_rm, container, false)
+        val view= inflater.inflate(R.layout.fragment_lupa_rm, container, false)
+
+        return view
     }
 
     companion object {
@@ -95,7 +99,9 @@ class LupaRm : Fragment(),LupaRmView {
                 }.show()
             }
             else{
-
+                progressDialog = ProgressDialog(requireContext())
+                progressDialog.setMessage("Proses Sedang Berlangsung")
+                progressDialog.show()
                 lupaRmPresenter.pulihkan_rm(txt_id.text.toString(),spn_jenisId.selectedItem.toString(),
                     tanggal_lahir)
             }
@@ -115,7 +121,7 @@ class LupaRm : Fragment(),LupaRmView {
                 val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
                 val mon = month + 1
                 val monthStr = if (mon < 10) "0${mon}" else "${mon}"
-                tvtl.text = ("$dayStr-$mon-$year")
+                tv_tl.text = ("$dayStr-$mon-$year")
                 tanggal_lahir = "$year-$monthStr-$dayStr"
             }
         })
@@ -130,8 +136,7 @@ class LupaRm : Fragment(),LupaRmView {
         cust_usr_no_identitas: String?,
         cust_usr_no_jaminan: String?
     ) {
-
-
+        progressDialog.dismiss()
         txt_hasil_id.setText(pasien_rm)
         tv_notif.text = "Data Ditemukan Silahkan Copy Paste"
 

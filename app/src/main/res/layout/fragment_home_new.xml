@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment"
-    android:background="@color/ghost_white">
+    android:background="@drawable/bg_home">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="0dp"
-        android:background="@color/ghost_white">
+        android:background="@android:color/transparent">
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,28 +19,39 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <ImageView
+
+                    android:layout_centerVertical="true"
+                    android:id="@+id/img_logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:foregroundGravity="right"
+                    android:src="@drawable/logo"/>
+
 
                 <TextView
+                    android:layout_toEndOf="@id/img_logo"
                     android:id="@+id/tvHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-
+                    android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:text="Hi User !"
+                    android:text=""
                     android:textSize="18sp"
-
+                    android:textColor="@color/whiteTextColor"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:layout_toEndOf="@id/img_logo"
                     android:id="@+id/tvrs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvHeader"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:text="RSIA Muslimat Jombang"
-                    android:textColor="@color/black"
+                    android:textColor="@color/whiteTextColor"
                     android:textSize="22sp"
 
                     android:textStyle="bold" />
@@ -72,9 +83,11 @@
         <androidx.core.widget.NestedScrollView
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
+
             android:layout_height="match_parent"
-            android:layout_marginBottom="40dp">
+            >
           <RelativeLayout
+
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
@@ -87,8 +100,8 @@
                   android:layout_marginTop="@dimen/activity_horizontal_margin"
                   android:layout_marginBottom="5dp"
                   android:fontFamily="@font/arimo_bold"
-                  android:text="Kartu Registrasi Anda"
-                  android:textColor="@color/black"
+
+                  android:textColor="@color/ghost_white"
                   android:textSize="20sp" />
 
 
@@ -102,9 +115,9 @@
                   android:layout_marginBottom="5dp"
                   android:layout_toRightOf="@+id/text"
                   android:fontFamily="@font/arimo_bold"
-                  android:text="Geser >>> "
+
                   android:textAlignment="textEnd"
-                  android:textColor="@color/navy_blue.primary"
+                  android:textColor="#4CAF50"
                   android:textSize="12sp"
                   app:layout_constraintTop_toTopOf="parent" />
 
@@ -214,31 +227,28 @@
                   tools:listitem="@layout/item_kartu" />
 
 
-
-
               <TextView
-                  android:layout_below="@id/rv_card"
                   android:id="@+id/txt"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
+                  android:layout_below="@id/rv_card"
                   android:layout_marginStart="@dimen/activity_horizontal_margin"
                   android:text="Layanan Kami"
-                  android:textColor="@color/black"
-                  />
+                  android:textColor="@color/white" />
 
               <LinearLayout
-                  android:layout_below="@id/txt"
                   android:id="@+id/line1"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
+                  android:layout_below="@id/txt"
                   android:orientation="horizontal"
-                  android:weightSum="3"
-                  android:padding="5dp">
+                  android:padding="5dp"
+                  android:weightSum="3">
 
                   <androidx.cardview.widget.CardView
                       android:id="@+id/btn_pxlama"
                       android:layout_width="match_parent"
-                      android:layout_height="100dp"
+                      android:layout_height="match_parent"
                       android:layout_marginLeft="5dp"
                       android:layout_marginEnd="5dp"
                       android:layout_marginBottom="@dimen/activity_horizontal_margin"
@@ -250,6 +260,7 @@
 
 
                       app:cardElevation="5dp">
+
                       <LinearLayout
 
                           android:layout_width="match_parent"
@@ -260,18 +271,18 @@
 
                           <ImageView
 
-                              android:layout_gravity="center"
                               android:layout_width="60dp"
                               android:layout_height="60dp"
+                              android:layout_gravity="center"
                               android:src="@drawable/ic_registrasi" />
 
                           <TextView
                               android:layout_width="match_parent"
                               android:layout_height="wrap_content"
-                              android:textAlignment="center"
                               android:padding="5dp"
+                              android:text="Registrasi"
 
-                              android:text="Pasien Lama"
+                              android:textAlignment="center"
                               android:textColor="@color/black"
                               android:textSize="14sp" />
 
@@ -280,64 +291,65 @@
 
                   </androidx.cardview.widget.CardView>
 
-<!--                  <androidx.cardview.widget.CardView-->
-<!--                      android:id="@+id/btn_pxbaru"-->
-<!--                      android:layout_width="match_parent"-->
-<!--                      android:layout_height="wrap_content"-->
-<!--                      android:layout_marginLeft="5dp"-->
-<!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
-<!--                      android:layout_weight="1"-->
-<!--                      android:layout_marginEnd="5dp"-->
+                  <!--                  <androidx.cardview.widget.CardView-->
+                  <!--                      android:id="@+id/btn_pxbaru"-->
+                  <!--                      android:layout_width="match_parent"-->
+                  <!--                      android:layout_height="wrap_content"-->
+                  <!--                      android:layout_marginLeft="5dp"-->
+                  <!--                      android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+                  <!--                      android:layout_weight="1"-->
+                  <!--                      android:layout_marginEnd="5dp"-->
 
-<!--                      android:background="#fff"-->
+                  <!--                      android:background="#fff"-->
 
-<!--                      app:cardCornerRadius="10dp"-->
-
-
-<!--                      app:cardElevation="5dp">-->
-<!--                      <LinearLayout-->
-<!--                          android:layout_width="match_parent"-->
-<!--                          android:layout_height="wrap_content"-->
-<!--                          android:layout_marginTop="5dp"-->
-<!--                          android:layout_marginBottom="5dp"-->
-<!--                          android:orientation="vertical">-->
-
-<!--                          <ImageView-->
-
-<!--                              android:layout_gravity="center"-->
-<!--                              android:layout_width="60dp"-->
-<!--                              android:layout_height="60dp"-->
-<!--                              android:src="@drawable/ic_pasien_baru" />-->
-
-<!--                          <TextView-->
-<!--                              android:layout_width="match_parent"-->
-<!--                              android:layout_height="wrap_content"-->
-<!--                              android:textAlignment="center"-->
-<!--                              android:padding="5dp"-->
-
-<!--                              android:text="Pasien Baru"-->
-<!--                              android:textColor="@color/black"-->
-<!--                              android:textSize="14sp" />-->
-
-<!--                      </LinearLayout>-->
+                  <!--                      app:cardCornerRadius="10dp"-->
 
 
-<!--                  </androidx.cardview.widget.CardView>-->
+                  <!--                      app:cardElevation="5dp">-->
+                  <!--                      <LinearLayout-->
+                  <!--                          android:layout_width="match_parent"-->
+                  <!--                          android:layout_height="wrap_content"-->
+                  <!--                          android:layout_marginTop="5dp"-->
+                  <!--                          android:layout_marginBottom="5dp"-->
+                  <!--                          android:orientation="vertical">-->
+
+                  <!--                          <ImageView-->
+
+                  <!--                              android:layout_gravity="center"-->
+                  <!--                              android:layout_width="60dp"-->
+                  <!--                              android:layout_height="60dp"-->
+                  <!--                              android:src="@drawable/ic_pasien_baru" />-->
+
+                  <!--                          <TextView-->
+                  <!--                              android:layout_width="match_parent"-->
+                  <!--                              android:layout_height="wrap_content"-->
+                  <!--                              android:textAlignment="center"-->
+                  <!--                              android:padding="5dp"-->
+
+                  <!--                              android:text="Pasien Baru"-->
+                  <!--                              android:textColor="@color/black"-->
+                  <!--                              android:textSize="14sp" />-->
+
+                  <!--                      </LinearLayout>-->
+
+
+                  <!--                  </androidx.cardview.widget.CardView>-->
                   <androidx.cardview.widget.CardView
 
+                      android:id="@+id/btn_jadwal"
                       android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
+                      android:layout_height="match_parent"
                       android:layout_marginLeft="5dp"
+                      android:layout_marginEnd="5dp"
                       android:layout_marginBottom="@dimen/activity_horizontal_margin"
                       android:layout_weight="1"
-                      android:layout_marginEnd="5dp"
-                      android:id="@+id/btn_jadwal"
                       android:background="#fff"
 
                       app:cardCornerRadius="10dp"
 
 
                       app:cardElevation="5dp">
+
                       <LinearLayout
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
@@ -346,18 +358,18 @@
                           android:orientation="vertical">
 
                           <ImageView
-                              android:layout_gravity="center"
                               android:layout_width="60dp"
                               android:layout_height="60dp"
+                              android:layout_gravity="center"
                               android:src="@drawable/ic_doctor" />
 
                           <TextView
                               android:layout_width="match_parent"
                               android:layout_height="wrap_content"
-                              android:textAlignment="center"
                               android:padding="5dp"
-
                               android:text="Jadwal Dokter"
+
+                              android:textAlignment="center"
                               android:textColor="@color/black"
                               android:textSize="14sp" />
 
@@ -369,7 +381,7 @@
                   <androidx.cardview.widget.CardView
                       android:id="@+id/btn_cekantrian"
                       android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
+                      android:layout_height="match_parent"
                       android:layout_marginLeft="5dp"
                       android:layout_marginEnd="5dp"
                       android:layout_marginBottom="@dimen/activity_horizontal_margin"
@@ -381,6 +393,7 @@
 
 
                       app:cardElevation="5dp">
+
                       <LinearLayout
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
@@ -389,18 +402,18 @@
                           android:orientation="vertical">
 
                           <ImageView
-                              android:layout_gravity="center"
                               android:layout_width="60dp"
                               android:layout_height="60dp"
+                              android:layout_gravity="center"
                               android:src="@drawable/ic_antrian" />
 
                           <TextView
                               android:layout_width="match_parent"
                               android:layout_height="wrap_content"
-                              android:textAlignment="center"
                               android:padding="5dp"
+                              android:text="Cek Nomor Dilayani"
 
-                              android:text="Cek Antrian"
+                              android:textAlignment="center"
                               android:textColor="@color/black"
                               android:textSize="14sp" />
 
@@ -408,7 +421,6 @@
                       </LinearLayout>
 
                   </androidx.cardview.widget.CardView>
-
 
 
               </LinearLayout>
@@ -814,24 +826,8 @@
                   android:layout_marginBottom="5dp"
                   android:fontFamily="@font/arimo_bold"
                   android:text="Informasi Terbaru"
-                  android:textColor="@color/black"
+                  android:textColor="@color/white"
                   android:textSize="20sp" />
-              <TextView
-                  android:layout_below="@id/line4"
-                  android:id="@+id/textgeser2"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentEnd="true"
-                  android:layout_marginTop="@dimen/activity_horizontal_margin"
-                  android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                  android:layout_marginBottom="5dp"
-                  android:layout_toRightOf="@+id/textInfo"
-                  android:fontFamily="@font/arimo_bold"
-                  android:text="Geser >>> "
-                  android:textAlignment="textEnd"
-                  android:textColor="@color/navy_blue.primary"
-                  android:textSize="12sp"
-                  app:layout_constraintTop_toTopOf="parent" />
 
               <androidx.recyclerview.widget.RecyclerView
                   android:id="@+id/rv_info_new"
@@ -841,7 +837,7 @@
                   android:layout_marginLeft="@dimen/activity_horizontal_margin"
                   android:layout_marginTop="5dp"
                   android:layout_marginRight="@dimen/activity_horizontal_margin"
-                  android:layout_marginBottom="@dimen/activity_horizontal_margin"
+
                   android:orientation="vertical"
                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                   tools:listitem="@layout/item_info" />
@@ -849,23 +845,20 @@
 
 
               <TextView
-
-                  android:layout_below="@id/rv_info_new"
+                  android:background="@color/blue_700"
+                  android:padding="5px"
                   android:id="@+id/text_lihat_semua"
-                  android:layout_width="match_parent"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_alignParentEnd="true"
-
+                  android:layout_below="@+id/rv_info_new"
+                  android:layout_alignParentRight="true"
                   android:layout_marginEnd="@dimen/activity_horizontal_margin"
                   android:layout_marginBottom="5dp"
-                  android:layout_toRightOf="@+id/textInfo"
-                  android:fontFamily="@font/arimo_bold"
                   android:text="Lihat Semua Info"
-                  android:textAlignment="textEnd"
-                  android:textColor="@color/navy_blue.primary"
-                  android:textSize="18sp"
-                  app:layout_constraintTop_toTopOf="parent"
+                  android:textColor="@color/whiteTextColor"
                   />
+
+
           </RelativeLayout>
 
 

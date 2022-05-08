@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.view.isVisible
 
 import com.itrsiam.rsiamuslimat.DatePickerFragment
 
@@ -55,6 +56,7 @@ class JadwalFragment : Fragment(),ListPoliView,JadwalView {
         }
         btn_cari.onClick {
             jadwalPresenter.getJadwal(poli_id.toString(),tanggal.toString())
+            progress_bar_jadwal.visibility=(View.VISIBLE)
         }
 
     }
@@ -102,6 +104,7 @@ class JadwalFragment : Fragment(),ListPoliView,JadwalView {
     }
 
     override fun onGetJadwal(data: List<JadwalResultItem?>?) {
+        progress_bar_jadwal.visibility=(View.GONE)
         rv_jadwal.adapter=JadwalListAdapter(data as List<JadwalResultItem>,object :JadwalListAdapter.onClickItem{
             override fun clicked(item: JadwalResultItem?) {
 

@@ -34,6 +34,9 @@ import com.itrsiam.rsiamuslimat.poli.ListPoliView
 import com.itrsiam.rsiamuslimat.poli.PoliAdapter
 import com.itrsiam.rsiamuslimat.poli.PoliResultItem
 import kotlinx.android.synthetic.main.bpjs_fragment.*
+import kotlinx.android.synthetic.main.bpjs_fragment.inputbpjs
+import kotlinx.android.synthetic.main.bpjs_fragment.inputlanjutbpjs
+import kotlinx.android.synthetic.main.bpjs_fragment_old.*
 import kotlinx.android.synthetic.main.input_pasien_bpjs.*
 import kotlinx.android.synthetic.main.lanjutanformbpjs.*
 import org.jetbrains.anko.alert
@@ -76,7 +79,7 @@ class BpjsFragment : Fragment(), CekRMView
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        ;         val view= inflater.inflate(R.layout.bpjs_fragment, container, false)
+        ;         val view= inflater.inflate(R.layout.bpjs_fragment_old, container, false)
         (activity as AppCompatActivity).supportActionBar
         (activity as AppCompatActivity).supportActionBar?.title = "Pendaftaran Pasien BPJS"
         return view
@@ -181,7 +184,7 @@ class BpjsFragment : Fragment(), CekRMView
                     startActivity(intent)
                 }
 
-                }
+            }
         }
 
 
@@ -242,7 +245,7 @@ class BpjsFragment : Fragment(), CekRMView
         cust_usr_no_jaminan: String?
     ) {
         progressDialog.dismiss()
-      inputbpjs.isVisible=true
+        inputbpjs.isVisible=true
         txtrmhasil.setText(pasien_rm)
         txtnama.setText(pasien_nama)
         txttgllahir.setText(pasien_tl)
@@ -253,6 +256,7 @@ class BpjsFragment : Fragment(), CekRMView
         pasienid = pasien_id
         nm_px = pasien_nama
         rm_px = pasien_rm
+
 
     }
 

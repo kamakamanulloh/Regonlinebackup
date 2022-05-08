@@ -1,20 +1,20 @@
 package com.itrsiam.rsiamuslimat.pasien.asuransi
 
+
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.itrsiam.rsiamuslimat.DatePickerFragment
-
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalAdapter
@@ -23,8 +23,12 @@ import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalResultItem
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalView
 import com.itrsiam.rsiamuslimat.jumlah.JumlahPresenter
 import com.itrsiam.rsiamuslimat.jumlah.JumlahView
-import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
+import com.itrsiam.rsiamuslimat.kartu.EkartuResultItem
+import com.itrsiam.rsiamuslimat.kartu.KartuFragment
+import com.itrsiam.rsiamuslimat.kartu.KartuPresenter
+import com.itrsiam.rsiamuslimat.kartu.KartuView
 import com.itrsiam.rsiamuslimat.pasien.CekRMView
+import com.itrsiam.rsiamuslimat.pasien.EkartuPasienAdapter
 import com.itrsiam.rsiamuslimat.pasien.PasienPresenter
 import com.itrsiam.rsiamuslimat.pasien.SkringActivity
 import com.itrsiam.rsiamuslimat.poli.ListPoliPresenter
@@ -32,32 +36,19 @@ import com.itrsiam.rsiamuslimat.poli.ListPoliView
 import com.itrsiam.rsiamuslimat.poli.PoliAdapter
 import com.itrsiam.rsiamuslimat.poli.PoliResultItem
 import kotlinx.android.synthetic.main.asuransi_fragment.*
-import kotlinx.android.synthetic.main.asuransi_fragment.inputasuransi
 import kotlinx.android.synthetic.main.input_pasien_asuransi.*
-import kotlinx.android.synthetic.main.input_pasien_asuransi.btnnext
-import kotlinx.android.synthetic.main.input_pasien_asuransi.btntgl
-import kotlinx.android.synthetic.main.input_pasien_asuransi.txtalamat
-import kotlinx.android.synthetic.main.input_pasien_asuransi.txthp
-import kotlinx.android.synthetic.main.input_pasien_asuransi.txtnama
-import kotlinx.android.synthetic.main.input_pasien_asuransi.txtrmhasil
-import kotlinx.android.synthetic.main.input_pasien_asuransi.txttgllahir
-import kotlinx.android.synthetic.main.input_pasien_bpjs.*
-
-
-import kotlinx.android.synthetic.main.pasien_umum_fragment.txtrm
-
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.support.v4.alert
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,AsuransiView ,
-    JumlahView {
+    JumlahView,KartuView {
 
     companion object {
         fun newInstance() = AsuransiFragment()
     }
+    private lateinit var kartuPresenter: KartuPresenter
     private   lateinit var jumlahPresenter: JumlahPresenter
     private lateinit var viewModel: AsuransiViewModel
     private lateinit var poliAdapter: PoliAdapter
@@ -101,40 +92,33 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
         asuransiPresenter.getAsuransi()
         listpolipresenter= ListPoliPresenter(this)
         progressDialog= ProgressDialog(requireContext())
-
+        kartuPresenter= KartuPresenter(this)
+        kartuPresenter.ekartu(Utils.user_id.toString())
         jadwalPresenter= JadwalPresenter(this)
         datePicker = DatePickerFragment(requireContext(), true)
-        btncarirmasuransi.setOnClickListener(View.OnClickListener {
-            progressDialog.setMessage("Application is loading, please wait")
-            progressDialog.show()
 
-            val norm = txtrm.text.toString()
-            presenter.cekrm(norm,tanggal.toString())
-
-        })
-        btntgllahirasu.setOnClickListener(View.OnClickListener {
-            onDate()
-        })
-
+        progressDialog.setMessage("Proses Ambil Data Mohon Tunggu")
+        progressDialog.show()
         btntgl.setOnClickListener(View.OnClickListener {
-           if (txtrmhasil.equals(" ")){
-               alert {
-                   message="Pastikan RM Anda Terdaftar"
-               }
-
-           }
-            else{
-               onDateperiksa()
-           }
+//           if (txtrmhasil.equals(" ")){
+//               alert {
+//                   message="Pastikan RM Anda Terdaftar"
+//               }
+//
+//           }
+//            else{
+//               onDateperiksa()
+//           }
+            onDateperiksa()
         })
 
 
 
 
-        luparmasuransi.onClick {
-            var lupaRm = LupaRm()
+        tv_pasien.onClick {
+            val kartuFragment = KartuFragment()
             fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, lupaRm)
+                ?.replace(R.id.nav_host_fragment, kartuFragment)
                 ?.addToBackStack(null)
                 ?.commit()
         }
@@ -182,21 +166,21 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
 
     }
     private fun onDate() {
-        val cal = Calendar.getInstance()
-        val d = cal.get(Calendar.DAY_OF_MONTH)
-        val m = cal.get(Calendar.MONTH)
-        val y = cal.get(Calendar.YEAR)
-        datePicker.showDialog(d, m, y, object : DatePickerFragment.Callback {
-            @SuppressLint("SetTextI18n")
-            override fun onDateSelected(dayofMonth: Int, month: Int, year: Int) {
-                val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
-                val mon = month + 1
-
-                val monthStr = if (mon < 10) "0${mon}" else "${mon}"
-                tvtlasu.text = ("$dayStr-$mon-$year")
-                tanggal =  "$year-$monthStr-$dayStr"
-            }
-        })
+//        val cal = Calendar.getInstance()
+//        val d = cal.get(Calendar.DAY_OF_MONTH)
+//        val m = cal.get(Calendar.MONTH)
+//        val y = cal.get(Calendar.YEAR)
+//        datePicker.showDialog(d, m, y, object : DatePickerFragment.Callback {
+//            @SuppressLint("SetTextI18n")
+//            override fun onDateSelected(dayofMonth: Int, month: Int, year: Int) {
+//                val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
+//                val mon = month + 1
+//
+//                val monthStr = if (mon < 10) "0${mon}" else "${mon}"
+//                tvtlasu.text = ("$dayStr-$mon-$year")
+//                tanggal =  "$year-$monthStr-$dayStr"
+//            }
+//        })
     }
 
     private fun onDateperiksa() {
@@ -235,7 +219,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
     ) {
         progressDialog.dismiss()
         inputasuransi.isVisible=true
-        txtrmhasil.setText(pasien_rm)
+
         txtnama.setText(pasien_nama)
         txttgllahir.setText(pasien_tl)
         txtalamat.setText(pasien_alamat)
@@ -377,6 +361,43 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
     @SuppressLint("SetTextI18n")
     override fun onFailedJumlah(msg: String) {
 
+
+    }
+
+    override fun onSuccessAdd(msg: String?) {
+
+    }
+
+    override fun onSuccessDel(msg: String?) {
+
+    }
+
+    override fun onFailedAdd(msg: String?) {
+
+    }
+
+    override fun onSuccessGetList(data: List<EkartuResultItem?>?) {
+        progressDialog.dismiss()
+      rv_card_pasien.adapter= EkartuPasienAdapter(data as List<EkartuResultItem>,
+          object : EkartuPasienAdapter.onClickItem{
+              override fun clicked(item: EkartuResultItem?) {
+
+                  tv_no_rm.text=item?.custUsrKode
+                  tvtl.text=item?.custUsrTglLahir
+                  inputasuransi.isVisible=true
+                  pasienid = item?.custUsrId
+                  nm_px = item?.custUsrNama
+                  rm_px = item?.custUsrKode
+
+                  txthp.setText(Utils.nohp)
+                  txtnama.setText(item?.custUsrNama)
+                  txtalamat.setText(item?.custUsrAlamat)
+
+              }
+          })
+    }
+
+    override fun onFailureAdd(msg: String?) {
 
     }
 

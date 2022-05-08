@@ -4,20 +4,32 @@ import com.google.gson.annotations.SerializedName
 
 data class CekKepesertaanResponse(
 
-	@field:SerializedName("metaData")
-	val metaData: MetaData? = null,
+	@field:SerializedName("code")
+	val code: String? = null,
 
 	@field:SerializedName("response")
-	val response: Response? = null
+	val response: Response? = null,
+
+	@field:SerializedName("message")
+	val message: String? = null
+)
+
+data class JenisPeserta(
+
+	@field:SerializedName("keterangan")
+	val keterangan: String? = null,
+
+	@field:SerializedName("kode")
+	val kode: String? = null
 )
 
 data class Peserta(
 
-	@field:SerializedName("statusPeserta")
-	val statusPeserta: StatusPeserta? = null,
-
 	@field:SerializedName("tglTAT")
 	val tglTAT: String? = null,
+
+	@field:SerializedName("statusPeserta")
+	val statusPeserta: StatusPeserta? = null,
 
 	@field:SerializedName("provUmum")
 	val provUmum: ProvUmum? = null,
@@ -65,13 +77,16 @@ data class Peserta(
 	val informasi: Informasi? = null
 )
 
-data class JenisPeserta(
+data class Informasi(
 
-	@field:SerializedName("keterangan")
-	val keterangan: String? = null,
+	@field:SerializedName("prolanisPRB")
+	val prolanisPRB: Any? = null,
 
-	@field:SerializedName("kode")
-	val kode: String? = null
+	@field:SerializedName("noSKTM")
+	val noSKTM: Any? = null,
+
+	@field:SerializedName("dinsos")
+	val dinsos: Any? = null
 )
 
 data class StatusPeserta(
@@ -83,6 +98,15 @@ data class StatusPeserta(
 	val kode: String? = null
 )
 
+data class Umur(
+
+	@field:SerializedName("umurSekarang")
+	val umurSekarang: String? = null,
+
+	@field:SerializedName("umurSaatPelayanan")
+	val umurSaatPelayanan: String? = null
+)
+
 data class Mr(
 
 	@field:SerializedName("noTelepon")
@@ -90,15 +114,6 @@ data class Mr(
 
 	@field:SerializedName("noMR")
 	val noMR: String? = null
-)
-
-data class MetaData(
-
-	@field:SerializedName("code")
-	val code: String? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null
 )
 
 data class Cob(
@@ -116,27 +131,6 @@ data class Cob(
 	val tglTMT: Any? = null
 )
 
-data class Informasi(
-
-	@field:SerializedName("prolanisPRB")
-	val prolanisPRB: Any? = null,
-
-	@field:SerializedName("noSKTM")
-	val noSKTM: Any? = null,
-
-	@field:SerializedName("dinsos")
-	val dinsos: Any? = null
-)
-
-data class Umur(
-
-	@field:SerializedName("umurSekarang")
-	val umurSekarang: String? = null,
-
-	@field:SerializedName("umurSaatPelayanan")
-	val umurSaatPelayanan: String? = null
-)
-
 data class HakKelas(
 
 	@field:SerializedName("keterangan")
@@ -146,12 +140,6 @@ data class HakKelas(
 	val kode: String? = null
 )
 
-data class Response(
-
-	@field:SerializedName("peserta")
-	val peserta: Peserta? = null
-)
-
 data class ProvUmum(
 
 	@field:SerializedName("nmProvider")
@@ -159,4 +147,10 @@ data class ProvUmum(
 
 	@field:SerializedName("kdProvider")
 	val kdProvider: String? = null
+)
+
+data class Response(
+
+	@field:SerializedName("peserta")
+	val peserta: Peserta? = null
 )

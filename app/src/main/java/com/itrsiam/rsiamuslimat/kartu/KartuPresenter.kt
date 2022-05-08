@@ -44,7 +44,7 @@ class KartuPresenter(val kartuView: KartuView) {
                     if (response.isSuccessful) {
                         val status = response.body()?.value
                         if (status == 202) {
-                            kartuView.onSuccessGet(response.body()!!.result)
+                            kartuView.onSuccessGetList(response.body()!!.result)
                         } else {
                             kartuView.onFailedAdd("Cek Koneksi Internet")
                         }

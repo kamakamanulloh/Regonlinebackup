@@ -1,3 +1,4 @@
+
 package com.itrsiam.rsiamuslimat.cek_antrian
 
 import android.annotation.SuppressLint
@@ -123,7 +124,7 @@ class CekAntrianActivity : AppCompatActivity(), ListPoliView, JadwalView,CekAntr
                 dokterid=data[position].id_dokter.toString()
                 nm_dokter=data[position].dokterNama.toString()
                 jam=data[position].jadwalDokterJamMulai.toString()
-
+                progress_bar_antrian.visibility=(View.VISIBLE)
                 cekAntrianPresenter.getAntrian(poli_id.toString(), dokterid.toString())
 
 
@@ -152,7 +153,7 @@ class CekAntrianActivity : AppCompatActivity(), ListPoliView, JadwalView,CekAntr
         tv_nomor.text=reg_no_antrian
         tvPoli.text= "$poli_nama ( $dokter_nama )"
 
-
+        progress_bar_antrian.visibility=(View.GONE)
 
     }
 

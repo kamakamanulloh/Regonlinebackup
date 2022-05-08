@@ -22,12 +22,12 @@ class TiketAdapter (val data:List<TiketResults>?, private val click: onClickItem
 
     override fun onBindViewHolder(holder: TiketAdapter.MyHolder, position: Int) {
         holder.onBind(data?.get(position))
-        holder.itemView.onClick {
 
-            click.clicked(data?.get(position))
-        }
         holder.itemView.btn_detail.onClick {
             click.clicked(data?.get(position))
+        }
+        holder.itemView.btn_batal.onClick {
+            click.clickcancel(data?.get(position))
         }
     }
 
@@ -65,6 +65,7 @@ class TiketAdapter (val data:List<TiketResults>?, private val click: onClickItem
 
     interface onClickItem{
         fun clicked (item: TiketResults?)
+        fun clickcancel(item: TiketResults?)
 
 
     }

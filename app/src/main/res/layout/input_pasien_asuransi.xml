@@ -5,18 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nomor Rekam Medis (RM)"
-        android:layout_marginBottom="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtrmhasil"
-        android:editable="false"
-        android:inputType="none"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
 
     <TextView
         android:layout_width="match_parent"

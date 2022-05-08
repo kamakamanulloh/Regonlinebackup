@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".pasien.umum.PasienUmumFragment"
+    android:layout_marginBottom="40dp"
+
+
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="Pasien BPJS"
+        app:titleTextColor="@color/whiteTextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+
+                app:cardCornerRadius="10dp"
+
+
+                app:cardElevation="5dp"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin">
+                <LinearLayout
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:textStyle="bold"
+
+                        android:text="* Registrasi dimulai h-3 sampai h-1 (selama kuota masih ada)."/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="* Registrasi dapat dilakukan mulai pukul 00.00 s/d 18.00."/>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Masukkan Nomor Rekam Medis (RM)"
+                android:layout_marginBottom="5dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtrm"
+                android:inputType="number"
+                android:layout_marginBottom="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lupa RM ?"
+                android:id="@+id/luparm"
+                android:textColor="@color/red"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textAlignment="textEnd"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:text="Pilih Tanggal Lahir"
+                    android:id="@+id/btntgllahirbpjs"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/whiteTextColor"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="textStart"
+
+
+                    android:id="@+id/tvtlbpjs"
+
+                    tools:ignore="RtlCompat" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:weightSum="2">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:text="Cari"
+                    android:id="@+id/btncarirmbpjs"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/whiteTextColor"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:text="Scan Kartu"
+                    android:textColor="@color/whiteTextColor"/>
+
+            </LinearLayout>
+
+            <include
+
+                android:id="@+id/inputbpjs"
+                layout="@layout/input_pasien_bpjs"
+                android:visibility="gone"/>
+
+            <include
+                android:id="@+id/inputlanjutbpjs"
+                layout="@layout/lanjutanformbpjs"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
+
+
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>

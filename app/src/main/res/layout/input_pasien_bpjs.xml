@@ -7,21 +7,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nomor Rekam Medis (RM)"
-        android:layout_marginBottom="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtrmhasil"
-        android:editable="false"
-        android:inputType="none"
-
-
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="Nama Pasien"
         android:layout_marginBottom="5dp"/>
     <EditText
@@ -29,7 +14,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtnama"
         android:editable="false"
-
         android:inputType="none"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
@@ -43,8 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtalamat"
-        android:inputType="none"
         android:editable="false"
+        android:inputType="none"
         android:lines="4"
         android:maxLines="4"
         android:minLines="3"
@@ -56,19 +40,7 @@
 
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tanggal Lahir Pasien"
-        android:layout_marginBottom="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txttgllahir"
-        android:inputType="none"
-        android:editable="false"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        />
+
 
     <TextView
         android:layout_width="match_parent"
@@ -79,9 +51,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txthp"
-        android:inputType="none"
+        android:inputType="phone"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
+
 
     <TextView
         android:layout_width="match_parent"
@@ -139,18 +112,22 @@
         />
 
     <Button
+
         android:id="@+id/btn_kepesertaan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:text="Cek Kepesertaan"
         android:textColor="@color/white"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:text="Nama Peserta"
-        android:layout_marginBottom="5dp"/>
+        android:visibility="visible" />
     <EditText
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtnamapeserta"
@@ -160,6 +137,7 @@
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
     <TextView
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Status Peserta"
@@ -169,17 +147,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtstatuspeserta"
         android:editable="false"
-
+        android:visibility="visible"
         android:inputType="none"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
 
     <TextView
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Jenis Peserta"
         android:layout_marginBottom="5dp"/>
     <EditText
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtjenispeserta"
@@ -190,11 +170,13 @@
         />
 
     <TextView
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Asal Faskes"
         android:layout_marginBottom="5dp"/>
     <EditText
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtfaskespeserta"

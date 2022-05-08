@@ -179,7 +179,9 @@ class KartuFragment : Fragment(),KartuView {
     }
 
     override fun onSuccessDel(msg: String?) {
-
+        alert { message=msg.toString() }
+            .show()
+        kartuPresenter.ekartu(Utils.user_id.toString())
     }
 
     override fun onFailedAdd(msg: String?) {
@@ -190,7 +192,7 @@ class KartuFragment : Fragment(),KartuView {
         }.show()
     }
 
-    override fun onSuccessGet(data: List<EkartuResultItem?>?) {
+    override fun onSuccessGetList(data: List<EkartuResultItem?>?) {
         progressDialog.dismiss()
         spinner_rm.adapter=EkartuAdapter(requireContext(), data as List<EkartuResultItem>)
         ekartuAdapter= EkartuAdapter(requireContext(), data)

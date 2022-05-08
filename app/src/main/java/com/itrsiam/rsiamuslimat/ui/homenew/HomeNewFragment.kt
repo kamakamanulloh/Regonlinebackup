@@ -2,6 +2,7 @@ package com.itrsiam.rsiamuslimat.ui.homenew
 
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -21,6 +22,7 @@ import com.itrsiam.rsiamuslimat.pasien.NoAntrianView
 import com.itrsiam.rsiamuslimat.pasien.TicketViewActivity
 import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiFragment
 import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
+import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragmentNew
 import com.itrsiam.rsiamuslimat.pasien.umum.PasienUmumFragment
 import com.itrsiam.rsiamuslimat.pengingat_kontrol.PengingatKontrolFragment
 import com.itrsiam.rsiamuslimat.petunjuk.PetunjukFragment
@@ -48,7 +50,7 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var progressDialog : ProgressDialog
     private lateinit var presenter: TiketPresenter
     private lateinit var infoPresenter: InfoPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,10 +67,13 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
     ): View? {
         // Inflate the layout for this fragment
         val root= inflater.inflate(R.layout.fragment_home_new, container, false)
+        progressDialog= ProgressDialog(requireContext())
         presenter= TiketPresenter(this)
         infoPresenter= InfoPresenter(this)
         presenter.getKartu(Utils.user_id!!)
         infoPresenter.getInfoTerbaru()
+        progressDialog.setMessage("Sedang Menyiapkan Mohon Tunggu Sebentar")
+        progressDialog.show()
         return root
     }
 
@@ -120,6 +125,7 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
                 ?.addToBackStack(null)
                 ?.commit()
         }
+
     }
 
     private fun jenisLayanan() {
@@ -136,7 +142,7 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
 
         }
         view.bpjs.setOnClickListener {
-            var bpjs = BpjsFragment()
+            var bpjs = BpjsFragmentNew()
             fragmentManager?.beginTransaction()
                 ?.replace(R.id.nav_host_fragment, bpjs)
                 ?.addToBackStack(null)
@@ -235,6 +241,9 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
 
 
 
+        text.text="Kartu Registrasi Anda"
+
+
         rv_card.adapter= KartuRegAdapter(data as List<TiketResults>,object : KartuRegAdapter.onClickItem{
             override fun clicked(item: TiketResults?) {
                 startActivity<TicketViewActivity>("dataItem" to item)
@@ -257,16 +266,21 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
     }
 
     override fun onFailed(msg: String) {
+        text.text="Belum Ada Kunjungan"
 
+        textgeser.visibility=View.GONE
     }
 
     override fun onSuccessInfo(data: List<ResultItemInfo?>?) {
         rv_info_new.adapter= InfoAdapter(data as List<ResultItemInfo>)
+        progressDialog.dismiss()
     }
 
     override fun onFailedInfo(msg: String) {
+        progressDialog.dismiss()
         alert {
             message=msg
         }.show()
     }
+
 }

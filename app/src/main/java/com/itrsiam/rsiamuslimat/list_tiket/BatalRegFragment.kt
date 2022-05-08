@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
 import kotlinx.android.synthetic.main.fragment_batal_reg.*
-import kotlinx.android.synthetic.main.tiket_fragment.progress_bar
+
 import org.jetbrains.anko.support.v4.alert
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,7 +44,12 @@ class BatalRegFragment : Fragment(),TiketView {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_batal_reg, container, false)
+        val v= inflater.inflate(R.layout.fragment_batal_reg, container, false)
+        progressDialog= ProgressDialog(requireContext())
+        progressDialog.setMessage("Proses Ambil Data Mohon Tunggu")
+        progressDialog.show()
+
+        return v
     }
 
     companion object {
@@ -74,7 +79,7 @@ class BatalRegFragment : Fragment(),TiketView {
     }
 
     override fun onGetTiket(data: List<TiketResults?>?) {
-        progress_bar.visibility=(View.GONE)
+        progressDialog.dismiss()
 
         rv_batal.adapter=BatalAdapter(data as List<TiketResults>,object :BatalAdapter.onClickItem{
             override fun clicked(item: TiketResults?) {
@@ -101,8 +106,9 @@ class BatalRegFragment : Fragment(),TiketView {
         })
     }
 
-    override fun onFailedGetTiket(msg: String) {
 
+    override fun onFailedGetTiket(msg: String) {
+        progressDialog.dismiss()
     }
 
     override fun onGet(msg: String) {

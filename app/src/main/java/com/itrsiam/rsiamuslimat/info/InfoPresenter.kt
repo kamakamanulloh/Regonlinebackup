@@ -51,7 +51,7 @@ class InfoPresenter(val infoView: InfoView) {
                 }
 
                 override fun onFailure(call: Call<InfoResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
+
                 }
 
             })

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama Pasien"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtnama"
+        android:editable="false"
+
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alamat Pasien"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtalamat"
+        android:inputType="none"
+        android:editable="false"
+        android:lines="4"
+        android:maxLines="4"
+        android:minLines="3"
+        android:scrollbars="vertical"
+
+
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Telepon / No Hp"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txthp"
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No KTP"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noktp"
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No BPJS"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nobpjs"
+        android:inputType="text"
+        android:singleLine="true"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <!--        <TextView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Jenis Kontrol"-->
+    <!--            android:layout_marginBottom="5dp"/>-->
+    <!--        <Spinner-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/jns_kontrol"-->
+    <!--            android:entries="@array/bpjs"-->
+
+    <!--            android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+    <!--            />-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Rujukan"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/norujukan"
+        android:inputType="text"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/btn_kepesertaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Cek Kepesertaan"
+        android:textColor="@color/white"/>
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama Peserta"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtnamapeserta"
+        android:editable="false"
+
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status Peserta"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtstatuspeserta"
+        android:editable="false"
+
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jenis Peserta"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtjenispeserta"
+        android:editable="false"
+
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asal Faskes"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtfaskespeserta"
+        android:editable="false"
+
+        android:inputType="none"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        />
+
+
+
+
+
+
+</LinearLayout>

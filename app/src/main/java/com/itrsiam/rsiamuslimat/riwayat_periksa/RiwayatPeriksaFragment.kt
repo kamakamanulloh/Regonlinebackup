@@ -188,7 +188,7 @@ class RiwayatPeriksaFragment : Fragment(),RiwayatPeriksaView,KartuView {
 
     }
 
-    override fun onSuccessGet(data: List<EkartuResultItem?>?) {
+    override fun onSuccessGetList(data: List<EkartuResultItem?>?) {
         progressDialog.dismiss()
         spinner_rm.adapter= EkartuAdapter(requireContext(), data as List<EkartuResultItem>)
         ekartuAdapter= EkartuAdapter(requireContext(), data)

@@ -6,7 +6,7 @@ interface KartuView {
     fun onSuccessAdd(msg: String?)
     fun onSuccessDel(msg: String?)
     fun onFailedAdd (msg : String?)
-    fun onSuccessGet(data: List<EkartuResultItem?>?)
+    fun onSuccessGetList(data: List<EkartuResultItem?>?)
 
 
 

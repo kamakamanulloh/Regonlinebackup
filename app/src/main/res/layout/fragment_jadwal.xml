@@ -28,6 +28,8 @@
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         />
 
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,9 +47,9 @@
         android:text="Pilih Tanggal"
         android:textColor="@color/whiteTextColor"
         android:layout_marginBottom="5dp"
-
-
         />
+
+
     <TextView
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
@@ -56,16 +58,23 @@
         android:text=" "
         android:id="@+id/tvtgl"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:text="Cari"
         android:id="@+id/btn_cari"/>
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progress_bar_jadwal"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

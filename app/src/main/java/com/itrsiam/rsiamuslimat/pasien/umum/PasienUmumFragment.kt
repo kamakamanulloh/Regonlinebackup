@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
@@ -25,33 +24,31 @@ import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalResultItem
 import com.itrsiam.rsiamuslimat.jadwal_dokter.JadwalView
 import com.itrsiam.rsiamuslimat.jumlah.JumlahPresenter
 import com.itrsiam.rsiamuslimat.jumlah.JumlahView
-import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
+import com.itrsiam.rsiamuslimat.kartu.EkartuResultItem
+import com.itrsiam.rsiamuslimat.kartu.KartuFragment
+import com.itrsiam.rsiamuslimat.kartu.KartuPresenter
+import com.itrsiam.rsiamuslimat.kartu.KartuView
 import com.itrsiam.rsiamuslimat.pasien.CekRMView
+import com.itrsiam.rsiamuslimat.pasien.EkartuPasienAdapter
 import com.itrsiam.rsiamuslimat.pasien.PasienPresenter
 import com.itrsiam.rsiamuslimat.pasien.SkringActivity
+import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
 import com.itrsiam.rsiamuslimat.poli.ListPoliPresenter
 import com.itrsiam.rsiamuslimat.poli.ListPoliView
 import com.itrsiam.rsiamuslimat.poli.PoliAdapter
 import com.itrsiam.rsiamuslimat.poli.PoliResultItem
 import kotlinx.android.synthetic.main.input_pasien_umum.*
+
 import kotlinx.android.synthetic.main.pasien_umum_fragment.*
-
-import kotlinx.android.synthetic.main.pasien_umum_fragment.luparm
-import kotlinx.android.synthetic.main.pasien_umum_fragment.toolbar
-
-import kotlinx.android.synthetic.main.pasien_umum_fragment.txtrm
 import kotlinx.android.synthetic.main.persetujuan.view.*
-
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
-import retrofit2.Call
-import retrofit2.Callback
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahView{
+class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahView,KartuView{
 
     companion object {
         fun newInstance() = PasienUmumFragment()
@@ -65,6 +62,7 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
     private lateinit var jadwalPresenter: JadwalPresenter
     private lateinit var poliAdapter: PoliAdapter
     private lateinit var listpolipresenter: ListPoliPresenter
+    private lateinit var kartuPresenter: KartuPresenter
     var tanggal: String? =null
     var poli_id: String? =null
     var jadwal_id: String? =null
@@ -82,7 +80,7 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
     private lateinit var progressDialog : ProgressDialog
     lateinit var datePicker: DatePickerFragment
     var scannedResult: String = ""
-
+    var sisa: Int? =null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -108,48 +106,35 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
         presenter=PasienPresenter(this)
         jadwalPresenter= JadwalPresenter(this)
         jumlahPresenter= JumlahPresenter(this)
-        btnscanrm.onClick {
-            IntentIntegrator(getActivity()).initiateScan()
-        }
-        btncarirm.setOnClickListener(View.OnClickListener {
-            val norm = txtrm.text.toString()
-            if (norm.isEmpty() || tvtl.text.toString().isEmpty()){
-                txtrm.error="Kolom Harus Diisi"
-                tvtl.error="Kolom Harus Diisi"
-            }
-            else{
-                progressDialog.setMessage("Application is loading, please wait")
-                progressDialog.show()
-                presenter.cekrm(norm,tanggal_lahir.toString())
-            }
-
-
-
-        })
-        btntgllahir.setOnClickListener(View.OnClickListener {
-            onDate()
-        })
-        luparm.onClick {
-            var lupaRm = LupaRm()
+        kartuPresenter= KartuPresenter(this)
+        kartuPresenter.ekartu(Utils.user_id.toString())
+        progressDialog.setMessage("Proses Ambil Data Mohon Tunggu Dahulu")
+        progressDialog.show()
+        tv_pasien.onClick {
+            var kartuFragment = KartuFragment()
             fragmentManager?.beginTransaction()
-                ?.replace(R.id.nav_host_fragment, lupaRm)
+                ?.replace(R.id.nav_host_fragment, kartuFragment)
                 ?.addToBackStack(null)
                 ?.commit()
+
         }
+
 //        baseUrl = "http://103.53.78.78/api_regonline/"
 //        fetchData();
+
+
        btntgl.setOnClickListener(View.OnClickListener {
-           if (txtrmhasil.equals(" ")){
-               alert {
-                   message="Pastikan RM Anda Terdaftar"
-               }
-
-           }
-           else{
-               onDateperiksa()
-
-           }
-
+//           if (txtrmhasil.equals(" ")){
+//               alert {
+//                   message="Pastikan RM Anda Terdaftar"
+//               }
+//
+//           }
+//           else{
+//               onDateperiksa()
+//
+//           }
+           onDateperiksa()
        })
 
 
@@ -162,7 +147,7 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
                         message="Mohon Maaf Pendaftaran Maksimal h-1 Sebelum Tanggal Kunjungan Silahkan Pilih Tanggal Laiinya"
                     }.show()
                 }
-                jml.text.toString() == "Sisa Kuota : 0" -> {
+                sisa == 0 -> {
                     requireContext().alert {
                         message="Mohon Maaf Kuota Sudah Penuh Silahkan Pilih Tanggal Laiinya"
                     }.show()
@@ -287,22 +272,22 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
     }
 
 
-    private fun onDate() {
-        val cal = Calendar.getInstance()
-        val d = cal.get(Calendar.DAY_OF_MONTH)
-        val m = cal.get(Calendar.MONTH)
-        val y = cal.get(Calendar.YEAR)
-        datePicker.showDialog(d, m, y, object : DatePickerFragment.Callback {
-            @SuppressLint("SetTextI18n")
-            override fun onDateSelected(dayofMonth: Int, month: Int, year: Int) {
-                val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
-                val mon = month + 1
-                val monthStr = if (mon < 10) "0${mon}" else "${mon}"
-                tvtl.text = ("$dayStr-$mon-$year")
-                tanggal_lahir = "$year-$monthStr-$dayStr"
-            }
-        })
-    }
+//    private fun onDate() {
+//        val cal = Calendar.getInstance()
+//        val d = cal.get(Calendar.DAY_OF_MONTH)
+//        val m = cal.get(Calendar.MONTH)
+//        val y = cal.get(Calendar.YEAR)
+//        datePicker.showDialog(d, m, y, object : DatePickerFragment.Callback {
+//            @SuppressLint("SetTextI18n")
+//            override fun onDateSelected(dayofMonth: Int, month: Int, year: Int) {
+//                val dayStr = if (dayofMonth < 10) "0${dayofMonth}" else "${dayofMonth}"
+//                val mon = month + 1
+//                val monthStr = if (mon < 10) "0${mon}" else "${mon}"
+//                tvtl.text = ("$dayStr-$mon-$year")
+//                tanggal_lahir = "$year-$monthStr-$dayStr"
+//            }
+//        })
+//    }
 
 //    private fun onDateperiksa() {
 //        val c = Calendar.getInstance()
@@ -342,9 +327,9 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
         ) {
             progressDialog.dismiss()
             inputumum.isVisible=true
-            txtrmhasil.setText(pasien_rm)
+//            txtrmhasil.setText(pasien_rm)
             txtnama.setText(pasien_nama)
-            txttgllahir.setText(pasien_tl)
+//            txttgllahir.setText(pasien_tl)
             txtalamat.setText(pasien_alamat)
             txthp.setText(com.itrsiam.rsiamuslimat.api.Utils.nohp)
             pasienid=pasien_id
@@ -474,25 +459,58 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
     override fun onSuccessJumlah(msg: String) {
         jumlah=msg.toInt()
         val kuotajadwal=kuota?.toInt()
-        val sisa= kuotajadwal?.minus(jumlah!!)
+        sisa= kuotajadwal?.minus(jumlah!!)
         jml.text = "Sisa Kuota : $sisa"
         tv_kuota.text="Kuota : $kuotajadwal"
 
 
     }
 
-    @SuppressLint("SetTextI18n")
+
     override fun onFailedJumlah(msg: String) {
 
+
+    }
+
+    override fun onSuccessAdd(msg: String?) {
+
+    }
+
+    override fun onSuccessDel(msg: String?) {
+
+    }
+
+    override fun onFailedAdd(msg: String?) {
+
+    }
+
+    override fun onSuccessGetList(data: List<EkartuResultItem?>?) {
+        progressDialog.dismiss()
+        rv_card_pasien.adapter=EkartuPasienAdapter(data as List<EkartuResultItem>,
+            object :EkartuPasienAdapter.onClickItem{
+                override fun clicked(item: EkartuResultItem?) {
+                    tv_no_rm.text=item?.custUsrKode
+                    tvtl.text=item?.custUsrTglLahir
+                    inputumum.isVisible=true
+                    pasienid = item?.custUsrId
+                    nm_px = item?.custUsrNama
+                    rm_px = item?.custUsrKode
+                    txthp.setText(com.itrsiam.rsiamuslimat.api.Utils.nohp)
+                    txtnama.setText(item?.custUsrNama)
+                    txtalamat.setText(item?.custUsrAlamat)
+
+
+                }
+            })
+    }
+
+    override fun onFailureAdd(msg: String?) {
 
     }
 
 
 }
 
-private fun <T> Call<T>.enqueue(callback: Callback<List<PoliResultItem>>) {
-
-}
 
 
 

@@ -30,20 +30,13 @@
         android:textAlignment="center"
         android:gravity="center_horizontal" />
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/rv"
-        tools:listitem="@layout/item_tiket"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/subtitle"
-       >
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_tiket"></androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

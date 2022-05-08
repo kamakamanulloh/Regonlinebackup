@@ -23,5 +23,15 @@ data class EkartuResultItem(
 	val custUsrKode: String? = null,
 
 	@field:SerializedName("cust_usr_nama")
-	val custUsrNama: String? = null
+	val custUsrNama: String? = null,
+
+	@field:SerializedName("cust_usr_alamat")
+	val custUsrAlamat: String? = null,
+
+	@field:SerializedName("cust_usr_no_jaminan")
+	val custUsrNoJaminan: String? = null,
+
+	@field:SerializedName("cust_usr_nik")
+	val cust_usr_nik: String? = null
+
 )
