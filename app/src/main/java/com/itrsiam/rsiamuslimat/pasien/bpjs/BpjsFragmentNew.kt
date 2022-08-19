@@ -339,6 +339,10 @@ class BpjsFragmentNew : Fragment(), CekRMView
 
                 }
                 else{
+                    progressDialog.setMessage("Application is loading, please wait")
+
+                    progressDialog.show()
+
                     jadwalPresenter.getJadwal(poli_id!!, tanggal.toString())
                 }
 
@@ -372,6 +376,7 @@ class BpjsFragmentNew : Fragment(), CekRMView
     }
 
     override fun onGetJadwal(data: List<JadwalResultItem?>?) {
+        progressDialog.dismiss()
         listdokter.adapter= JadwalAdapter(requireContext(), data as List<JadwalResultItem>)
 
         listdokter.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{

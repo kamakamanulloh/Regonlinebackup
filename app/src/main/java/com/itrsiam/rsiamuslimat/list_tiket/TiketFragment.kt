@@ -64,6 +64,8 @@ class TiketFragment : Fragment(),TiketView {
                     .setPositiveButton(R.string.ya,
                         DialogInterface.OnClickListener { dialog, id ->
                             // FIRE ZE MISSILES!
+                            progressDialog.setMessage("Mohon Tungu Sebentar")
+                            progressDialog.show()
                             presenter.batal_reg(item?.regBufferId.toString())
 
                         })
@@ -94,6 +96,7 @@ class TiketFragment : Fragment(),TiketView {
         alert {
             message="Pembatalan Berhasil"
         }.show()
+        progressDialog.dismiss()
         presenter.getTiket(Utils.user_id!!)
     }
 

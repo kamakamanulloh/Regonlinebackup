@@ -63,4 +63,7 @@ data class TiketResponse(
 
 	 @field:SerializedName("jadwal_dokter_status")
 	 val jadwalDokterStatus: Any? = null
+
+	 @field:SerializedName("reg_buffer_kode")
+	 val regBufferKode: String? = null
  }

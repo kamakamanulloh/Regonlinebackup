@@ -120,23 +120,57 @@
                     android:background="@drawable/et_style"
                     android:textSize="15sp" />
 
-                <EditText
 
-                    android:id="@+id/txtregpswd"
-                    android:layout_marginTop="@dimen/activity_horizontal_margin"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:drawableLeft="@drawable/ic_baseline_lock_24"
-                    android:hint="Masukkan Kata Sandi"
-                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content">
 
-                    android:layout_marginRight="20dp"
-                    android:padding="15dp"
-                    android:inputType="textPassword"
+                    <EditText
+
+                        android:id="@+id/txtregpswd"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/et_style"
+                        android:drawableLeft="@drawable/ic_baseline_lock_24"
+                        android:hint="Masukkan Kata Sandi"
+                        android:inputType="textPassword"
+                        android:padding="15dp"
 
 
-                    android:background="@drawable/et_style"
-                    android:textSize="15sp" />
+                        android:textSize="15sp"
+                        />
+
+                    <Button
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_toEndOf="@id/txtregpswd"
+                        android:id="@+id/showHideBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+
+                        android:background="@drawable/ic_baseline_remove_red_eye_24"
+                       />
+
+                    <Button
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_toEndOf="@id/txtregpswd"
+                        android:id="@+id/hideBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+
+                        android:background="@drawable/hidden"
+                        />
+
+                </RelativeLayout>
+
+
 
                 <EditText
 

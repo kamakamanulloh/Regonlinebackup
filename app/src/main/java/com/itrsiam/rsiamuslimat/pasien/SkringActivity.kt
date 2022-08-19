@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_skring.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
+import java.util.*
 
 
 class SkringActivity : AppCompatActivity(),PendaftaranView {
@@ -38,14 +39,18 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
 
 
     var skeluhan :String?=null
+    var kd_buffer:String?=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skring)
         progressDialog = ProgressDialog(this)
+        kd_buffer=getRandomString(4)
         alert {
             title="Informasi"
-            message="Harap Isi Data dengan Benar"
+            message="Harap Isi Data dengan Benar "
         }.show()
+
+
 
         presenter= PendaftaranPresenter(this)
         var periksa=" "
@@ -104,7 +109,8 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
                     intent.getStringExtra("pasien_id"),
                     intent.getStringExtra("no_rujukan"),
                     intent.getStringExtra("id_jadwal"),
-                    intent.getStringExtra("no_hp")
+                    intent.getStringExtra("no_hp"),
+                   kd_buffer
 
 //
                 )
@@ -126,7 +132,17 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
 
 
 
+    companion object {
+        private val ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm"
+    }
 
+    private fun getRandomString(sizeOfRandomString: Int): String {
+        val random = Random()
+        val sb = StringBuilder(sizeOfRandomString)
+        for (i in 0 until sizeOfRandomString)
+            sb.append(ALLOWED_CHARACTERS[random.nextInt(ALLOWED_CHARACTERS.length)])
+        return sb.toString()
+    }
 
 
     override fun onSuccessPendaftaran(msg: String?,buffer_id:String?,noAntrian:String?) {
@@ -151,6 +167,8 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
                             tiketintent.putExtra("jenis_px",intent.getStringExtra("jenis_px"))
                             tiketintent.putExtra("nm_px",intent.getStringExtra("nm_px"))
                             tiketintent.putExtra("rm_px",intent.getStringExtra("rm_px"))
+                            tiketintent.putExtra("asuransi_nama",intent.getStringExtra("asuransi_nama"))
+                            tiketintent.putExtra("kd_buffer",kd_buffer)
                             startActivity(tiketintent)
 
 

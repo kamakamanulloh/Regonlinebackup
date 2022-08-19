@@ -154,6 +154,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
                     intent.putExtra("nm_px",nm_px)
                     intent.putExtra("rm_px",rm_px)
                     intent.putExtra("id_jadwal",jadwal_id)
+                    intent.putExtra("asuransi_nama",asuransiNama)
 
 
 
@@ -273,7 +274,8 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
             ) {
                 poli_id =data[position].poliId.toString()
                 nm_poli=data[position].poliNama.toString()
-
+                progressDialog.setMessage("Application is loading, please wait")
+                progressDialog.show()
                 jadwalPresenter.getJadwal(poli_id!!, tanggal.toString())
 
 
@@ -290,7 +292,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
 
     override fun onGetJadwal(data: List<JadwalResultItem?>?) {
         listdokterasura.adapter= JadwalAdapter(requireContext(), data as List<JadwalResultItem>)
-
+        progressDialog.dismiss()
         listdokterasura.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -333,6 +335,7 @@ class AsuransiFragment : Fragment(), CekRMView , ListPoliView, JadwalView,Asuran
                 position: Int,
                 id: Long
             ) {
+                progressDialog.dismiss()
                 asuransiId =data[position].perusahaanId.toString()
                 asuransiNama=data[position].perusahaanNama.toString()
 

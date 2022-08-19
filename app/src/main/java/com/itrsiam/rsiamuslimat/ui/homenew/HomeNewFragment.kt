@@ -2,7 +2,9 @@ package com.itrsiam.rsiamuslimat.ui.homenew
 
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -24,12 +26,14 @@ import com.itrsiam.rsiamuslimat.pasien.asuransi.AsuransiFragment
 import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragment
 import com.itrsiam.rsiamuslimat.pasien.bpjs.BpjsFragmentNew
 import com.itrsiam.rsiamuslimat.pasien.umum.PasienUmumFragment
+import com.itrsiam.rsiamuslimat.pasien_baru.PasienBaruActivity
 import com.itrsiam.rsiamuslimat.pengingat_kontrol.PengingatKontrolFragment
 import com.itrsiam.rsiamuslimat.petunjuk.PetunjukFragment
 import kotlinx.android.synthetic.main.bottom_sheet_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home_new.*
 import kotlinx.android.synthetic.main.fragment_info.*
+import kotlinx.android.synthetic.main.input_pasien_baru.view.*
 import kotlinx.android.synthetic.main.tiket_fragment.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.alert
@@ -91,6 +95,27 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
                 ?.commit()
         }
         btn_pxlama.onClick {
+//            val builder = AlertDialog.Builder(requireContext())
+//            builder.setMessage("Apakah anda sudah pernah berkunjung ke RSIA Muslimat Jombang dan sudah mempunyai Nomor Rekam Medik ? ")
+//                .setPositiveButton("Sudah",
+//                    DialogInterface.OnClickListener { dialog, id ->
+//                        // FIRE ZE MISSILES!
+//                        jenisLayanan()
+//                        dialog.dismiss()
+//
+//
+//                    })
+//                .setNegativeButton("Belum",
+//                    DialogInterface.OnClickListener { dialog, id ->
+//                        // User cancelled the dialog
+//                        dialog.dismiss()
+//
+//                        pasienbaru()
+//
+//                    })
+//            // Create the AlertDialog object and return it
+//            builder.create()
+//            builder.show()
             jenisLayanan()
 
         }
@@ -127,6 +152,29 @@ class HomeNewFragment : Fragment(),NoAntrianView,TiketView,InfoView  {
         }
 
     }
+
+    private fun pasienbaru() {
+        val view = layoutInflater.inflate(R.layout.input_pasien_baru, null)
+        val dialog = context?.let { it1 -> BottomSheetDialog(it1) }
+
+        dialog?.setContentView(view)
+        view.btn_lanjut.onClick {
+            if (view.check_nik.isChecked){
+                val intent=Intent(context, PasienBaruActivity::class.java)
+                intent.putExtra("nik", view.et_nik.text.toString())
+
+                startActivity(intent)
+            }
+
+            else{
+                view.check_nik.error = "Harap Checklist Persetujuan Sebelum Melanjutkan"
+            }
+        }
+        dialog?.show()
+
+    }
+
+
 
     private fun jenisLayanan() {
         val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)

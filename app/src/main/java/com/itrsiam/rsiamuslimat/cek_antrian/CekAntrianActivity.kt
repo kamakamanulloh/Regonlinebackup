@@ -163,6 +163,8 @@ class CekAntrianActivity : AppCompatActivity(), ListPoliView, JadwalView,CekAntr
         tv_nomor.isVisible=false
         tvPoli.isVisible=false
 
+        progress_bar_antrian.visibility=(View.GONE)
+
     }
 
 

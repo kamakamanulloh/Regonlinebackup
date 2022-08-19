@@ -408,6 +408,8 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
 
                 }
                 else{
+                    progressDialog.setMessage("Application is loading, please wait")
+                    progressDialog.show()
                     jadwalPresenter.getJadwal(poli_id!!, tanggal.toString())
                 }
 
@@ -425,7 +427,7 @@ class PasienUmumFragment : Fragment(),CekRMView,ListPoliView,JadwalView,JumlahVi
 
     override fun onGetJadwal(data: List<JadwalResultItem?>?) {
         listdokter.adapter=JadwalAdapter(requireContext(), data as List<JadwalResultItem>)
-
+        progressDialog.dismiss()
         listdokter.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 

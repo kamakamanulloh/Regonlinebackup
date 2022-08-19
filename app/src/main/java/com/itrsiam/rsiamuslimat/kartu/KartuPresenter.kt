@@ -68,7 +68,7 @@ class KartuPresenter(val kartuView: KartuView) {
                 ) {
                     if (response.isSuccessful) {
                         val status = response.body()?.value
-                        if (status == 202) {
+                        if (status == 200) {
                             kartuView.onSuccessDel(response.body()!!.message.toString())
                         } else {
                             kartuView.onFailedAdd("Cek Koneksi Internet")
@@ -78,6 +78,7 @@ class KartuPresenter(val kartuView: KartuView) {
 
                 override fun onFailure(call: Call<KartuResponse>, t: Throwable) {
                     kartuView.onFailureAdd("Gagal")
+
                 }
 
             })

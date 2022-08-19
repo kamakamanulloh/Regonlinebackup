@@ -49,7 +49,7 @@
 
 
     <EditText
-       android:layout_above="@id/edtpswd"
+
         android:id="@+id/edtusername"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
@@ -60,34 +60,68 @@
         android:layout_marginRight="20dp"
         android:padding="15dp"
         android:inputType="textPersonName"
-
-
-        android:background="@drawable/et_style"
-        android:textSize="15sp" />
-
-    <EditText
-        android:id="@+id/edtpswd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:drawableLeft="@drawable/ic_baseline_lock_24"
-
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:hint="Masukkan password"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-
-        android:padding="15dp"
-
-        android:inputType="textPassword"
 
         android:background="@drawable/et_style"
         android:textSize="15sp" />
+
+
+
+    <RelativeLayout
+
+        android:id="@+id/rl_etpswd"
+        android:layout_below="@id/edtusername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+
+            android:id="@+id/edtpswd"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/et_style"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:hint="Masukkan Kata Sandi"
+            android:inputType="textPassword"
+            android:padding="15dp"
+
+
+            android:textSize="15sp" />
+
+        <Button
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/edtpswd"
+            android:id="@+id/showHideBtn"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+
+            android:background="@drawable/ic_baseline_remove_red_eye_24"
+            />
+
+        <Button
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/edtpswd"
+            android:id="@+id/hideBtn"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:visibility="gone"
+
+            android:background="@drawable/hidden"
+            />
+
+    </RelativeLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:layout_below="@id/edtpswd"
+       android:layout_below="@id/rl_etpswd"
         android:id="@+id/btnlogin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="Login"

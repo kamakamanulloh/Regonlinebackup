@@ -13,6 +13,7 @@ import com.itrsiam.rsiamuslimat.list_tiket.TiketPresenter
 import com.itrsiam.rsiamuslimat.list_tiket.TiketResults
 import com.itrsiam.rsiamuslimat.list_tiket.TiketView
 import kotlinx.android.synthetic.main.activity_ticket_view.*
+import org.jetbrains.anko.alert
 
 class TicketViewActivity : AppCompatActivity(),TiketView {
     var multiFormatWriter: MultiFormatWriter = MultiFormatWriter()
@@ -29,7 +30,7 @@ class TicketViewActivity : AppCompatActivity(),TiketView {
 
             try {
                 val bitMatrix = multiFormatWriter.encode(
-                    intent.getStringExtra("buffer_id"),
+                    intent.getStringExtra("kd_buffer"),
                     BarcodeFormat.QR_CODE,
                     500,
                     400
@@ -48,9 +49,9 @@ class TicketViewActivity : AppCompatActivity(),TiketView {
                 jenis_px="BPJS"
             }
             else if (intent.getStringExtra("jenis_px") == "7"){
-                jenis_px="Asuransi"
+                jenis_px="Asuransi ("+intent.getStringExtra("asuransi_nama")+")"
             }
-            tvkdantrian.text=("Kode Antrian "+intent.getStringExtra("buffer_id"))
+            tvkdantrian.text=("Kode Antrian "+intent.getStringExtra("kd_buffer"))
 
             tvnoantrian.text = "No Antrian "+intent.getStringExtra("no_antrian")
             tvklinik.text = intent.getStringExtra("nm_poli")
@@ -60,13 +61,25 @@ class TicketViewActivity : AppCompatActivity(),TiketView {
             tvrm.text = intent.getStringExtra("rm_px")
             tvcarabayar.text = jenis_px
 
+
         }
         else {
             val item=tiketResults as TiketResults?
+            var kode_reg:String=""
+            kode_reg = if (item?.regBufferKode!==null){
+
+                item.regBufferKode
+
+            } else{
+
+
+                item?.regBufferId.toString()
+            }
+
 
             try {
                 val bitMatrix = multiFormatWriter.encode(
-                   item?.regBufferId.toString(),
+                    kode_reg,
                     BarcodeFormat.QR_CODE,
                     400,
                     400
@@ -85,7 +98,9 @@ class TicketViewActivity : AppCompatActivity(),TiketView {
             tv_tanggal.text = item?.regBufferTanggal.toString()+" ("+ item?.regBufferWaktu.toString()+")"
             tvnmpasien.text = item?.custUsrNama.toString()
             tvrm.text = item?.custUsrKode.toString()
-            tvcarabayar.text = item?.jenisNama.toString()
+            tvcarabayar.text = item?.jenisNama.toString()+" ("+item?.perusahaanNama+" )"
+            tvkdantrian.text=("Kode Antrian $kode_reg")
+
 
         }
 
@@ -106,6 +121,10 @@ class TicketViewActivity : AppCompatActivity(),TiketView {
 
     override fun onFailed(msg: String) {
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 

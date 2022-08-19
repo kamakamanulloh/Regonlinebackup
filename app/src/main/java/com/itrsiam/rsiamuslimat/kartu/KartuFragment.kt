@@ -13,6 +13,7 @@ import com.itrsiam.rsiamuslimat.DatePickerFragment
 import com.itrsiam.rsiamuslimat.R
 import com.itrsiam.rsiamuslimat.api.Utils
 import com.itrsiam.rsiamuslimat.lupa_rm.LupaRm
+import com.itrsiam.rsiamuslimat.pengingat_kontrol.PengingatKontrolFragment
 import com.itrsiam.rsiamuslimat.poli.PoliAdapter
 import kotlinx.android.synthetic.main.add_rm.view.*
 import kotlinx.android.synthetic.main.ekartu.*
@@ -75,6 +76,7 @@ class KartuFragment : Fragment(),KartuView {
                 .setPositiveButton(R.string.ya,
                     DialogInterface.OnClickListener { dialog, id ->
                         // FIRE ZE MISSILES!
+
                        kartuPresenter.hapus_kartu(no_rm.toString(),Utils.user_id.toString())
 
                     })
@@ -91,13 +93,16 @@ class KartuFragment : Fragment(),KartuView {
         }
 
         add_fab.onClick {
-            dialog = AlertDialog.Builder(requireContext())
+
             inflater = layoutInflater
             val  dialogView = inflater!!.inflate(R.layout.add_rm, null)
 //        val mDialogView = LayoutInflater.from(requireContext()).inflate(R.layout.item_detail_dokter, null)
+            val dialog = AlertDialog.Builder(requireContext())
             dialog!!.setView(dialogView)
             dialog!!.setCancelable(true)
             dialog!!.setTitle("Tambahkan RM ke E-card")
+            val d :AlertDialog=dialog.show()
+
             dialogView.btn_tlahir.onClick {
 
                 val cal = Calendar.getInstance()
@@ -125,6 +130,8 @@ class KartuFragment : Fragment(),KartuView {
                     kartuPresenter.addkartu(dialogView.et_norm.text.toString(),tanggal_lahir.toString(),Utils.user_id.toString())
                 }
 
+                d.dismiss()
+
 
             }
             dialogView.tv_luparm.onClick {
@@ -139,7 +146,7 @@ class KartuFragment : Fragment(),KartuView {
 
 
             }
-            dialog!!.show()
+
 
 
 
@@ -170,26 +177,53 @@ class KartuFragment : Fragment(),KartuView {
 
     override fun onSuccessAdd(msg: String?) {
         progressDialog.dismiss()
-       alert { 
-           message=msg.toString()
-           
-       }.show()
-        kartuPresenter.ekartu(Utils.user_id.toString())
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage(msg)
+            .setPositiveButton(R.string.ya,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                    kartuPresenter.ekartu(Utils.user_id.toString())
+
+                })
+
+        // Create the AlertDialog object and return it
+        builder.create()
+        builder.show()
+
+
 
     }
 
     override fun onSuccessDel(msg: String?) {
-        alert { message=msg.toString() }
-            .show()
-        kartuPresenter.ekartu(Utils.user_id.toString())
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage(msg)
+            .setPositiveButton(R.string.ya,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                    kartuPresenter.ekartu(Utils.user_id.toString())
+
+                })
+
+        // Create the AlertDialog object and return it
+        builder.create()
+        builder.show()
+
     }
 
     override fun onFailedAdd(msg: String?) {
         progressDialog.dismiss()
-        alert {
-            message=msg.toString()
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage(msg)
+            .setPositiveButton(R.string.ya,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                    kartuPresenter.ekartu(Utils.user_id.toString())
 
-        }.show()
+                })
+
+        // Create the AlertDialog object and return it
+        builder.create()
+        builder.show()
     }
 
     override fun onSuccessGetList(data: List<EkartuResultItem?>?) {
@@ -220,6 +254,19 @@ class KartuFragment : Fragment(),KartuView {
     }
 
     override fun onFailureAdd(msg: String?) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setMessage(msg)
+            .setPositiveButton(R.string.ya,
+                DialogInterface.OnClickListener { dialog, id ->
+                    // FIRE ZE MISSILES!
+                    kartuPresenter.ekartu(Utils.user_id.toString())
 
+                })
+
+        // Create the AlertDialog object and return it
+        builder.create()
+        builder.show()
     }
+
+
 }

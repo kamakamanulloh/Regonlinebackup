@@ -6,7 +6,10 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
+import androidx.core.view.isVisible
 
 import com.itrsiam.rsiamuslimat.MainActivity
 import com.itrsiam.rsiamuslimat.R
@@ -14,6 +17,7 @@ import com.itrsiam.rsiamuslimat.api.Utils
 import com.itrsiam.rsiamuslimat.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_registrasi.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 @Suppress("DEPRECATION")
 class RegistrasiActivity : AppCompatActivity(),RegisterView {
@@ -27,12 +31,27 @@ class RegistrasiActivity : AppCompatActivity(),RegisterView {
         progressDialog = ProgressDialog(this)
 
         presenter = RegisterPresenter(this)
+        showHideBtn.onClick {
+            txtregpswd.transformationMethod=HideReturnsTransformationMethod.getInstance()
+            hideBtn.isVisible=true
+            showHideBtn.isVisible=false
+
+        }
+
+        hideBtn.onClick {
+            txtregpswd.transformationMethod=PasswordTransformationMethod.getInstance()
+            showHideBtn.isVisible=true
+            hideBtn.isVisible=false
+        }
+
+
         btnregister.setOnClickListener(View.OnClickListener {
             val username=txtusername.text.toString()
             val nama_depan=txtnamadepan.text.toString()
             val nama_belakang=txtnamabelakang.text.toString()
             val pswd=txtregpswd.text.toString()
             val no_hp=txtnohp.text.toString()
+
 
 
 

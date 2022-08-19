@@ -55,7 +55,7 @@ object NetWorkConfig {
 
     fun getRetrofitt(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://simrs.rsiamuslimat.com/api_regonline/")
+            .baseUrl("http://simrs.rsiamuslimat.com/api_regonline/")
             .client(getInterceptor())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -241,7 +241,8 @@ object NetWorkConfig {
             @Field("cust_usr_id")cust_usr_id:String?,
             @Field("reg_buffer_no_rujukan")reg_buffer_no_rujukan:String?,
             @Field("id_jadwal")id_jadwal:String?,
-            @Field("no_hp")no_hp:String?
+            @Field("no_hp")no_hp:String?,
+            @Field("kd_buffer")kd_buffer:String?
         ):
                 retrofit2.Call<PendaftaranResponse>
 

@@ -136,15 +136,7 @@ class BpjsFragment : Fragment(), CekRMView
                 ?.commit()
         }
         btntgl.setOnClickListener(View.OnClickListener {
-            if (txtrmhasil.equals(" ")){
-                alert {
-                    message="Pastikan RM Anda Terdaftar"
-                }
-
-            }
-            else{
-                onDateperiksa()
-            }
+            onDateperiksa()
         })
 
         btnnext.onClick {
@@ -246,9 +238,9 @@ class BpjsFragment : Fragment(), CekRMView
     ) {
         progressDialog.dismiss()
         inputbpjs.isVisible=true
-        txtrmhasil.setText(pasien_rm)
+
         txtnama.setText(pasien_nama)
-        txttgllahir.setText(pasien_tl)
+
         txtalamat.setText(pasien_alamat)
         txthp.setText(com.itrsiam.rsiamuslimat.api.Utils.nohp)
         nobpjs.setText(cust_usr_no_jaminan)

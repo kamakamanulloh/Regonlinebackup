@@ -43,6 +43,9 @@ data class NoAntrianResponse(
 	@field:SerializedName("reg_buffer_nobpjs")
 	val regBufferNobpjs: String? = null,
 
+	@field:SerializedName("reg_buffer_kode")
+	val regBufferKode: String? = null,
+
 	@field:SerializedName("value")
 	val value: Int? = null
 )

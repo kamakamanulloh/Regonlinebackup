@@ -6,8 +6,11 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 
 import com.itrsiam.rsiamuslimat.HomeActivity
 import com.itrsiam.rsiamuslimat.MainActivity
@@ -18,8 +21,11 @@ import com.itrsiam.rsiamuslimat.api.Utils.user_id
 import com.itrsiam.rsiamuslimat.api.Utils.user_name
 import com.itrsiam.rsiamuslimat.registrasi.RegistrasiActivity
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.hideBtn
+import kotlinx.android.synthetic.main.activity_login.showHideBtn
 
 import kotlinx.android.synthetic.main.activity_main.btnlogin
+
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
@@ -45,6 +51,20 @@ class LoginActivity : AppCompatActivity(),LoginView {
 
 
         progressDialog = ProgressDialog(this)
+
+        showHideBtn.onClick {
+            edtpswd.transformationMethod= HideReturnsTransformationMethod.getInstance()
+            hideBtn.isVisible=true
+            showHideBtn.isVisible=false
+
+        }
+
+        hideBtn.onClick {
+            edtpswd.transformationMethod= PasswordTransformationMethod.getInstance()
+            showHideBtn.isVisible=true
+            hideBtn.isVisible=false
+        }
+
         tv_regisrasi.onClick {
             startActivity<RegistrasiActivity>()
         }
@@ -97,7 +117,7 @@ class LoginActivity : AppCompatActivity(),LoginView {
 
 
         alert {
-            title="Selamat Datang "+username
+            title= "Selamat Datang $username"
             message="Login Sukses"
         }.show()
 
