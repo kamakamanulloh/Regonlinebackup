@@ -242,7 +242,8 @@ object NetWorkConfig {
             @Field("reg_buffer_no_rujukan")reg_buffer_no_rujukan:String?,
             @Field("id_jadwal")id_jadwal:String?,
             @Field("no_hp")no_hp:String?,
-            @Field("kd_buffer")kd_buffer:String?
+            @Field("kd_buffer")kd_buffer:String?,
+
         ):
                 retrofit2.Call<PendaftaranResponse>
 

@@ -39,12 +39,14 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
 
 
     var skeluhan :String?=null
-    var kd_buffer:String?=""
+    var kodebuffer=" "
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skring)
         progressDialog = ProgressDialog(this)
-        kd_buffer=getRandomString(4)
+      var  kd_buffer=getRandomString(4)
+        kodebuffer=kd_buffer
         alert {
             title="Informasi"
             message="Harap Isi Data dengan Benar "
@@ -168,7 +170,7 @@ class SkringActivity : AppCompatActivity(),PendaftaranView {
                             tiketintent.putExtra("nm_px",intent.getStringExtra("nm_px"))
                             tiketintent.putExtra("rm_px",intent.getStringExtra("rm_px"))
                             tiketintent.putExtra("asuransi_nama",intent.getStringExtra("asuransi_nama"))
-                            tiketintent.putExtra("kd_buffer",kd_buffer)
+                            tiketintent.putExtra("kd_buffer",kodebuffer)
                             startActivity(tiketintent)
 
 

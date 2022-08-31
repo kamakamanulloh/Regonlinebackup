@@ -65,19 +65,26 @@ class TicketViewActivity : AppCompatActivity(),TiketView {
         }
         else {
             val item=tiketResults as TiketResults?
-            var kode_reg:String=""
-            kode_reg = if (item?.regBufferKode!==null){
-
-                item.regBufferKode
-
-            } else{
 
 
-                item?.regBufferId.toString()
+           val kode_reg = if (item?.regBufferKode !=""){
+
+               item?.regBufferKode.toString()
+
             }
 
 
-            try {
+           else{
+
+               item.regBufferId.toString()
+
+
+            }
+
+
+
+
+                try {
                 val bitMatrix = multiFormatWriter.encode(
                     kode_reg,
                     BarcodeFormat.QR_CODE,
